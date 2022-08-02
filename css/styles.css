@@ -1,0 +1,26 @@
+*{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+/*Pagina Inicial - Containers de Valores*/
+.ValContainer{
+    clear:left;
+    background-color: rgb(27, 230, 44);
+    height: 8vw;
+    margin-bottom: 30px;
+    margin-top: 30px;
+    width: 20vw;
+}
+.ValContainerIcon{
+    max-width: 8vw;
+    float:left;
+}
+
+.ValTitle{
+    font-size: 150%;
+}
+.ValNow{
+    font-size: 120%;
+}
+.ValBtn{
+
+}

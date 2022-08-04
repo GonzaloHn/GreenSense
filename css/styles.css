@@ -14,8 +14,9 @@
     width: 22vw;
 }
 .ValContainerIcon{
-    max-width: 8vw;
+    max-width: 6vw;
     float:left;
+    padding-top: 2vh;
 }
 
 .ValTitle{

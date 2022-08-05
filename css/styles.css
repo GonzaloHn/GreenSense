@@ -43,4 +43,21 @@
 .ValBtn:hover {
     background-color: #4CAF50;
     color: white;
-  }
+}
+
+/*Pagina Valores Particulares - Tabla Index*/
+
+table{
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: collapse;
+    color: rebeccapurple;
+    
+}
+table, tr, td, th{ 
+    border: 1px solid black;
+}
+td, th{
+    padding: 10px;
+    text-align: left;
+}

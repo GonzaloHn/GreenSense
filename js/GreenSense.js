@@ -5,7 +5,7 @@ $(document).ready(function(){
               type: 'POST',
               url: '../php/registrar.php',
               dataType: "json",
-              data: 'usu=' + $("#u").val() + 'pass='+ $("#p").val() + 'ema='+$("#e").val(),
+              data: 'usu=' + $("#u").val() + '&pass='+ $("#c").val() + '&ema='+ $("#m").val(),
               success: function (datos) {
                     if(datos.status == 'ok')
                     {

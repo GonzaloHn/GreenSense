@@ -45,13 +45,34 @@
     color: white;
 }
 
+/*Pagina Valores Particulares - Tabla Situacion*/
+.Situation-Now{
+    border-style:1px solid black;
+    border-width: 30px;
+}
+.Situation-Now-Title{
+    font-size: 200%;
+}
+.Situation-Now-Title::after{
+    content: '';
+    display: block;
+    width: 20%;
+    height: 1px;
+    background-color: black;
+    margin: 10px 0px 15px;
+}
+.Situation-Now-Text{
+    font-size: 150%;
+    width: 20vw;
+}
+
 /*Pagina Valores Particulares - Tabla Index*/
 
 table{
-    width: 100%;
+    
     table-layout: fixed;
     border-collapse: collapse;
-    color: rebeccapurple;
+    color: black;
     
 }
 table, tr, td, th{ 

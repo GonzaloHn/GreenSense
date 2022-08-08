@@ -31,5 +31,13 @@ $(document).ready(function(){
 
     });
 
+    $("#fR").click(function(){
+        $("#cosa").html("Porfa");
+        $(".changing-background").css("background-color","#FF0000");
+    });
 
+    $("#fR").mouseover(function(){
+        $(".prueba").css("cursor","pointer");
+    });
+    
 });

@@ -1,41 +1,65 @@
 <?php
 $servername = "localhost";
 $username = "root";
-$password = "replace with your password";
-$dbname = "replace with your database name";
+$password = "rootroot";
+$dbname = "greensense";
 
 /*$conn = mysqli_connect($dbServername, $dbUsername, $dbPassword, $dbName);*/
 
 $api_key_value = "tPmAT5Ab3j7F9";
 
-$api_key= $sensor = $location = $value1 = $value2 = $value3 = "";
+$api_key= $resbasura = $resaire = $resenergia = "";
 
+//postea valores de nodeMCU a variables en php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $api_key = test_input($_POST["api_key"]);
     if($api_key == $api_key_value) {
-        $sensor = test_input($_POST["sensor"]);
-        $location = test_input($_POST["location"]);
-        $value1 = test_input($_POST["value1"]);
-        $value2 = test_input($_POST["value2"]);
-        $value3 = test_input($_POST["value3"]);
+        $resbasura = test_input($_POST["resbasura"]);
+        $resaire = test_input($_POST["resaire"]);
+        $resenergia = test_input($_POST["resenergia"]);
+
+        //$fecha = 
+        //$hora = 
         
-        // Create connection
+        // Crear conexion con DB
         $conn = new mysqli($servername, $username, $password, $dbname);
-        // Check connection
+
+        // Checkear conexion
         if ($conn->connect_error) {
             die("Connection failed: " . $conn->connect_error);
         } 
-        
-        $sql = "INSERT INTO SensorData (sensor, location, value1, value2, value3)
-        VALUES ('" . $sensor . "', '" . $location . "', '" . $value1 . "', '" . $value2 . "', '" . $value3 . "')";
+
+        //insertar valores basura
+        $sql = "INSERT INTO basura (hora, valor) VALUES ('" . $fecha . "', '" . $hora . "', '" . $resbasura . "')";
         
         if ($conn->query($sql) === TRUE) {
-            echo "New record created successfully";
+            echo "Registro de basura creado";
         } 
         else {
             echo "Error: " . $sql . "<br>" . $conn->error;
         }
-    
+
+        //insertar valores aire
+        $sql = "INSERT INTO aire (hora, valor) VALUES ('" . $fecha . "', '" . $hora . "', '" . $resaire . "')";
+        
+        if ($conn->query($sql) === TRUE) {
+            echo "Registro de aire creado";
+        } 
+        else {
+            echo "Error: " . $sql . "<br>" . $conn->error;
+        }
+
+        //insertar valores energia
+        $sql = "INSERT INTO energia (hora, valor) VALUES ('" . $fecha . "', '" . $hora . "', '" . $resenergia . "')";
+        
+        if ($conn->query($sql) === TRUE) {
+            echo "Registro de aire creado";
+        } 
+        else {
+            echo "Error: " . $sql . "<br>" . $conn->error;
+        }
+        
+
         $conn->close();
     }
     else {
@@ -47,6 +71,7 @@ else {
     echo "No data posted with HTTP POST.";
 }
 
+//funcion para postear datos de nodeMCU a la pagina sin problemas
 function test_input($data) {
     $data = trim($data);
     $data = stripslashes($data);

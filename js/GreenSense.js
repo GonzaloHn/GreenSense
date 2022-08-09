@@ -32,12 +32,15 @@ $(document).ready(function(){
     });
 
     $("#fR").click(function(){
-        $("#cosa").html("Porfa");
-        $(".changing-background").css("background-color","#FF0000");
+        $("body").css("background-color","#FF0000");
     });
 
-    $("#fR").mouseover(function(){
-        $(".prueba").css("cursor","pointer");
+    $("#fA").click(function(){
+        $("body").css("background-color","#FFFF00");
+    });
+
+    $("#fV").click(function(){
+        $("body").css("background-color","#008000");
     });
     
 });

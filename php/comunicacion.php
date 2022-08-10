@@ -4,11 +4,16 @@ $username = "root";
 $password = "rootroot";
 $dbname = "greensense";
 
+//poner horarios argentinos
+date_default_timezone_set('America/Argentina/Buenos_Aires');
+
+
 /*$conn = mysqli_connect($dbServername, $dbUsername, $dbPassword, $dbName);*/
 
 $api_key_value = "tPmAT5Ab3j7F9";
 
 $api_key= $resbasura = $resaire = $resenergia = "";
+
 
 //postea valores de nodeMCU a variables en php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -18,8 +23,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $resaire = test_input($_POST["resaire"]);
         $resenergia = test_input($_POST["resenergia"]);
 
-        //$fecha = 
-        //$hora = 
+        $fecha = date('d/m/y');
+        $hora = date('h:i:s');
         
         // Crear conexion con DB
         $conn = new mysqli($servername, $username, $password, $dbname);

@@ -10,6 +10,7 @@ date_default_timezone_set('America/Argentina/Buenos_Aires');
 
 /*$conn = mysqli_connect($dbServername, $dbUsername, $dbPassword, $dbName);*/
 
+//clave para recibir datos de hardware a software (poner la misma en los dos archivos)
 $api_key_value = "tPmAT5Ab3j7F9";
 
 $api_key= $resbasura = "";
@@ -33,7 +34,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         } 
 
         //insertar valores basura
-        $sql = "INSERT INTO basura (hora, valor) VALUES ('" . $fecha . "', '" . $hora . "', '" . $resbasura . "')";
+        $sql = "INSERT INTO basura (fecha, hora, valor) VALUES ('" . $fecha . "', '" . $hora . "', '" . $resbasura . "')";
         
         if ($conn->query($sql) === TRUE) {
             echo "Registro de basura creado";

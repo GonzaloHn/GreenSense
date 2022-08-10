@@ -10,6 +10,7 @@ date_default_timezone_set('America/Argentina/Buenos_Aires');
 
 /*$conn = mysqli_connect($dbServername, $dbUsername, $dbPassword, $dbName);*/
 
+//clave para recibir datos de hardware a software (poner la misma en los dos archivos)
 $api_key_value = "tPmAT5Ab3j7F9";
 
 $api_key= $resenergia = "";
@@ -35,7 +36,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         //insertar valores energia
         
-        $sql = "INSERT INTO energia (hora, valor) VALUES ('" . $fecha . "', '" . $hora . "', '" . $resenergia . "')";
+        $sql = "INSERT INTO energia (fecha, hora, valor) VALUES ('" . $fecha . "', '" . $hora . "', '" . $resenergia . "')";
         
         if ($conn->query($sql) === TRUE) {
             echo "Registro de aire creado";

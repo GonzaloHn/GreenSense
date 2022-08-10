@@ -4,18 +4,30 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Green Sense</title>
 
+    <!--Archivos CSS (styles.css // morris.css -> Hacer graficos)-->
+    <link rel="stylesheet" href="../css/morris.css">
     <link rel="stylesheet" href="../css/styles.css">
+
+    <script src="../js/jquery-3.6.0.min.js" type="text/javascript"></script>   
+    <script src="../js/morris.min.js" charset="utf-8"></script>
+    <!--Investigar raphael.min.js (?)-->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+
 </head>
 <body>
     <button type="button" class="ValBtn" onclick="location.href='registrar.html'">Registrarse</button><br>
 
     <div style="display: inline-flex; align-items: center; margin: auto;">
+
+    <!--Parte del gráfico-->
     <section class="gráfico">
-        <img class="" style="max-width: 50vw;" src="../images/ejemplográfico.jpg">
+        <div id="myfirstchart" style="height: 250px;"></div>
     </section>
 
+    <!--Parte de los containers con los valores párticulares de cada cosa-->
    <section class="ValContainers">
 
+    <!--Valor de energía eléctrica-->
     <div class="ValContainer">
         <img class="ValContainerIcon" src="../images/icon energy black.png">
 
@@ -26,6 +38,7 @@
         <button type="button" class="ValBtn" onclick="location.href='electricidad.html'">Ver más</button>
     </div>
 
+    <!--Valor de calidad de aire-->
     <div class="ValContainer">
         <img class="ValContainerIcon" src="../images/icon wind black.png">
 
@@ -38,6 +51,7 @@
         </div>
     </div>
 
+    <!--Valor de peso de basura-->
     <div class="ValContainer">
         <img class="ValContainerIcon" src="../images/icon trash black.png">
 
@@ -50,5 +64,30 @@
 
     </section>
     </div>
+
+    <!--Datos del morris(del gráfico)-->
+    <script>
+    new Morris.Line({
+        // ID of the element in which to draw the chart.
+        element: 'myfirstchart',
+        // Chart data records -- each entry in this array corresponds to a point on
+        // the chart.
+        data: [
+          { year: '2008', value: 20 },
+          { year: '2009', value: 10 },
+          { year: '2010', value: 5 },
+          { year: '2011', value: 5 },
+          { year: '2012', value: 20 }
+        ],
+        // The name of the data record attribute that contains x-values.
+        xkey: 'year',
+        // A list of names of data record attributes that contain y-values.
+        ykeys: ['value'],
+        // Labels for the ykeys -- will be displayed when you hover over the
+        // chart.
+        labels: ['Value'],
+        resize: true
+      });
+    </script>
 </body>
 </html>

@@ -12,15 +12,15 @@ date_default_timezone_set('America/Argentina/Buenos_Aires');
 
 $api_key_value = "tPmAT5Ab3j7F9";
 
-$api_key= $resbasura = "";
+$api_key= $resaire = "";
 
 
 //postea valores de nodeMCU a variables en php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $api_key = test_input($_POST["api_key"]);
     if($api_key == $api_key_value) {
-        $resbasura = test_input($_POST["resbasura"]);
-    
+        $resaire = test_input($_POST["resaire"]);
+
         $fecha = date('d/m/y');
         $hora = date('h:i:s');
         
@@ -32,11 +32,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             die("Connection failed: " . $conn->connect_error);
         } 
 
-        //insertar valores basura
-        $sql = "INSERT INTO basura (hora, valor) VALUES ('" . $fecha . "', '" . $hora . "', '" . $resbasura . "')";
+        
+        //insertar valores aire
+
+        
+        $sql = "INSERT INTO aire (hora, valor) VALUES ('" . $fecha . "', '" . $hora . "', '" . $resaire . "')";
         
         if ($conn->query($sql) === TRUE) {
-            echo "Registro de basura creado";
+            echo "Registro de aire creado";
         } 
         else {
             echo "Error: " . $sql . "<br>" . $conn->error;

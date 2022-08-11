@@ -2,7 +2,7 @@
 require("phpMQTT.php"); 
 
 $host   = "***.cloudmqtt.com"; 
-$port     = 80;
+$port     = ;
 $username = "";
 $password = "";
 

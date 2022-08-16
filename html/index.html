@@ -8,21 +8,25 @@
     <link rel="stylesheet" href="../css/morris.css">
     <link rel="stylesheet" href="../css/styles.css">
 
+    <!--Archivos JS (GreenSense.css // Jquery.js // morris.js + raphael.js -> Hacer graficos )-->
     <script src="../js/jquery-3.6.0.min.js" type="text/javascript"></script>   
+    <script src="../js/GreenSense.js" type="text/javascript"></script>  
     <script src="../js/morris.min.js" charset="utf-8"></script>
-    <!--Investigar raphael.min.js (?)-->
     <script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
 
 </head>
 <body>
     <button type="button" class="ValBtn" onclick="location.href='registrar.html'">Registrarse</button><br>
+    <br> <button type="button" id="fRR" >Fondo Rojo</button><br>
 
     <div style="display: inline-flex; align-items: center; margin: auto;">
 
     <!--Parte del gráfico-->
-    <section class="gráfico">
-        <div id="myfirstchart" style="height: 250px;"></div>
-    </section>
+    <div class="gráfico">
+        <div id="chart-energy" style="height: 250px;"></div>
+        <div id="chart-air" style="height: 250px;"></div>
+        <div id="chart-trash" style="height: 250px;"></div>
+    </div>
 
     <!--Parte de los containers con los valores párticulares de cada cosa-->
    <section class="ValContainers">
@@ -64,12 +68,12 @@
 
     </section>
     </div>
-
+    
     <!--Datos del morris(del gráfico)-->
     <script>
     new Morris.Line({
         // ID of the element in which to draw the chart.
-        element: 'myfirstchart',
+        element: 'chart-energy',
         // Chart data records -- each entry in this array corresponds to a point on
         // the chart.
         data: [
@@ -87,7 +91,51 @@
         // chart.
         labels: ['Value'],
         resize: true
-      });
+    });
+
+    new Morris.Line({
+        // ID of the element in which to draw the chart.
+        element: 'chart-air',
+        // Chart data records -- each entry in this array corresponds to a point on
+        // the chart.
+        data: [
+          { year: '2008', value: 20 },
+          { year: '2009', value: 10 },
+          { year: '2010', value: 5 },
+          { year: '2011', value: 5 },
+          { year: '2012', value: 20 }
+        ],
+        // The name of the data record attribute that contains x-values.
+        xkey: 'year',
+        // A list of names of data record attributes that contain y-values.
+        ykeys: ['value'],
+        // Labels for the ykeys -- will be displayed when you hover over the
+        // chart.
+        labels: ['Value'],
+        resize: true
+    });
+
+    new Morris.Line({
+        // ID of the element in which to draw the chart.
+        element: 'chart-trash',
+        // Chart data records -- each entry in this array corresponds to a point on
+        // the chart.
+        data: [
+          { year: '2008', value: 20 },
+          { year: '2009', value: 10 },
+          { year: '2010', value: 5 },
+          { year: '2011', value: 5 },
+          { year: '2012', value: 20 }
+        ],
+        // The name of the data record attribute that contains x-values.
+        xkey: 'year',
+        // A list of names of data record attributes that contain y-values.
+        ykeys: ['value'],
+        // Labels for the ykeys -- will be displayed when you hover over the
+        // chart.
+        labels: ['Value'],
+        resize: true
+    });
     </script>
 </body>
 </html>

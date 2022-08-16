@@ -3,6 +3,9 @@
 }
 .separador{
 }
+.disable-div {
+    pointer-events: none;
+}
 /*Pagina Inicial - Containers de Valores*/
 .ValContainer{
     clear:right;

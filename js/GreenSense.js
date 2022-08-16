@@ -31,6 +31,20 @@ $(document).ready(function(){
 
     });
 
+    $(".gráfico").addClass("disable-div");
+    // $(".gráfico").children().prop('disabled', true);
+     $('.ValTitle *').prop('disabled', true);
+
+    // var childNodes = document.getElementById(".ValTitle").getElementsByTagName('*');
+    // for (var node of childNodes) {
+    //     node.disabled = true;
+    // }
+
+    $("#fRR").click(function(){
+        $("body").css("background-color","#FF0000");
+        $('.ValTitle *').prop('disabled', true);
+        $(".ValTitle").addClass("disable-div");
+    });
     $("#fR").click(function(){
         $("body").css("background-color","#FF0000");
     });

@@ -31,20 +31,28 @@ $(document).ready(function(){
 
     });
 
-    $(".gráfico").addClass("disable-div");
-    // $(".gráfico").children().prop('disabled', true);
-     $('.ValTitle *').prop('disabled', true);
+    //FRONT-END
+    //Solo un gráfico a la vez
 
-    // var childNodes = document.getElementById(".ValTitle").getElementsByTagName('*');
-    // for (var node of childNodes) {
-    //     node.disabled = true;
-    // }
+    $("#chart-energy").show();
+    //$("#chart-air").hide();
+    //$("#chart-trash").hide();
 
-    $("#fRR").click(function(){
-        $("body").css("background-color","#FF0000");
-        $('.ValTitle *').prop('disabled', true);
-        $(".ValTitle").addClass("disable-div");
-    });
+    $("#change-g").click(function(){
+        if ($("#chart-energy").is(":visible")){
+            $("#chart-energy").hide();
+            $("#chart-air").show();
+        }
+        else if ($("#chart-air").is(":visible")){
+            $("#chart-air").hide();
+            $("#chart-trash").show();
+        }
+        else if ($("#chart-trash").is(":visible")){
+            $("#chart-trash").hide();
+            $("#chart-energy").show();
+        }
+    })
+
     $("#fR").click(function(){
         $("body").css("background-color","#FF0000");
     });

@@ -17,15 +17,14 @@
 </head>
 <body>
     <button type="button" class="ValBtn" onclick="location.href='registrar.html'">Registrarse</button><br>
-    <br> <button type="button" id="fRR" >Fondo Rojo</button><br>
 
     <div style="display: inline-flex; align-items: center; margin: auto;">
 
     <!--Parte del gráfico-->
     <div class="gráfico">
-        <div id="chart-energy" style="height: 250px;"></div>
-        <div id="chart-air" style="height: 250px;"></div>
-        <div id="chart-trash" style="height: 250px;"></div>
+        <div id="chart-energy" style="height: 250px; display:none"></div>
+        <div id="chart-air" style="height: 250px; display:none"></div>
+        <div id="chart-trash" style="height: 250px; display:none"></div>
     </div>
 
     <!--Parte de los containers con los valores párticulares de cada cosa-->
@@ -68,7 +67,8 @@
 
     </section>
     </div>
-    
+    <br><br><button type="button" id="change-g" >Cambiar gráfico</button><br>
+
     <!--Datos del morris(del gráfico)-->
     <script>
     new Morris.Line({
@@ -99,11 +99,11 @@
         // Chart data records -- each entry in this array corresponds to a point on
         // the chart.
         data: [
-          { year: '2008', value: 20 },
-          { year: '2009', value: 10 },
+          { year: '2008', value: 4 },
+          { year: '2009', value: 4 },
           { year: '2010', value: 5 },
-          { year: '2011', value: 5 },
-          { year: '2012', value: 20 }
+          { year: '2011', value: 10 },
+          { year: '2012', value: 9 }
         ],
         // The name of the data record attribute that contains x-values.
         xkey: 'year',
@@ -121,10 +121,10 @@
         // Chart data records -- each entry in this array corresponds to a point on
         // the chart.
         data: [
-          { year: '2008', value: 20 },
+          { year: '2008', value: 5 },
           { year: '2009', value: 10 },
-          { year: '2010', value: 5 },
-          { year: '2011', value: 5 },
+          { year: '2010', value: 30 },
+          { year: '2011', value: 50 },
           { year: '2012', value: 20 }
         ],
         // The name of the data record attribute that contains x-values.

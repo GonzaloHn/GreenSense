@@ -3,8 +3,8 @@
 }
 .separador{
 }
-.disable-div {
-    pointer-events: none;
+.disable{
+    display: none;
 }
 /*Pagina Inicial - Containers de Valores*/
 .ValContainer{

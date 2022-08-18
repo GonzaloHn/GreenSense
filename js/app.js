@@ -1,6 +1,6 @@
-var mysql = require ('mysql');
+const mysql = require ('mysql');
 
-var conexion  = mysql.createConnection({
+const conexion  = mysql.createConnection({
     
     host: 'localhost',
     database: 'greensense',
@@ -15,7 +15,7 @@ conexion.connect(function(error){
         throw error;
     }
     else{
-        console.log('conexione exitosa');
+        console.log('conexion exitosa');
     }
 
 });

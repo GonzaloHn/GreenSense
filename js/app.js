@@ -20,4 +20,13 @@ conexion.connect(function(error){
 
 });
 
+conexion.query('INSERT INTO usuarios (usuario,contrasenia,gmail) VALUES ()', function (error,results,fields){
+    if (error)
+    throw error;
+
+    results.forEach(result => {
+        console.log(result);
+    });
+});
+
 conexion.end();

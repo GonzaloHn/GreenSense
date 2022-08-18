@@ -25,7 +25,7 @@ $(document).ready(function(){
                     }
                 },
               error: function(error) {
-                    ;
+                    
                    },
             });
 
@@ -51,7 +51,7 @@ $(document).ready(function(){
             $("#chart-trash").hide();
             $("#chart-energy").show();
         }
-    })
+    });
 
     $("#fR").click(function(){
         $("body").css("background-color","#FF0000");

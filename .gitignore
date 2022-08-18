@@ -4,5 +4,10 @@ js/morris.min.js
 
 css/morris.css
 
-nodejs
+node_modules
+package.json
+modulo_sql
+package-lock.json
+
+
 

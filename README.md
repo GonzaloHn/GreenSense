@@ -6,4 +6,5 @@ Instalar en la carpeta "css", 'morris.css'.
 Instalar modulos nodejs: 
 npm init
 npm i mysql 
+npm i mqtt
 npm install -g jshint

@@ -1,4 +1,4 @@
-//poner nombre de topicos como: GreenSense/Topico, asi no se repite con toicos de otras personas 
+//poner nombre de topicos como: GreenSense/Topico, asi no se repite con topicos de otras personas 
 //en ese caso para suscribirte a todos nuestros topicos puedo poner: GreenSense/# 
 
 const mqtt = require('mqtt');

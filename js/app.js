@@ -1,43 +1,71 @@
-$(document).ready(function(){
+const mysql = require ('mysql');
+
+const express = require ('express');
+
+const port = process.env.PORT || 80; //asignar puerto de servidor
+
+
+const app = express(); //nuestra app
+
+
+//api middleware
+app.use (express.json()); //aceptar data el formato json
+app.use (express.urlencoded()); //decodificar daa que pasa html
+app.use(express.static('public')); //serve public folder as static folder
+
+//api route
+app.get ('/GreenSense',(req,res)=>{
+    res.sendFile(__dirname + 'html/registrar.html')
+});
+
+app.post('/formPost', (req,res)=>{
+    console.log (req.body);
+});
+
+
+//escuchar puerto
+app.listen(port,()=>{
+    console.log(`Server started at http://localhost:${port}`);
+});
+
+
+
+
+
+/*let user = $("#u").val();
+let contra = $("#c").val();
+let mail = $("#m").val();*/
+
+
+/*
+const conexion  = mysql.createConnection({
     
-    $("#S").click(function(){
-
-        const mysql = require ('mysql');
-
-        let user = $("#u").val();
-        let contra = $("#c").val();
-        let mail = $("#m").val();
-
-        const conexion  = mysql.createConnection({
-            
-            host: 'localhost',
-            database: 'greensense',
-            user: 'root',
-            password: 'rootroot'
-
-        });
-
-        conexion.connect(function(error){
-
-            if (error){
-                throw error;
-            }
-            else{
-                console.log('conexion exitosa');
-            }
-
-        });
-
-        conexion.query(`INSERT INTO usuarios (usuario,contrasenia,gmail) VALUES (${user} ,${contra} ,${mail} )`, function (error,results,fields){
-            if (error)
-            throw error;
-
-            results.forEach(result => {
-                console.log(result);
-            });
-        });
-
-        conexion.end();
-    });
+    host: 'localhost',
+    database: 'greensense',
+    user: 'root',
+    password: 'rootroot'
 
 });
+
+conexion.connect(function(error){
+
+    if (error){
+        throw error;
+    }
+    else{
+        console.log('conexion exitosa');
+    }
+
+});
+
+conexion.query(`INSERT INTO usuarios (usuario,contrasenia,gmail) VALUES (${user} ,${contra} ,${mail} )`, function (error,results,fields){
+    if (error)
+    throw error;
+
+    results.forEach(result => {
+        console.log(result);
+    });
+});
+
+conexion.end();
+*/

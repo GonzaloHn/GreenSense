@@ -1,12 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calidad de Aire</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Calidad de aire</title>
+
+    <!--Archivos CSS (styles.css // morris.css -> Hacer graficos)-->
+    <link rel="stylesheet" href="../css/morris.css">
+    <link rel="stylesheet" href="../css/styles.css">
+
+    <!--Archivos JS (GreenSense.css // Jquery.js // morris.js + raphael.js -> Hacer graficos )-->
+    <script src="../js/jquery-3.6.0.min.js" type="text/javascript"></script>   
+    <script src="../js/GreenSense.js" type="text/javascript"></script>  
+    <script src="../js/morris.min.js" charset="utf-8"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js" integrity="sha512-ElRFoEQdI5Ht6kZvyzXhYG9NqjtkmlkfYk0wr6wHxU9JEHakS7UJZNeml5ALk+8IKlU6jDgMabC3vkumRokgJA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
 </head>
 <body>
-    
+    <div style="display: inline-flex;">
+    <div><canvas id="myChart" width="400" height="400"></canvas></div>
+    <div>Prueba</div>
+    </div>
 </body>
 </html>

@@ -154,4 +154,32 @@ $(document).ready(function(){
             }
         }
     });
+    const cx = $('#myCHart');
+    const myChart2 = new Chart(cx, {
+        type: 'doughnut',
+        data: {
+            labels: [
+                'Green',
+                'Blue',
+              ],
+              datasets: [{
+                label: 'My First Dataset',
+                data: [200, 150],
+                backgroundColor: [
+                  'rgb(138,221,45)',
+                  'rgb(0, 0, 0, 0)',
+                ],
+                hoverOffset: 4,
+            }]
+        },
+        options: {
+            events: ["", "mouseout", "", "touchstart", "touchmove", "touchend"],
+            cutout:150,
+            plugins: {
+                legend: {
+                  display: false
+                }
+            },
+        }
+    });
 });

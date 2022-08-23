@@ -5,7 +5,7 @@ let date = new Date();
 let time = new Date();
 
 const mqtt = require('mqtt');
-const client = mqtt.connect('mqtt://test.mosquitto.org'); //poner pagina web broker
+const client = mqtt.connect('mqtt://io.adafruit.com'); //poner pagina web broker
 
 const mysql = require ('mysql');
 const conexion  = mysql.createConnection({
@@ -23,15 +23,15 @@ conexion.connect(function(error){
         throw error;
     }
     else{
-        console.log('conexion exitosa');
+        console.log('conexion DB exitosa');
     }
 
 });
 
 function EventoConectar(){
-    client.subscribe('topicoEscuchar', function (err) {
+    client.subscribe('GreenSense/#', function (err) {
         if (!err){
-            
+            console.log ("Error de suscripcion");
         }
     })
 }

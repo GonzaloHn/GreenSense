@@ -2,7 +2,7 @@ const mysql = require ('mysql');
 
 const express = require ('express');
 
-const port = process.env.PORT || 80; //asignar puerto de servidor
+const port = process.env.PORT || 80; //asignar puerto de servidor (4848)
 
 
 const app = express(); //nuestra app
@@ -15,7 +15,7 @@ app.use(express.static('public')); //serve public folder as static folder
 
 //api route
 app.get ('/GreenSense',(req,res)=>{
-    res.sendFile(__dirname + 'html/registrar.html')
+    res.sendFile(__dirname + '/html/registrar.html');
 });
 
 app.post('/formPost', (req,res)=>{

@@ -5,7 +5,8 @@ let date = new Date();
 let time = new Date();
 
 const mqtt = require('mqtt');
-const client = mqtt.connect('mqtt://io.adafruit.com'); //poner pagina web broker
+const client = mqtt.connect('mqtt://io.adafruit.com', {username:"Soficasares", password:"aio_ioNI38D91lv85Lt9AndCVzopMVXI"}); //poner pagina web broker mqtt://
+
 
 const mysql = require ('mysql');
 const conexion  = mysql.createConnection({
@@ -29,7 +30,7 @@ conexion.connect(function(error){
 });
 
 function EventoConectar(){
-    client.subscribe('GreenSense/#', function (err) {
+    client.subscribe('G_Light', function (err) {
         if (!err){
             console.log ("Error de suscripcion");
         }

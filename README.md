@@ -9,5 +9,6 @@ Instalar modulos nodejs:
 npm init
 npm i mysql 
 npm i mqtt
+npm install mqtt -g
 npm install express
 npm install -g jshint

@@ -1,25 +1,39 @@
 const mysql = require ('mysql');
 
 const express = require ('express');
+const bodyParser = require ('body-parser');
+const papth = require ("path");
 
-const port = process.env.PORT || 80; //asignar puerto de servidor (4848)
+const port = process.env.PORT || 80;  //asignar puerto de servidor (4848)
 
 
 const app = express(); //nuestra app
 
 
+/*
 //api middleware
 app.use (express.json()); //aceptar data el formato json
-app.use (express.urlencoded()); //decodificar daa que pasa html
+app.use (bodyParser.urlencoded({extended: false})); //decodificar daa que pasa html
 app.use(express.static('public')); //serve public folder as static folder
+*/
 
 //api route
-app.get ('/GreenSense',(req,res)=>{
-    res.sendFile(__dirname + '/html/registrar.html');
+app.get ('/',(req,res)=>{
+
+    console.log(__dirname);
+
+    res.sendFile(path.resolve (__dirname, '../html/registrar.html'));
 });
 
-app.post('/formPost', (req,res)=>{
+app.post('/', (req,res)=>{
     console.log (req.body);
+
+    res.render('/html/registrar.html', {title: 'data guardada', message: 'data guardada exitosamente'})
+    /*
+    usuario = req.body.usuario;
+    contraseña = req.body.contra;
+    mail = req.body.mail;
+    */
 });
 
 

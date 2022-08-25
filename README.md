@@ -12,3 +12,6 @@ npm i mqtt
 npm install mqtt -g
 npm install express
 npm install -g jshint
+
+
+Arduino = instalar librerias "Adafruit Mqtt", "Hx711_Adc"

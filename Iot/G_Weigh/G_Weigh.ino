@@ -18,6 +18,16 @@
 #include <ESP8266WiFi.h>
 #include "Adafruit_MQTT.h"
 #include "Adafruit_MQTT_Client.h"
+#include <HX711_ADC.h>
+
+const int HX711_dout = 4; //mcu > HX711 dout pin
+const int HX711_sck = 5; //mcu > HX711 sck pin
+
+HX711_ADC LoadCell(HX711_dout, HX711_sck); //Constructor
+
+const int calVal_eepromAdress = 0;
+unsigned long t = 0;
+
 
 /************************* WiFi Access Point *********************************/
 
@@ -76,6 +86,22 @@ void setup() {
 
   // Setup MQTT subscription for onoff feed.
   mqtt.subscribe(&onoffbutton);
+
+
+  Loadcell.begin();
+  float calibrationValue = 696.0;
+  unsigned long stabilizingtime = 2000;
+  boolean _tare = true;
+    LoadCell.start(stabilizingtime, _tare);
+  if (LoadCell.getTareTimeoutFlag()) {
+    Serial.println("Timeout, check MCU>HX711 wiring and pin designations");
+    while (1);
+  }
+  else {
+    LoadCell.setCalFactor(calibrationValue); // set calibration value (float)
+    Serial.println("Startup is complete");
+  } 
+  
 }
 
 uint32_t x=0;

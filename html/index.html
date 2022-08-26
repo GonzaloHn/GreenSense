@@ -11,8 +11,10 @@
     <!--Archivos JS (GreenSense.css // Jquery.js // morris.js + raphael.js -> Hacer graficos )-->
     <script src="../js/jquery-3.6.0.min.js" type="text/javascript"></script>   
     <script src="../js/GreenSense.js" type="text/javascript"></script>  
-    <script src="../js/morris.min.js" charset="utf-8"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+    <!-- <script src="../js/morris.min.js" charset="utf-8"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js" integrity="sha512-ElRFoEQdI5Ht6kZvyzXhYG9NqjtkmlkfYk0wr6wHxU9JEHakS7UJZNeml5ALk+8IKlU6jDgMabC3vkumRokgJA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="../js/home-graphics.js" type="text/javascript"></script>  
 
 </head>
 <body>
@@ -22,9 +24,12 @@
 
     <!--Parte del gráfico-->
     <div class="gráfico">
-        <div id="chart-energy" style="height: 250px;"></div>
+        <div id="hide-e-g"><canvas id="line-chart-energy" width="400" height="400"></canvas></div>
+        <div id="hide-a-g" class="" style=""><canvas id="line-chart-air" width="400" height="400"></canvas></div>
+        <div id="hide-t-g" class=""><canvas id="line-chart-trash" width="400" height="400"></canvas></div>
+        <!-- <div id="chart-energy" style="height: 250px;"></div>
         <div id="chart-air" style="height: 250px; display:none"></div>
-        <div id="chart-trash" style="height: 250px; display:none"></div>
+        <div id="chart-trash" style="height: 250px; display:none"></div> -->
     </div>
 
     <!--Parte de los containers con los valores párticulares de cada cosa-->

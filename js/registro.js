@@ -5,30 +5,6 @@ let user = "";
 let pass = "";
 let email = "";
 
-const app = express();
-
-app.use (express.urlencoded({extended: true})); //decodificar daa que pasa html
-
-app.get ('/', (req, res) => {
-    res.sendFile('C:\\AppServ\\www\\GreenSense\\html\\registrar.html');
-});
-
-app.post('/', (req,res)=>{
-    
-    user = req.body.usuario;
-    pass = req.body.contra;
-    email = req.body.mail;
-
-    /*
-    if (user == "" || pass == "" || email == "")
-    {
-        res.status(400).send("debde ingresar todos los valores");
-    }
-    */
-
-    //anda pero saca datos de replica de pagina (localhost:3000, en vez del appserv, es decir la ag principal)
-   
-});
 
 const conexion  = mysql.createConnection({
     
@@ -45,10 +21,50 @@ conexion.connect(function(error){
         throw error;
     }
     else{
-        console.log('conexion exitosa');
+        console.log('conexion a DB exitosa');
     }
 
 });
+
+const app = express();
+
+app.use (express.urlencoded({extended: true})); //decodificar data que pasa html
+
+app.get ('/', (req, res) => {
+    res.sendFile('C:\\AppServ\\www\\GreenSense\\html\\registrar.html');
+});
+
+app.post('/', (req,res)=>{
+    
+    user = req.body.usuario;
+    pass = req.body.contra;
+    email = req.body.mail;
+
+    if (user == "" || pass == "" || email == "")
+    {
+        console.log ("error, faltan datos de registro")
+    }
+    else 
+    {
+        conexion.query('INSERT INTO usuarios (usuario, contrasenia, gmail) VALUES ("'+user+'" ,"'+pass+'" ,"'+email+'" )', function (error,results,fields){
+            if (error) throw error;
+            console.log ("registro insertado");
+            conexion.end();
+        });
+        
+        
+    }
+    /*
+    if (user == "" || pass == "" || email == "")
+    {
+        res.status(400).send("debde ingresar todos los valores");
+    }
+    */
+
+    //anda pero saca datos de replica de pagina (localhost:3000, en vez del appserv, es decir la ag principal)
+   
+});
+
 
 /*
 conexion.query("INSERT INTO usuarios (usuario, contrasenia, gmail) VALUES ('a' ,'b' ,'c')", function (error,results,fields){
@@ -60,7 +76,7 @@ conexion.query("INSERT INTO usuarios (usuario, contrasenia, gmail) VALUES ('a' ,
     conexion.end();
 */
 
-
+/*
 if (user == "" || pass == "" || email == "")
 {
     console.log ("error, faltan datos de registro")
@@ -73,7 +89,7 @@ else
     
     conexion.end();
 }
-
+*/
 
 /*
 app.get ('/styles.css', (req, res) => {
@@ -82,4 +98,4 @@ app.get ('/styles.css', (req, res) => {
 */
 
 app.listen (3000);
-console.log ('Server on port 3000')
+console.log ('Servidor en puerto 3000, escuchando...')

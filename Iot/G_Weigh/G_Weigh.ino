@@ -84,11 +84,8 @@ void setup() {
   Serial.println("WiFi connected");
   Serial.println("IP address: "); Serial.println(WiFi.localIP());
 
-  // Setup MQTT subscription for onoff feed.
-  mqtt.subscribe(&onoffbutton);
 
-
-  Loadcell.begin();
+  LoadCell.begin();
   float calibrationValue = 696.0;
   unsigned long stabilizingtime = 2000;
   boolean _tare = true;
@@ -111,35 +108,42 @@ void loop() {
   // connection and automatically reconnect when disconnected).  See the MQTT_connect
   // function definition further below.
   MQTT_connect();
+static boolean newDataReady = 0;
+  const int serialPrintInterval = 0; //increase value to slow down serial print activity
 
-  // this is our 'wait for incoming subscription packets' busy subloop
-  // try to spend your time here
+  // check for new data/start next conversion:
+  if (LoadCell.update()) newDataReady = true;
 
-  Adafruit_MQTT_Subscribe *subscription;
-  while ((subscription = mqtt.readSubscription(5000))) {
-    if (subscription == &onoffbutton) {
-      Serial.print(F("Got: "));
-      Serial.println((char *)onoffbutton.lastread);
+  // get smoothed value from the dataset:
+  float value = LoadCell.getData();
+  if (newDataReady) {
+    if (millis() > t + serialPrintInterval) {
+      float value = LoadCell.getData();
+      Serial.print("Load_cell output val: ");
+      Serial.println(value);
+      newDataReady = 0;
+      t = millis();
     }
   }
 
-  // Now we can publish stuff!
-  Serial.print(F("\nSending photocell val "));
-  Serial.print(x);
-  Serial.print("...");
-  if (! photocell.publish(x++)) {
-    Serial.println(F("Failed"));
-  } else {
-    Serial.println(F("OK!"));
+  // receive command from serial terminal, send 't' to initiate tare operation:
+  if (Serial.available() > 0) {
+    char inByte = Serial.read();
+    if (inByte == 't') LoadCell.tareNoDelay();
   }
 
-  // ping the server to keep the mqtt connection alive
-  // NOT required if you are publishing once every KEEPALIVE seconds
-  /*
-  if(! mqtt.ping()) {
-    mqtt.disconnect();
+  // check if last tare operation is complete:
+  if (LoadCell.getTareStatus() == true) {
+    Serial.println("Tare complete");
   }
-  */
+
+
+  // Now we can publish stuff!
+  Serial.print(F("\nSending Weigh val "));
+  Serial.print("value");
+  Serial.print("...");
+  ! G_Weigh.publish(value);
+
 }
 
 // Function to connect and reconnect as necessary to the MQTT server.

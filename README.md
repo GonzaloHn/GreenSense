@@ -11,8 +11,10 @@ npm i mysql
 npm i mqtt
 npm install mqtt -g
 npm install express
+
 npm install nodemon -g
 npm install -g jshint
 
+problema de compus del cole, no te dejan instalar globalmente
 
 Arduino = instalar librerias "Adafruit Mqtt", "Hx711_Adc"

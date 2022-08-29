@@ -4,6 +4,10 @@
 let date = new Date();
 let time = new Date();
 
+let fecha = "";
+let hora = "";
+let basura = "";
+
 const mqtt = require('mqtt');
 const client = mqtt.connect('mqtt://io.adafruit.com', {username:"Soficasares", password:"aio_ioNI38D91lv85Lt9AndCVzopMVXI"}); //poner pagina web broker mqtt://
 
@@ -18,6 +22,7 @@ const conexion  = mysql.createConnection({
 
 });
 
+/*
 conexion.connect(function(error){
 
     if (error){
@@ -28,12 +33,14 @@ conexion.connect(function(error){
     }
 
 });
+*/
 
 function EventoConectar(){
     client.subscribe('G_Light', function (err) {
         if (!err){
             console.log ("Error de suscripcion");
         }
+        console.log ("Suscrito a topico/s, escuchando...")
     })
 }
 
@@ -44,18 +51,16 @@ function EventoMensaje(topic, message){
     if (topic == "GreenSense/basura")
     {
         //guardar valor y subirlo al grafico
-        let fecha = date.toLocaleDateString();
-        let hora = time.toLocaleTimeString();
-        let basura = message.toString();
+        fecha = date.toLocaleDateString();
+        hora = time.toLocaleTimeString();
+        basura = message.toString();
 
         //insertar a DB
         conexion.query(`INSERT INTO basura (fecha,hora,basura) VALUES (${fecha} ,${hora} ,${basura} )`, function (error,results,fields){
             if (error)
             throw error;
-
-            results.forEach(result => {
-                console.log(result);
-            });
+            console.log("registro de basura insertado");
+            
         });
 
         

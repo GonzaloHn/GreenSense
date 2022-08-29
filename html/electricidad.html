@@ -6,13 +6,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Energía electrica</title>
 
+    <!--Archivos CSS (styles.css)-->
     <link rel="stylesheet" href="../css/styles.css">
 
-    <script src="../js/jquery-3.6.0.min.js" type="text/javascript"></script>   
-    <script src="../js/GreenSense.js" type="text/javascript"></script>
+    <!--Archivos JS (GreenSense.css // Jquery.js)-->
+    <script src="../js/jquery-3.6.0.min.js" type="text/javascript"></script>    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js" integrity="sha512-ElRFoEQdI5Ht6kZvyzXhYG9NqjtkmlkfYk0wr6wHxU9JEHakS7UJZNeml5ALk+8IKlU6jDgMabC3vkumRokgJA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="../js/GreenSense.js" type="text/javascript"></script> 
+    <script src="../js/energy-graphics.js" type="text/javascript"></script>  
 
 </head>
 <body class="changing-background">
+    <div style="display: inline-flex;">
+    <div><canvas id="donut-chart-energy" width="400" height="400"></canvas></div>
+    
     <div class="Situation-Now">
 
         <div class="Situation-Now-Title">
@@ -49,9 +56,10 @@
             </tbody>
         </table>
     </section>
+    
+    </div>
 
-
-    <button type="button" id="fR" >Fondo Rojo</button><br>
+    <p><button type="button" id="fR" >Fondo Rojo</button></p>
     <p><label id="fA">Fondo Amarillo</label></p>
     <p><label id="fV">Fondo Verde</label></p>
 </body>

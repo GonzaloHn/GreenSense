@@ -4,23 +4,57 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Calidad de aire</title>
 
-    <!--Archivos CSS (styles.css // morris.css -> Hacer graficos)-->
-    <link rel="stylesheet" href="../css/morris.css">
-    <link rel="stylesheet" href="../css/styles.css">
+   <!--Archivos CSS (styles.css)-->
+   <link rel="stylesheet" href="../css/styles.css">
 
-    <!--Archivos JS (GreenSense.css // Jquery.js // morris.js + raphael.js -> Hacer graficos )-->
-    <script src="../js/jquery-3.6.0.min.js" type="text/javascript"></script>   
-    <script src="../js/GreenSense.js" type="text/javascript"></script>  
-    <script src="../js/morris.min.js" charset="utf-8"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js" integrity="sha512-ElRFoEQdI5Ht6kZvyzXhYG9NqjtkmlkfYk0wr6wHxU9JEHakS7UJZNeml5ALk+8IKlU6jDgMabC3vkumRokgJA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+   <!--Archivos JS (GreenSense.css // Jquery.js // Chart.js)-->
+   <script src="../js/jquery-3.6.0.min.js" type="text/javascript"></script>    
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js" integrity="sha512-ElRFoEQdI5Ht6kZvyzXhYG9NqjtkmlkfYk0wr6wHxU9JEHakS7UJZNeml5ALk+8IKlU6jDgMabC3vkumRokgJA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+   <script src="../js/GreenSense.js" type="text/javascript"></script> 
+   <script src="../js/air-graphics.js" type="text/javascript"></script>  
 
 </head>
 <body>
     <div style="display: inline-flex;">
-    <div><canvas id="myChart" width="400" height="400"></canvas></div>
-    <div>Prueba</div>
-    </div>
+        <div><canvas id="donut-air-energy" width="400" height="400"></canvas></div>
+        
+        <div class="Situation-Now">
+    
+            <div class="Situation-Now-Title">
+                Muy Bien
+            </div>
+    
+            <div class="sep-line"></div>
+    
+            <div class="Situation-Now-Text">
+                Actualmente estamos relativamente bien!
+            </div>
+    
+        </div>
+    
+        <section class="">
+            <table class="index-Table">
+                <tbody>
+                <tr>
+                    <th>Index de energía electrica</th>
+                    <th>Efectos</th>
+                </tr>
+                <tr>
+                    <th>Menos de 50</th>
+                    <td>Todo bien</td>
+                </tr>
+                <tr>
+                    <th>Entre 50 y 150</th>
+                    <td>Arriesgado</td>
+                </tr>
+                <tr>
+                    <th>Mas de 150</th>
+                    <td>Estamos muy mal</td>
+                </tr>
+                </tbody>
+            </table>
+        </section>
+        
+        </div>
 </body>
 </html>

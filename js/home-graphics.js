@@ -53,8 +53,8 @@ const line_chart_air = new Chart(line_air, {
     },
 });
 
-const line_trash = $('#line-chart-trash');
-const line_chart_trash = new Chart(line_trash, {
+const line_weight = $('#line-chart-weight');
+const line_chart_weight = new Chart(line_weight, {
     type: 'line',
     data: {
         labels: ["aaa", "bbb", "ccc", "ddd", "eee", "fff", "ggg"],

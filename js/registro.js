@@ -15,26 +15,31 @@ const conexion  = mysql.createConnection({
 
 });
 
-conexion.connect(function(error){
-
-    if (error){
-        throw error;
-    }
-    else{
-        console.log('conexion a DB exitosa');
-    }
-
-});
 
 const app = express();
 
 app.use (express.urlencoded({extended: true})); //decodificar data que pasa html
 
+/*
 app.get ('/', (req, res) => {
     res.sendFile('C:\\AppServ\\www\\GreenSense\\html\\registrar.html');
 });
+*/
 
 app.post('/', (req,res)=>{
+    
+    /*
+    conexion.connect(function(error){
+
+        if (error){
+            throw error;
+        }
+        else{
+            console.log('conexion a DB exitosa');
+        }
+    
+    });
+    */
     
     user = req.body.usuario;
     pass = req.body.contra;
@@ -42,6 +47,7 @@ app.post('/', (req,res)=>{
 
     if (user == "" || pass == "" || email == "")
     {
+        res.status(400).send("debde ingresar todos los valores");
         console.log ("error, faltan datos de registro")
     }
     else 
@@ -49,7 +55,7 @@ app.post('/', (req,res)=>{
         conexion.query('INSERT INTO usuarios (usuario, contrasenia, gmail) VALUES ("'+user+'" ,"'+pass+'" ,"'+email+'" )', function (error,results,fields){
             if (error) throw error;
             console.log ("registro insertado");
-            conexion.end();
+            //conexion.end();
         });
         
         

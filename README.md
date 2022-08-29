@@ -11,6 +11,7 @@ npm i mysql
 npm i mqtt
 npm install mqtt -g
 npm install express
+npm install nodemon -g
 npm install -g jshint
 
 

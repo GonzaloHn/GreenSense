@@ -60,42 +60,8 @@ app.post('/', (req,res)=>{
         
         
     }
-    /*
-    if (user == "" || pass == "" || email == "")
-    {
-        res.status(400).send("debde ingresar todos los valores");
-    }
-    */
-
-    //anda pero saca datos de replica de pagina (localhost:3000, en vez del appserv, es decir la ag principal)
    
 });
-
-
-/*
-conexion.query("INSERT INTO usuarios (usuario, contrasenia, gmail) VALUES ('a' ,'b' ,'c')", function (error,results,fields){
-    if (error)
-        throw error;
-            
-    });
-    
-    conexion.end();
-*/
-
-/*
-if (user == "" || pass == "" || email == "")
-{
-    console.log ("error, faltan datos de registro")
-}
-else 
-{
-    conexion.query('INSERT INTO usuarios (usuario, contrasenia, gmail) VALUES ("'+user+'" ,"'+pass+'" ,"'+email+'" )', function (error,results,fields){
-        if (error) throw error;
-    });
-    
-    conexion.end();
-}
-*/
 
 /*
 app.get ('/styles.css', (req, res) => {

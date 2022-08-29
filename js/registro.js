@@ -55,6 +55,8 @@ app.post('/', (req,res)=>{
         conexion.query('INSERT INTO usuarios (usuario, contrasenia, gmail) VALUES ("'+user+'" ,"'+pass+'" ,"'+email+'" )', function (error,results,fields){
             if (error) throw error;
             console.log ("registro insertado");
+            
+            //res.redirect("C:\\AppServ\\www\\GreenSense\\html\\index.html")
             //conexion.end();
         });
         

@@ -9,7 +9,10 @@ let hora = "";
 let basura = "";
 
 const mqtt = require('mqtt');
-const client = mqtt.connect('mqtt://io.adafruit.com', {username:"Soficasares", password:"aio_ioNI38D91lv85Lt9AndCVzopMVXI"}); //poner pagina web broker mqtt://
+const client = mqtt.connect('mqtt://io.adafruit.com', {
+    username: 'Soficasares', 
+    password: 'aio_ioNI38D91lv85Lt9AndCVzopMVXI'
+}); //poner pagina web broker mqtt://
 
 
 const mysql = require ('mysql');

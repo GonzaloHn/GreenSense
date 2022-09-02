@@ -1,5 +1,5 @@
 /***************************************************
-  Adafruit MQTT Library ESP8266 Example
+  Adafruit MQTT Library ESP8266 E1ample
 
   Must use ESP8266 Arduino from:
     https://github.com/esp8266/Arduino
@@ -95,8 +95,6 @@ void setup() {
     Serial.println("Startup is complete");
 }
 
-uint32_t x=0;
-
 void loop() {
   // Ensure the connection to the MQTT server is alive (this will make the first
   // connection and automatically reconnect when disconnected).  See the MQTT_connect
@@ -110,15 +108,6 @@ static boolean newDataReady = 0;
 
   // get smoothed value from the dataset:
   float value = LoadCell.getData();
-  if (newDataReady) {
-    if (millis() > t + serialPrintInterval) {
-      float value = LoadCell.getData();
-      Serial.print("Load_cell output val: ");
-      Serial.println(value);
-      newDataReady = 0;
-      t = millis();
-    }
-  }
 
   // receive command from serial terminal, send 't' to initiate tare operation:
   if (Serial.available() > 0) {
@@ -130,12 +119,15 @@ static boolean newDataReady = 0;
   if (LoadCell.getTareStatus() == true) {
     Serial.println("Tare complete");
   }
-  G_Weigh.publish(value);
-
-  // Now we can publish stuff!
-  Serial.print(F("\nSending Weigh val "));
-  Serial.print("value");
+    // Now we can publish stuff!
+  Serial.print(F("\nSending weigh val "));
+  Serial.print(value);
   Serial.print("...");
+  if (! G_Weigh.publish(value)) {
+    Serial.println(F("Failed"));
+  } else {
+    Serial.println(F("OK!"));
+  }
 
 
 }

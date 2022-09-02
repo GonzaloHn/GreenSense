@@ -91,15 +91,8 @@ void setup() {
   unsigned long stabilizingtime = 2000;
   boolean _tare = true;
     LoadCell.start(stabilizingtime, _tare);
-  if (LoadCell.getTareTimeoutFlag()) {
-    Serial.println("Timeout, check MCU>HX711 wiring and pin designations");
-    while (1);
-  }
-  else {
     LoadCell.setCalFactor(calibrationValue); // set calibration value (float)
     Serial.println("Startup is complete");
-  } 
-  
 }
 
 uint32_t x=0;
@@ -137,13 +130,13 @@ static boolean newDataReady = 0;
   if (LoadCell.getTareStatus() == true) {
     Serial.println("Tare complete");
   }
-
+  G_Weigh.publish(value);
 
   // Now we can publish stuff!
   Serial.print(F("\nSending Weigh val "));
   Serial.print("value");
   Serial.print("...");
-  ! G_Weigh.publish(value);
+
 
 }
 

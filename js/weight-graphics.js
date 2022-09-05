@@ -46,8 +46,8 @@ $(document).ready(function(){
             }]
         },
         options: {
-            events: ["", "mouseout", "", "touchstart", "touchmove", "touchend"],
-            cutout:170,
+            events: ["", "mouseout", "", "", "", "touchend"],
+            cutout:'90%',
             plugins: {
                 legend: {
                   display: false

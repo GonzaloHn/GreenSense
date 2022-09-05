@@ -86,7 +86,6 @@ $("#change-g").click(function(){
     if ($("#hide-e-g").is(":visible")){
         $("#hide-e-g").hide();
         $("#hide-a-g").show();
-        $("#hide-a-g").removeClass("none");
     }
     else if ($("#hide-a-g").is(":visible")){
         $("#hide-a-g").hide();

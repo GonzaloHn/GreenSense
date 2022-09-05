@@ -2,22 +2,30 @@
 <html lang="en">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Calidad de aire</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Green Sense</title>
 
-   <!--Archivos CSS (styles.css)-->
-   <link rel="stylesheet" href="../css/styles.css">
+    <!--Archivos CSS (styles.css //Materialize.css)-->
+    <link rel="stylesheet" href="../css/materialize.css">
+    <link rel="stylesheet" href="../css/styles.css">
 
-   <!--Archivos JS (GreenSense.css // Jquery.js // Chart.js)-->
-   <script src="../js/jquery-3.6.0.min.js" type="text/javascript"></script>    
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js" integrity="sha512-ElRFoEQdI5Ht6kZvyzXhYG9NqjtkmlkfYk0wr6wHxU9JEHakS7UJZNeml5ALk+8IKlU6jDgMabC3vkumRokgJA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-   <script src="../js/GreenSense.js" type="text/javascript"></script> 
+    <!--Archivos JS (GreenSense.css // Jquery.js // Materialize.js)-->
+    <script src="../js/jquery-3.6.0.min.js" type="text/javascript"></script>   
+    <script src="../js/GreenSense.js" type="text/javascript"></script>  
+    <script src="../js/materialize.js" type="text/javascript"></script>
+    <!--Archivos JS (Chart.js -> Hacer graficos // home-graphics.js)-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js" integrity="sha512-ElRFoEQdI5Ht6kZvyzXhYG9NqjtkmlkfYk0wr6wHxU9JEHakS7UJZNeml5ALk+8IKlU6jDgMabC3vkumRokgJA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> 
    <script src="../js/air-graphics.js" type="text/javascript"></script>  
+
 
 </head>
 <body>
-    <div style="display: inline-flex;">
-        <div><canvas id="donut-air-energy" width="400" height="400"></canvas></div>
+
+    <div class="row">
+
+        <div class="col s12 l4"><canvas id="donut-air-energy" width="400" height="400"></canvas></div>
         
+        <section class="tables col s12 l6">
         <div class="Situation-Now">
     
             <div class="Situation-Now-Title">
@@ -32,7 +40,6 @@
     
         </div>
     
-        <section class="">
             <table class="index-Table">
                 <tbody>
                 <tr>
@@ -53,8 +60,8 @@
                 </tr>
                 </tbody>
             </table>
-        </section>
         
+        </section>
         </div>
 </body>
 </html>

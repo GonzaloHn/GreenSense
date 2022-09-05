@@ -1,25 +1,97 @@
 *{
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    box-sizing: border-box;
 }
 .separador{
 }
 .none{
     display: none;
 }
+.center-items{
+    justify-content: center;
+    align-items: center;
+}
+
+/* @media only screen and (max-width: 600px) {
+    .inline-itmes section{
+      background-color: wheat;
+      display:block;
+    } 
+} */
+
+/*Navbar*/
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: greenyellow;
+    height: 60px;
+    margin-bottom: 30px;
+}
+.zona-navbar{
+    font-size: 1.5rem;
+    margin: .5rem;
+    background-color: grey;
+}
+.links-navbar ul{
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+.links-navbar li{
+    list-style: none;
+}
+.links-navbar li a{
+    text-decoration: none;
+    padding:1rem;
+    display:block;
+}
+.links-navbar li:hover{
+    background-color: white;
+}
+
+/* @media only screen and (max-width: 400px){
+    .links-navbar{
+        display:none;
+        width: 100%;
+    }
+    .navbar{
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .links-navbar ul{
+        width: 100%;
+        flex-direction: column;
+    }
+    .links-navbar li{
+        text-align: center;
+    }
+    .links-navbar li a{
+        padding: .5rem 1rem;
+    }
+    .links-navbar:active{
+        display:flex;
+    }
+} */
+
+/*Pagina Inicial - Gráficos*/
+.gráficos{
+}
+
 /*Pagina Inicial - Containers de Valores*/
 .ValContainer{
-    clear:right;
     background-color: rgb(27, 230, 44);
     border-radius: 5px;
-    height: 8vw;
+    padding: 5px;
+    height: fit-content;
     margin-bottom: 30px;
     margin-top: 30px;
-    width: 22vw;
+    width: 300px;
 }
-.ValContainerIcon{
-    max-width: 6vw;
+.ValContainerIcon img{
+    max-width: 100px;
     float:left;
-    padding-top: 2vh;
+    padding: 10px;
 }
 
 .ValTitle{
@@ -58,7 +130,7 @@
     border:1px solid black;
     width: fit-content;
     margin-bottom: 10px;
-    
+    height: fit-content;
 }
 .Situation-Now-Title{
     font-size: 200%;
@@ -86,7 +158,6 @@
 /*Pagina Valores Particulares - Tabla Index*/
 
 table{
-    
     table-layout: fixed;
     border-collapse: collapse;
     color: black;

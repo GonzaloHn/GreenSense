@@ -1,12 +1,6 @@
 $(document).ready(function(){
 
     //FRONT-END
-    //Solo un gráfico a la vez
-
-    //$("#chart-energy").show();
-    //$("#chart-air").hide();
-    //$("#chart-trash").hide();
-
 
     $("#fR").click(function(){
         $("body").css("background-color","#FF0000");

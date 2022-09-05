@@ -20,8 +20,10 @@ $(document).ready(function(){
             }]
         },
         options: {
-            events: ["", "mouseout", "", "touchstart", "touchmove", "touchend"],
-            cutout:170,
+            events: ["", "mouseout", "", "", "touchmove", "touchend"],
+            cutout:'90%',
+            responsive: true,
+            maintainAspectRatio: true, 
             plugins: {
                 legend: {
                   display: false

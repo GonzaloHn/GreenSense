@@ -1,5 +1,11 @@
 $(document).ready(function(){
 
+    $(window).resize(function() {
+        var widthBrowser =$(window).height();
+        var heightBrowser =$(window).width();
+        console.log("Tamaño de la pantalla del navegador: width="+widthBrowser +" height="+heightBrowser );
+    });
+
     const donut_energy = $('#donut-chart-energy');
     const donut_chart_energy = new Chart(donut_energy, {
         type: 'doughnut',
@@ -11,6 +17,10 @@ $(document).ready(function(){
               datasets: [{
                 label: 'My First Dataset',
                 data: [200, 150],
+                borderColor: [
+                    'rgb(241, 198, 7)',
+                    'rgb(0, 0, 0, 0)',
+                ],
                 backgroundColor: [
                   'rgb(241, 198, 7)',
                   'rgb(0, 0, 0, 0)',
@@ -20,8 +30,9 @@ $(document).ready(function(){
             }]
         },
         options: {
-            events: ["", "mouseout", "", "touchstart", "touchmove", "touchend"],
-            cutout:170,
+            responsive: true,
+            events: ["", "mouseout", "", "", "touchmove", "touchend"],
+            cutout:'90%',
             plugins: {
                 legend: {
                   display: false

@@ -20,6 +20,7 @@
 } */
 
 /*Navbar*/
+/*
 .navbar{
     display: flex;
     justify-content: space-between;
@@ -50,7 +51,7 @@
     background-color: white;
 }
 
-/* @media only screen and (max-width: 400px){
+ @media only screen and (max-width: 400px){
     .links-navbar{
         display:none;
         width: 100%;
@@ -81,7 +82,7 @@
 /*Pagina Inicial - Containers de Valores*/
 .ValContainer{
     background-color: rgb(27, 230, 44);
-    border-radius: 5px;
+    border-radius: 15px;
     padding: 5px;
     height: fit-content;
     margin-bottom: 30px;
@@ -95,14 +96,16 @@
 }
 
 .ValTitle{
-    font-size: 150%;
+    font-size: 160%;
     padding-top: 5px;
-    padding-bottom: 5px;
 }
 .ValNow{
-    font-size: 120%;
-    padding-top: 5px;
+    font-size: 130%;
     padding-bottom: 6px;
+}
+.ValInfo{
+    background-color: white;
+    border-radius: 15px;
 }
 .ValBtn{
     background-color: white;
@@ -112,7 +115,8 @@
     text-decoration: none;
     transition-duration: 0.4s;
     cursor: pointer;
-    border: 2px solid #4CAF50;  
+    border: 2px solid #4CAF50;
+    margin-bottom: 5px;
 }
 
 .ValBtn:hover {
@@ -143,7 +147,7 @@
     width: 20rem;
     height: 1px;
     background-color: black;
-    margin: 10px 0px 5px;
+    margin: 10px 10px 5px;
 }
 .Situation-Now-Text{
     font-size: 150%;

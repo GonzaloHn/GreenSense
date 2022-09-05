@@ -3,10 +3,10 @@ const line_energy = $('#line-chart-energy');
 const line_chart_energy = new Chart(line_energy, {
     type: 'line',
     data: {
-        labels: ["a", "b", "c", "d", "e", "f", "g"],
+        labels: ["a", "b", "c", "d", "e", "f", "g", "h"],
         datasets: [{
             label: 'My First Dataset',
-            data: [65, 59, 80, 81, 56, 55, 40],
+            data: [65, 59, 80, 81, 56, 55, 40, 70],
             fill: false,
             borderColor: 'rgb(241, 198, 7)',
             tension: 0.1

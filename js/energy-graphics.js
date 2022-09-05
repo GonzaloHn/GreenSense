@@ -6,6 +6,20 @@ $(document).ready(function(){
         console.log("Tamaño de la pantalla del navegador: width="+widthBrowser +" height="+heightBrowser );
     });
 
+    // const centerText = {
+    //     id = 'centerText',
+    //     afterDatasetsDraw(chart, args, options) {
+    //         const { donut_energy, chartArea: {left, right, top, bottom, width, height } } = chart;
+
+    //         donut_energy.save();
+    //         console.log(top);
+
+    //         donut_energy.font = 'bolder 30px Arial';
+    //         donut_energy.fillStyle = 'rgba(255, 26, 104, 1)';
+    //         donut_energy.fillText('Sales:', 100, 100)
+    //     }
+    // }
+
     const donut_energy = $('#donut-chart-energy');
     const donut_chart_energy = new Chart(donut_energy, {
         type: 'doughnut',
@@ -39,9 +53,7 @@ $(document).ready(function(){
                 }
             },
         },
-        centerText: {
-            display: true,
-            text: "280"
-        }
+        // plugins: [centerText],
+
     });
     });

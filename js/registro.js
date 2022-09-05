@@ -5,7 +5,7 @@ let user = "";
 let pass = "";
 let email = "";
 
-
+//Conexion DB
 const conexion  = mysql.createConnection({
     
     host: 'localhost',
@@ -45,18 +45,25 @@ app.post('/', (req,res)=>{
     pass = req.body.contra;
     email = req.body.mail;
 
+    //Tirar error si faltan valores (no anda bien)
     if (user == "" || pass == "" || email == "")
     {
-        res.status(400).send("debde ingresar todos los valores");
+        //tira error enpuerto 3000 (deberia redirijrlo al front despues)
+        res.status(400).send("debe ingresar todos los valores");
         console.log ("error, faltan datos de registro")
     }
+
+    //Insertar regisistro a DB
     else 
     {
         conexion.query('INSERT INTO usuarios (usuario, contrasenia, gmail) VALUES ("'+user+'" ,"'+pass+'" ,"'+email+'" )', function (error,results,fields){
             if (error) throw error;
             console.log ("registro insertado");
             
-            //res.redirect("C:\\AppServ\\www\\GreenSense\\html\\index.html")
+            //Quiero redirigir al front luego de crear registro
+
+            //me redirije a puerto 3000 en vez de puerto mio
+            res.redirect("/localhost/GreenSense/html");
             //conexion.end();
         });
         
@@ -72,4 +79,4 @@ app.get ('/styles.css', (req, res) => {
 */
 
 app.listen (3000);
-console.log ('Servidor en puerto 3000, escuchando...')
+console.log ('Servidor en puerto 3000, escuchando registro...')

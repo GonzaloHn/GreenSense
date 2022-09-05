@@ -9,13 +9,17 @@ let hora = "";
 let basura = "";
 
 const mqtt = require('mqtt');
+
+//conexion con broker adagruit
 const client = mqtt.connect('mqtt://io.adafruit.com', {
     username: 'Soficasares', 
     password: 'aio_ioNI38D91lv85Lt9AndCVzopMVXI'
-}); //poner pagina web broker mqtt://
+}); 
 
 
 const mysql = require ('mysql');
+
+//conexion DB
 const conexion  = mysql.createConnection({
             
     host: 'localhost',
@@ -25,6 +29,9 @@ const conexion  = mysql.createConnection({
 
 });
 
+console.log("prueba desde mqtt");
+
+//conectar a DB (ya ser conecta antes, este codigo no funciona)
 /*
 conexion.connect(function(error){
 
@@ -38,6 +45,7 @@ conexion.connect(function(error){
 });
 */
 
+//Funcion suscripcion a broker
 function EventoConectar(){
     client.subscribe('G_Light', function (err) {
         if (!err){
@@ -47,26 +55,22 @@ function EventoConectar(){
     })
 }
 
+//Accion luego de recibir mensaje
 function EventoMensaje(topic, message){
-    //que hacer al recibir mensaje
     console.log(topic + " - " + message.toString())
 
-    if (topic == "GreenSense/basura")
-    {
-        //guardar valor y subirlo al grafico
+    if (topic == "GreenSense/basura"){
+        //guardar valores (para posteriormente subirlo al grafico)
         fecha = date.toLocaleDateString();
         hora = time.toLocaleTimeString();
         basura = message.toString();
 
-        //insertar a DB
+        //Insertar valores a DB
         conexion.query(`INSERT INTO basura (fecha,hora,basura) VALUES (${fecha} ,${hora} ,${basura} )`, function (error,results,fields){
             if (error)
             throw error;
-            console.log("registro de basura insertado");
-            
-        });
-
-        
+            console.log("registro de basura insertado");  
+        });   
     }
     
     conexion.end();

@@ -9,6 +9,7 @@ npm i mysql
 npm i mqtt
 npm install mqtt -g
 npm install express
+npm i concurrently (tengo que configurarlo)
 
 npm install nodemon -g
 npm install -g jshint

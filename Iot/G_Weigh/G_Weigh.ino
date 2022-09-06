@@ -99,7 +99,6 @@ void loop() {
   // Ensure the connection to the MQTT server is alive (this will make the first
   // connection and automatically reconnect when disconnected).  See the MQTT_connect
   // function definition further below.
-  MQTT_connect();
 static boolean newDataReady = 0;
   const int serialPrintInterval = 0; //increase value to slow down serial print activity
 
@@ -114,6 +113,7 @@ static boolean newDataReady = 0;
     char inByte = Serial.read();
     if (inByte == 't') LoadCell.tareNoDelay();
   }
+  MQTT_connect(); 
 
   // check if last tare operation is complete:
   if (LoadCell.getTareStatus() == true) {

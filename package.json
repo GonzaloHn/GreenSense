@@ -1,0 +1,25 @@
+{
+  "name": "greensense",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GonzaloHn/GreenSense.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GonzaloHn/GreenSense/issues"
+  },
+  "homepage": "https://github.com/GonzaloHn/GreenSense#readme",
+  "dependencies": {
+    "concurrently": "^7.3.0",
+    "express": "^4.18.1",
+    "mqtt": "^4.3.7",
+    "mysql": "^2.18.1"
+  }
+}

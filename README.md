@@ -3,7 +3,13 @@
 Instalar en la carpeta "js", 'jquery-3.6.0.min.js' y 'materialize.js'.
 Instalar en la carpeta "css", 'materialize.css'.
 
-Instalar modulos nodejs: 
+Instalar modulos nodejs:
+Para instalar todo hacer: npm i
+
+package.json
+package-lock.json
+
+
 npm init
 npm i mysql 
 npm i mqtt

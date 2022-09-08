@@ -16,8 +16,10 @@ const mqtt = require('mqtt');
 
 //conexion con broker adagruit
 const client = mqtt.connect('mqtt://io.adafruit.com', {
-    username: 'Soficasares', 
-    password: 'aio_ioNI38D91lv85Lt9AndCVzopMVXI'
+    //username: 'Soficasares', 
+    //password: 'aio_ioNI38D91lv85Lt9AndCVzopMVXI'
+    username: 'SantiR', 
+    password: 'aio_ZpyH50VL7wfGVyeXAyUHgIXHxct1'
 }); 
 
 

@@ -1,12 +1,16 @@
 //poner nombre de topicos como: GreenSense/Topico, asi no se repite con topicos de otras personas 
 //en ese caso para suscribirte a todos nuestros topicos puedo poner: GreenSense/# 
 
+/*
 let date = new Date();
 let time = new Date();
 
 let fecha = "";
 let hora = "";
 let basura = "";
+let energia = "";
+let aire = "";
+*/
 
 const mqtt = require('mqtt');
 
@@ -17,8 +21,9 @@ const client = mqtt.connect('mqtt://io.adafruit.com', {
 }); 
 
 
-const mysql = require ('mysql');
+//const mysql = require ('mysql');
 
+/*
 //conexion DB
 const conexion  = mysql.createConnection({
             
@@ -28,6 +33,7 @@ const conexion  = mysql.createConnection({
     password: 'rootroot'
 
 });
+*/
 
 console.log("prueba desde mqtt");
 
@@ -47,18 +53,27 @@ conexion.connect(function(error){
 
 //Funcion suscripcion a broker
 function EventoConectar(){
-    client.subscribe('G_Light', function (err) {
+
+    console.log("conectado a adafruit");
+
+    client.subscribe('G_air', function (err) {
+
         if (!err){
-            console.log ("Error de suscripcion");
+            console.log ("Suscrito a topico/s, escuchando...");
         }
-        console.log ("Suscrito a topico/s, escuchando...")
-    })
-}
+        else {
+            console.log ("error de suscripcion");
+        }
+    });
+};
 
 //Accion luego de recibir mensaje
 function EventoMensaje(topic, message){
+
     console.log(topic + " - " + message.toString())
 
+    /*
+    //registro basura
     if (topic == "GreenSense/basura"){
         //guardar valores (para posteriormente subirlo al grafico)
         fecha = date.toLocaleDateString();
@@ -66,18 +81,48 @@ function EventoMensaje(topic, message){
         basura = message.toString();
 
         //Insertar valores a DB
-        conexion.query(`INSERT INTO basura (fecha,hora,basura) VALUES (${fecha} ,${hora} ,${basura} )`, function (error,results,fields){
+        conexion.query(`INSERT INTO basura (fecha, hora, valor) VALUES (${fecha} ,${hora} ,${basura} )`, function (error,results,fields){
             if (error)
             throw error;
             console.log("registro de basura insertado");  
         });   
     }
-    
-    conexion.end();
+
+     //registro aire
+     if (topic == "GreenSense/aire"){
+        //guardar valores (para posteriormente subirlo al grafico)
+        fecha = date.toLocaleDateString();
+        hora = time.toLocaleTimeString();
+        aire = message.toString();
+
+        //Insertar valores a DB
+        conexion.query(`INSERT INTO aire (fecha, hora, valor) VALUES (${fecha} ,${hora} ,${aire} )`, function (error,results,fields){
+            if (error)
+            throw error;
+            console.log("registro de aire insertado");  
+        });   
+     }
+
+      //registro energia
+      if (topic == "GreenSense/energia"){
+        //guardar valores (para posteriormente subirlo al grafico)
+        fecha = date.toLocaleDateString();
+        hora = time.toLocaleTimeString();
+        energia = message.toString();
+
+        //Insertar valores a DB
+        conexion.query(`INSERT INTO energia (fecha, hora, valor) VALUES (${fecha} ,${hora} ,${energia} )`, function (error,results,fields){
+            if (error)
+            throw error;
+            console.log("registro de energia insertado");  
+        });   
+     }
+     */
+
+    //conexion.end();
     //client.end()
 }
 
-client.on('connect', EventoConectar)
-client.on('message', EventoMensaje)
-
+client.on('connect', EventoConectar);
+client.on('message', EventoMensaje);
 

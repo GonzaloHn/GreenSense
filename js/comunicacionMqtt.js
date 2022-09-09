@@ -53,7 +53,7 @@ conexion.connect(function(error){
 });
 */
 
-//Funcion suscripcion a broker
+//Funcion conexion y suscripcion a broker
 function EventoConectar(){
 
     console.log("conectado a adafruit");

@@ -20,26 +20,8 @@ const app = express();
 
 app.use (express.urlencoded({extended: true})); //decodificar data que pasa html
 
-/*
-app.get ('/', (req, res) => {
-    res.sendFile('C:\\AppServ\\www\\GreenSense\\html\\registrar.html');
-});
-*/
-
 app.post('/', (req,res)=>{
     
-    /*
-    conexion.connect(function(error){
-
-        if (error){
-            throw error;
-        }
-        else{
-            console.log('conexion a DB exitosa');
-        }
-    
-    });
-    */
     
     user = req.body.usuario;
     pass = req.body.contra;
@@ -63,7 +45,7 @@ app.post('/', (req,res)=>{
             //Quiero redirigir al front luego de crear registro
 
             //me redirije a puerto 3000 en vez de puerto mio
-            res.redirect("/localhost/GreenSense/html");
+            res.redirect("http://localhost/GreenSense/html");
             //conexion.end();
         });
         

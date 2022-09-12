@@ -14,12 +14,12 @@ let aire = "";
 
 const mqtt = require('mqtt');
 
-//conexion con broker adagruit
+//conexion con broker adafruit (key va cambiando)
 const client = mqtt.connect('mqtt://io.adafruit.com', {
-    //username: 'Soficasares', 
-    //password: 'aio_ioNI38D91lv85Lt9AndCVzopMVXI'
-    username: 'SantiR', 
-    password: 'aio_ZpyH50VL7wfGVyeXAyUHgIXHxct1'
+    username: 'Soficasares', 
+    password: 'aio_MrNz95gaeOlLSkBTwzS3xyQrgBII'
+    //username: 'SantiR', 
+    //password: 'aio_ZpyH50VL7wfGVyeXAyUHgIXHxct1'
 }); 
 
 
@@ -37,8 +37,6 @@ const conexion  = mysql.createConnection({
 });
 */
 
-console.log("prueba desde mqtt");
-
 //conectar a DB (ya ser conecta antes, este codigo no funciona)
 /*
 conexion.connect(function(error){
@@ -54,11 +52,11 @@ conexion.connect(function(error){
 */
 
 //Funcion conexion y suscripcion a broker
-function EventoConectar(){
+client.on('connect', function(){
 
     console.log("conectado a adafruit");
 
-    client.subscribe('G_air', function (err) {
+    client.subscribe('G_Air', function (err) {
 
         if (!err){
             console.log ("Suscrito a topico/s, escuchando...");
@@ -67,10 +65,10 @@ function EventoConectar(){
             console.log ("error de suscripcion");
         }
     });
-};
+});
 
 //Accion luego de recibir mensaje
-function EventoMensaje(topic, message){
+client.on('message', function(topic, message){
 
     console.log(topic + " - " + message.toString())
 
@@ -123,8 +121,6 @@ function EventoMensaje(topic, message){
 
     //conexion.end();
     //client.end()
-}
+});
 
-client.on('connect', EventoConectar);
-client.on('message', EventoMensaje);
 

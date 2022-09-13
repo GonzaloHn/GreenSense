@@ -4,14 +4,14 @@
 #include <Adafruit_MQTT_Client.h>
 #include <Adafruit_MQTT_FONA.h>
 
-#define WLAN_SSID       "Santis"
-#define WLAN_PASS       "ppwz1677"
+#define WLAN_SSID       "Proyecto"
+#define WLAN_PASS       "latienedario"
 
 
 #define AIO_SERVER      "io.adafruit.com"
 #define AIO_SERVERPORT  1883                   // use 8883 for SSL
 #define AIO_USERNAME    "SantiR"
-#define AIO_KEY         "aio_ZpyH50VL7wfGVyeXAyUHgIXHxct1"
+#define AIO_KEY         "aio_cNJo25v8tvR68bcT9yXuCuHPuNog"
 
 WiFiClient client;
 Adafruit_MQTT_Client mqtt(&client, AIO_SERVER, AIO_SERVERPORT, AIO_USERNAME, AIO_USERNAME, AIO_KEY);

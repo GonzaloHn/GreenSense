@@ -1,7 +1,7 @@
 //poner nombre de topicos como: GreenSense/Topico, asi no se repite con topicos de otras personas 
 //en ese caso para suscribirte a todos nuestros topicos puedo poner: GreenSense/# 
 
-/*
+
 let date = new Date();
 let time = new Date();
 
@@ -10,22 +10,22 @@ let hora = "";
 let basura = "";
 let energia = "";
 let aire = "";
-*/
+
 
 const mqtt = require('mqtt');
 
 //conexion con broker adafruit (key va cambiando)
 const client = mqtt.connect('mqtt://io.adafruit.com', {
-    username: 'Soficasares', 
-    password: 'aio_MrNz95gaeOlLSkBTwzS3xyQrgBII'
-    //username: 'SantiR', 
-    //password: 'aio_ZpyH50VL7wfGVyeXAyUHgIXHxct1'
+    //username: 'Soficasares', 
+    //password: 'aio_MrNz95gaeOlLSkBTwzS3xyQrgBII'
+    username: 'SantiR', 
+    password: 'aio_ZpyH50VL7wfGVyeXAyUHgIXHxct1'
 }); 
 
 
-//const mysql = require ('mysql');
+const mysql = require ('mysql');
 
-/*
+
 //conexion DB
 const conexion  = mysql.createConnection({
             
@@ -35,7 +35,7 @@ const conexion  = mysql.createConnection({
     password: 'rootroot'
 
 });
-*/
+
 
 //conectar a DB (ya ser conecta antes, este codigo no funciona)
 /*
@@ -72,7 +72,7 @@ client.on('message', function(topic, message){
 
     console.log(topic + " - " + message.toString())
 
-    /*
+    
     //registro basura
     if (topic == "GreenSense/basura"){
         //guardar valores (para posteriormente subirlo al grafico)
@@ -117,7 +117,7 @@ client.on('message', function(topic, message){
             console.log("registro de energia insertado");  
         });   
      }
-     */
+     
 
     //conexion.end();
     //client.end()

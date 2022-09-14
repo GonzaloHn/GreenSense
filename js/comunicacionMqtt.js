@@ -1,7 +1,12 @@
 //poner nombre de topicos como: GreenSense/Topico, asi no se repite con topicos de otras personas 
 //en ese caso para suscribirte a todos nuestros topicos puedo poner: GreenSense/# 
 
-/*
+
+const mqtt = require('mqtt');
+const mysql = require ('mysql');
+const io = require('socket.io')(3000);
+
+
 let date = new Date();
 let time = new Date();
 
@@ -10,9 +15,8 @@ let hora = "";
 let basura = "";
 let energia = "";
 let aire = "";
-*/
 
-const mqtt = require('mqtt');
+
 
 //conexion con broker adafruit (key va cambiando)
 const client = mqtt.connect('mqtt://io.adafruit.com', {
@@ -23,9 +27,6 @@ const client = mqtt.connect('mqtt://io.adafruit.com', {
 }); 
 
 
-//const mysql = require ('mysql');
-
-/*
 //conexion DB
 const conexion  = mysql.createConnection({
             
@@ -35,7 +36,7 @@ const conexion  = mysql.createConnection({
     password: 'rootroot'
 
 });
-*/
+
 
 //conectar a DB (ya ser conecta antes, este codigo no funciona)
 /*
@@ -72,13 +73,19 @@ client.on('message', function(topic, message){
 
     console.log(topic + " - " + message.toString())
 
-    /*    
+      
     //registro basura
     if (topic == "GreenSense/basura"){
-        //guardar valores (para posteriormente subirlo al grafico)
+        //guardar valores 
         fecha = date.toLocaleDateString();
         hora = time.toLocaleTimeString();
         basura = message.toString();
+
+        //pasar valores a front
+        io.on('connection', socket => {
+            console.log ('dato de basura enviado');
+            socket.emit('basura', basura);
+        });
 
         //Insertar valores a DB
         conexion.query(`INSERT INTO basura (fecha, hora, valor) VALUES (${fecha} ,${hora} ,${basura} )`, function (error,results,fields){
@@ -95,6 +102,12 @@ client.on('message', function(topic, message){
         hora = time.toLocaleTimeString();
         aire = message.toString();
 
+        //pasar valores a front
+        io.on('connection', socket => {
+            console.log ('dato de basura enviado');
+            socket.emit('aire', aire);
+        });
+
         //Insertar valores a DB
         conexion.query(`INSERT INTO aire (fecha, hora, valor) VALUES (${fecha} ,${hora} ,${aire} )`, function (error,results,fields){
             if (error)
@@ -110,6 +123,12 @@ client.on('message', function(topic, message){
         hora = time.toLocaleTimeString();
         energia = message.toString();
 
+        //pasar valores a front
+        io.on('connection', socket => {
+            console.log ('dato de basura enviado');
+            socket.emit('energia', energia);
+        });
+
         //Insertar valores a DB
         conexion.query(`INSERT INTO energia (fecha, hora, valor) VALUES (${fecha} ,${hora} ,${energia} )`, function (error,results,fields){
             if (error)
@@ -117,7 +136,7 @@ client.on('message', function(topic, message){
             console.log("registro de energia insertado");  
         });   
      }
-     */
+     
 
     //conexion.end();
     //client.end()

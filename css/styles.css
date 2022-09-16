@@ -144,7 +144,7 @@ iframe{
     padding-left: 10px;
     padding-top: 10px;
 }
-.Situation-Now-Title::after{
+.Situation-Now-Line{
     content: '';
     display: block;
     width: 20rem;

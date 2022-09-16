@@ -21,6 +21,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js" integrity="sha512-ElRFoEQdI5Ht6kZvyzXhYG9NqjtkmlkfYk0wr6wHxU9JEHakS7UJZNeml5ALk+8IKlU6jDgMabC3vkumRokgJA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="../js/home-graphics.js" type="text/javascript"></script>  
 
+    <script src="//cdnjs.cloudflare.com/ajax/libs/dygraph/2.1.0/dygraph.min.js"></script>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/dygraph/2.1.0/dygraph.min.css">
+
 </head>
 <body>
     
@@ -29,17 +32,20 @@
     <div class="row center-items">
 
     <!--Parte del gráfico-->
-    <div class="gráficos col s12 l4 offset-l3">
-        <div id="hide-e-g"><canvas id="line-chart-energy" width="400" height="400"></canvas></div>
+    <div class="gráficos col m7 offset-m2 s12 l4 offset-l2">
+        <div id="hide-e-g"><div id="graph"></div><canvas id="line-chart-energy" width="400" height="400"></canvas></div>
         <div id="hide-a-g"><canvas id="line-chart-air" width="400" height="400"></canvas></div>
         <div id="hide-t-g"><canvas id="line-chart-weight" width="400" height="400"></canvas></div>
+        <script src="../js/prueba.js" type="text/javascript"></script>  
 
-        <!-- <div style="background-color: greenyellow; width: fit-content;">
+        <!-- <div style="background-color: greenyellow; width: fit-content;">   <canvas id="line-chart-energy" width="400" height="400"></canvas>
             <i class="small material-icons">chevron_left</i>
             <i class="small material-icons">chevron_right</i>
-        </div> -->
+        </div> --> 
+
     </div>
 
+    <div class="col l1">--</div>
     <!--Parte de los containers con los valores párticulares de cada cosa-->
    <div class="ValContainers col s12 l4">
 
@@ -75,7 +81,7 @@
     <div class="ValContainer">
         <div class="ValContainerIcon"><img class="ValContainerIcon" src="../images/icon trash black.png"></div>
 
-        <div class="ValTitle"> Peso????</div>
+        <div class="ValTitle"> Peso de la basura</div>
 
         <div class="ValNow">Valor actual: β</div>
 
@@ -85,11 +91,15 @@
     </div>
     </div>
 
-    <i class="fa-solid fa-arrow-right"></i>
+    <div class="">
+    <i class="fa-sharp fa-solid fa-repeat"></i>
+    <i class="fa-solid fa-arrow-left"></i>
     <i class="fa-solid fa-pause"></i>
     <i class="fa-solid fa-play"></i>
-    <i class="fa-solid fa-arrow-left"></i>
-    <i class="fa-sharp fa-solid fa-repeat"></i>
+    <i id="change-g" class="fa-solid fa-arrow-right"></i>
+    </div>
+
     <br><br><button type="button" id="change-g" >Cambiar gráfico</button><br>
+    
 </body>
 </html>

@@ -57,6 +57,8 @@ app.post('/', (req,res)=>{
         }
     });
     
+
+   //ESTE CODIGO INSERTA, NO LE IMPORTA LA UNIQUE ID 
    /*
     conexion.query('INSERT INTO usuarios (usuario, contrasenia, gmail) VALUES ("'+user+'" ,"'+pass+'" ,"'+email+'" )', function (error,results,fields){
         

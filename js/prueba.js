@@ -36,3 +36,13 @@ window.setInterval(function() {
         data.push([x, y]); //añade un nuevo elemtno al final de un array
         g.updateOptions( { 'file': data } ); //actualiza el grafico con nuevos valores, los de data
       }, 1000);
+
+$(document).ready(function(){
+
+  $("#test").click(function(){
+    $("body").css("background-color","#008000");
+    g.updateOptions({
+      color: "red"
+    });
+  });      
+});

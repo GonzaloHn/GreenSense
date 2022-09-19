@@ -16,6 +16,27 @@ let basura = "";
 let energia = "";
 let aire = "";
 
+//timer
+function sleep(ms) {
+    return new Promise((resolve) => {
+      setTimeout(resolve, ms);
+    });
+}
+
+//prueba timer (no va a andar)
+async function basuraDB() {
+    //esperar 15 mins
+    await sleep(900000);
+    //Insertar valores a DB
+    conexion.query(`INSERT INTO basura (fecha, hora, valor) VALUES (${fecha} ,${hora} ,${basura} )`, function (error,results,fields){
+        if (error)
+        throw error;
+        console.log("registro de basura insertado");  
+    });   
+  }
+
+
+
 
 
 //conexion con broker adafruit (key va cambiando)
@@ -87,12 +108,8 @@ client.on('message', function(topic, message){
             socket.emit('basura', basura);
         });
 
-        //Insertar valores a DB
-        conexion.query(`INSERT INTO basura (fecha, hora, valor) VALUES (${fecha} ,${hora} ,${basura} )`, function (error,results,fields){
-            if (error)
-            throw error;
-            console.log("registro de basura insertado");  
-        });   
+        //cada vez que llegue valor se va a reiniciar timer (no va a funcionar)
+        basuraDB();
     }
 
      //registro aire

@@ -1,3 +1,6 @@
+
+var graphNum = 1;
+
 $(document).ready(function(){
 const line_energy = $('#line-chart-energy');
 const line_chart_energy = new Chart(line_energy, {
@@ -83,17 +86,24 @@ $("#hide-a-g").hide();
 $("#hide-t-g").hide();
 
 $("#change-g").click(function(){
-    if ($("#hide-e-g").is(":visible")){
+    if (graphNum == 1){
         $("#hide-e-g").hide();
         $("#hide-a-g").show();
+        graphNum++;
     }
-    else if ($("#hide-a-g").is(":visible")){
+    else if (graphNum == 2){
         $("#hide-a-g").hide();
         $("#hide-t-g").show();
+        graphNum++;
     }
-    else if ($("#hide-t-g").is(":visible")){
+    else if (graphNum == 3){
         $("#hide-t-g").hide();
         $("#hide-e-g").show();
+        graphNum = 1;
     }
 });
 });
+
+// window.setInterval(function() {
+//     graphNum++;
+// }, 10000);

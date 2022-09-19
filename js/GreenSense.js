@@ -23,3 +23,15 @@ $(document).ready(function(){
         }
     });
 });
+
+var num = 1;
+
+const io = require('socket.io')(3000)
+
+io.on('connection'), socket => {
+    console.log('User')
+    socket.emit('message', "Hello")
+    socket.on('send-chat-message', message => {
+      console.log(message)
+    })
+}

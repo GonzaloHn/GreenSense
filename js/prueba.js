@@ -40,9 +40,29 @@ window.setInterval(function() {
 $(document).ready(function(){
 
   $("#test").click(function(){
-    $("body").css("background-color","#008000");
     g.updateOptions({
-      color: "red"
+      color: "peru",
+      fillGraph: true, 
+      zoomCallback: function() {
+        this.resetZoom();
+      }
     });
   });      
 });
+
+//Probando Socket.io
+
+const socket = io('http://localhost:3000')
+// const form = document.getElementById('sock')
+const input = document.getElementById('sock')
+
+socket.on('message', data => {
+  console.log(data)
+})
+
+info.addEventListener('submit', e => {
+  e.preventDefault()
+  const message = input.value
+  socket.emit('send-chat-message', message)
+  input.value = ''
+})

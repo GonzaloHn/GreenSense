@@ -22,6 +22,39 @@ $(document).ready(function(){
             $("#show-g").show();
         }
     });
+
+    //Funciones de Home
+
+    var graphNum = 1;
+
+    $("#hide-a-g").hide();
+    $("#hide-w-g").hide();
+
+    $("#change-g").click(function(){
+        if (graphNum == 1){
+            $("#hide-e-g").hide();
+            $("#hide-a-g").show();
+            graphNum++;
+        }
+        else if (graphNum == 2){
+            $("#hide-a-g").hide();
+            $("#hide-w-g").show();
+            graphNum++;
+        }
+        else if (graphNum == 3){
+            $("#hide-w-g").hide();
+            $("#hide-e-g").show();
+            graphNum = 1;
+        }
+    });
+
+    // var dynamicUpdate = 1;
+
+    // $("#pause-g").click(function(){
+    //     dynamicUpdate = 0;
+    //     $("body").css("background-color","#008000");
+    // });
+
 });
 
 var num = 1;

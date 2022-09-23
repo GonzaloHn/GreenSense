@@ -25,28 +25,28 @@ $(document).ready(function(){
 
     //Funciones de Home
 
-    var graphNum = 1;
+    // var graphNum = 1;
 
-    $("#hide-a-g").hide();
-    $("#hide-w-g").hide();
+    // $("#hide-a-g").hide();
+    // $("#hide-w-g").hide();
 
-    $("#change-g").click(function(){
-        if (graphNum == 1){
-            $("#hide-e-g").hide();
-            $("#hide-a-g").show();
-            graphNum++;
-        }
-        else if (graphNum == 2){
-            $("#hide-a-g").hide();
-            $("#hide-w-g").show();
-            graphNum++;
-        }
-        else if (graphNum == 3){
-            $("#hide-w-g").hide();
-            $("#hide-e-g").show();
-            graphNum = 1;
-        }
-    });
+    // $("#change-g").click(function(){
+    //     if (graphNum == 1){
+    //         $("#hide-e-g").hide();
+    //         $("#hide-a-g").show();
+    //         graphNum++;
+    //     }
+    //     else if (graphNum == 2){
+    //         $("#hide-a-g").hide();
+    //         $("#hide-w-g").show();
+    //         graphNum++;
+    //     }
+    //     else if (graphNum == 3){
+    //         $("#hide-w-g").hide();
+    //         $("#hide-e-g").show();
+    //         graphNum = 1;
+    //     }
+    // });
 
     // var dynamicUpdate = 1;
 
@@ -57,14 +57,14 @@ $(document).ready(function(){
 
 });
 
-var num = 1;
+// var num = 1;
 
-const io = require('socket.io')(3000)
+// const io = require('socket.io')(3000)
 
-io.on('connection'), socket => {
-    console.log('User')
-    socket.emit('message', "Hello")
-    socket.on('send-chat-message', message => {
-      console.log(message)
-    })
-}
+// io.on('connection'), socket => {
+//     console.log('User')
+//     socket.emit('message', "Hello")
+//     socket.on('send-chat-message', message => {
+//       console.log(message)
+//     })
+// }

@@ -52,17 +52,17 @@ $(document).ready(function(){
 
 //Probando Socket.io
 
-const socket = io('http://localhost:3000')
+const socket = io('http://localhost:9000')
 // const form = document.getElementById('sock')
-const input = document.getElementById('sock')
+// const input = document.getElementById('sock')
 
-socket.on('message', data => {
+socket.on('basura', data => {
   console.log(data)
 })
 
-info.addEventListener('submit', e => {
-  e.preventDefault()
-  const message = input.value
-  socket.emit('send-chat-message', message)
-  input.value = ''
-})
+// info.addEventListener('submit', e => {
+//   e.preventDefault()
+//   const message = input.value
+//   socket.emit('send-chat-message', message)
+//   input.value = ''
+// })

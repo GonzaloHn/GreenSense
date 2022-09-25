@@ -2,7 +2,7 @@
 #include <ESP8266WiFi.h>
 
 void setup() {
-Serial.begin(9600); //Init serial port
+Serial.begin(115200); //Init serial port
   delay(200);
 
 }

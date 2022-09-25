@@ -1,17 +1,16 @@
 #include <MQ135.h>
 #include <ESP8266WiFi.h>
 #include <Adafruit_MQTT.h>
-#include <Adafruit_MQTT_Client.h>
-#include <Adafruit_MQTT_FONA.h>
 
-#define WLAN_SSID       "Proyecto"
-#define WLAN_PASS       "latienedario"
+
+#define WLAN_SSID       "Familia Resnik"
+#define WLAN_PASS       "sanlorenzo"
 
 
 #define AIO_SERVER      "io.adafruit.com"
 #define AIO_SERVERPORT  1883                   // use 8883 for SSL
-#define AIO_USERNAME    "SantiR"
-#define AIO_KEY         "aio_NDug04yb9PQpvqkV81gFzyWRhMPv"
+#define AIO_USERNAME  "SantiR"
+#define AIO_KEY       "aio_saUJ08yh3rrwLSnwPTLLiyGmrCt9"
 
 WiFiClient client;
 Adafruit_MQTT_Client mqtt(&client, AIO_SERVER, AIO_SERVERPORT, AIO_USERNAME, AIO_USERNAME, AIO_KEY);
@@ -45,9 +44,9 @@ Serial.print(air_quality);
   if (! G_Air.publish(air_quality)) {
     Serial.println(F("Failed"));
   } else {
-    Serial.println(F("OK!"));
+    Serial.println(F(" OK!"));
   }
-
+ delay(5000);
 }
 void MQTT_connect() {
   int8_t ret;
@@ -59,7 +58,7 @@ void MQTT_connect() {
 
   Serial.print("Connecting to MQTT... ");
 
-  uint8_t retries = 3;
+  uint8_t retries = 2;
   while ((ret = mqtt.connect()) != 0) { // connect will return 0 for connected
        Serial.println(mqtt.connectErrorString(ret));
        Serial.println("Retrying MQTT connection in 5 seconds...");

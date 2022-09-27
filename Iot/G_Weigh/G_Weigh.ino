@@ -32,15 +32,15 @@ unsigned long t = 0;
 
 /************************* WiFi Access Point *********************************/
 
-#define WLAN_SSID       "Proyecto"
-#define WLAN_PASS       "darionoesta"
+#define WLAN_SSID       ""
+#define WLAN_PASS       ""
 
 /************************* Adafruit.io Setup *********************************/
 
 #define AIO_SERVER      "io.adafruit.com"
 #define AIO_SERVERPORT  1883                   // use 8883 for SSL
 #define AIO_USERNAME    "SantiR"
-#define AIO_KEY         "aio_kANB12Hk0HxiXN9xgRUBT4hc6nAg"
+#define AIO_KEY         aio + "_kjzc57TJ1i4J8yxYbePL41urGYZn"
 
 /************ Global State (you don't need to change this!) ******************/
 
@@ -128,7 +128,7 @@ static boolean newDataReady = 0;
   } else {
     Serial.println(F("OK!"));
   }
-
+delay(3000);
 
 }
 

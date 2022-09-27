@@ -21,8 +21,8 @@
 #include <Adafruit_MQTT_Client.h>
 #include <Adafruit_MQTT_FONA.h>
 
-const int HX711_dout = 4; //mcu > HX711 dout pin
-const int HX711_sck = 5; //mcu > HX711 sck pin
+const int HX711_dout = 2; //mcu > HX711 dout pin
+const int HX711_sck = 14; //mcu > HX711 sck pin
 
 HX711_ADC LoadCell(HX711_dout, HX711_sck); //Constructor
 

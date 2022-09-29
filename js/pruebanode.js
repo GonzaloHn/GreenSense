@@ -13,13 +13,23 @@ async function init() {
 
  init();
  */
-
+ 
 let basura = 10;
 
  const io = require('socket.io')(9000);
-
+  
  io.on('connection', socket => {
-    console.log ('dato de basura enviado');
-    socket.emit('basura', basura);
+  console.log ('dato de basura enviado');
+  socket.emit('basura', basura);
 });
 
+ /*
+   io.on('basura', basura);
+  console.log ('dato de basura enviado');
+*/
+
+ 
+
+
+
+ 

@@ -3,8 +3,15 @@
 
 
 const mqtt = require('mqtt');
+
 const mysql = require ('mysql');
-const io = require('socket.io')(9000);
+
+const express = require('express');
+const app = express();
+const port = 9000;
+
+const io = require('socket.io');
+
 
 
 let date = new Date();
@@ -159,4 +166,8 @@ client.on('message', function(topic, message){
     //client.end()
 });
 
+//escucha a puerto 9000
+app.listen (port, () => {
+    console.log (`Servidor en puerto ${port}, escuchando registro...`);
+});
 

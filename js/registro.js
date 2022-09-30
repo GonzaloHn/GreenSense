@@ -1,4 +1,7 @@
 const express = require('express');
+const app = express();
+const port = 3000;
+
 const mysql = require ('mysql');
 
 let user = "";
@@ -16,7 +19,6 @@ const conexion  = mysql.createConnection({
 });
 
 
-const app = express();
 
 app.use (express.urlencoded({extended: true})); //decodificar data que pasa html
 
@@ -93,5 +95,6 @@ app.get ('/styles.css', (req, res) => {
 */
 
 //escucha a puerto 3000
-app.listen (3000);
-console.log ('Servidor en puerto 3000, escuchando registro...');
+app.listen (port, () => {
+    console.log (`Servidor en puerto ${port}, escuchando registro...`);
+});

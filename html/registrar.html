@@ -2,29 +2,61 @@
 <html lang="en">
 <head>
 
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Green Sense</title>
+
+    <!--Archivos CSS (styles.css // materialize.css)-->
+    <link rel="stylesheet" href="../css/materialize.css">
+    <link rel="stylesheet" href="../css/styles.css">
+
+    <!--Archivos JS (materialize.js // Jquery.js)-->
+    <script src="../js/materialize.js" type="text/javascript"></script>  
+    <script src="../js/jquery-3.6.0.min.js" type="text/javascript"></script> 
+
+    <!-- Icons -->
+    <script src="https://kit.fontawesome.com/83ab69d178.js" crossorigin="anonymous"></script>
 
     <title>Registrarse</title>
 
-<!-- <script src="../js/jquery-3.6.0.min.js" type="text/javascript"></script> -->   
-<!-- <script src="../js/GreenSense.js" type="text/javascript"></script> -->
-<!-- <script src="../js/app.js" type="text/javascript"></script> -->
+    <!-- <script src="../js/GreenSense.js" type="text/javascript"></script> -->
 
 </head>
 <body>
-    <form action="http://localhost:3000" method="POST">
-        <label>Usuario</label>
-        <input id="u" name="usuario" type="text" placeholder="Nombre de usuario"><br><br>
+    <div class="form-wrap">
+    
+    <section class="form-info">
 
-        <label>Contraseña</label>
-        <input id="c" name="contra" type="password" placeholder="Contraseña"><br><br>
+        <i style="z-index: 2;" class="fa-solid fa-user"></i>
 
-        <label>Mail</label>
-        <input id="m" name="mail" type="email"  placeholder="Nombre"><br><br>
+        <div class="form-title">GreenSense</div>
+
+        <div class="form-text">Registrate para recibir mails</div>
+
+    </section>
+    
+    <form class="form" action="http://localhost:3000" method="POST">
+
+        <div class="form-input">
+
+        <div>
+            <div>usuario</div>
+            <input id="u" name="usuario" type="text" placeholder="Nombre de usuario">
+        </div>
+
+        <div>
+            <input id="c" name="contra" type="password" placeholder="Contraseña">
+        </div>
+
+        <div>
+            <input id="m" name="mail" type="email"  placeholder="mail">
+        </div>
+
+        </div>
 
         <input id="S" type="submit" value="Subir"><!--&nbsp;-->
     </form> 
+
+</div>
 </body>
 </html>

@@ -59,8 +59,11 @@ $(document).ready(function(){
 
 // var num = 1;
 
-// const io = require('socket.io')(3000)
+const socket = io('http://localhost:3000');
 
+socket.on('connection', (data) =>{
+    alert(data)
+})
 // io.on('connection'), socket => {
 //     console.log('User')
 //     socket.emit('message', "Hello")

@@ -37,24 +37,27 @@
     
     <form class="form" action="http://localhost:3000" method="POST">
 
+        <div class="form-input-title">Sign up</div>
         <div class="form-input">
 
         <div>
-            <div>usuario</div>
-            <input id="u" name="usuario" type="text" placeholder="Nombre de usuario">
+            <div class="form-input-definition">Usuario</div>
+            <input class="form-input-text" id="u" name="usuario" type="text">
         </div>
 
         <div>
-            <input id="c" name="contra" type="password" placeholder="Contraseña">
+            <div class="form-input-definition">Contraseña</div>
+            <input id="c" name="contra" type="password">
         </div>
 
         <div>
-            <input id="m" name="mail" type="email"  placeholder="mail">
+            <div class="form-input-definition">Mail</div>
+            <input id="m" name="mail" type="email">
         </div>
 
         </div>
 
-        <input id="S" type="submit" value="Subir"><!--&nbsp;-->
+        <input class="upload-button" id="S" type="submit" value="Subir"><!--&nbsp;-->
     </form> 
 
 </div>

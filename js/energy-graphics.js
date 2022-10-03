@@ -30,7 +30,7 @@ $(document).ready(function(){
               ],
               datasets: [{
                 label: 'My First Dataset',
-                data: [200, 150],
+                data: [60, 40],
                 borderColor: [
                     'rgb(241, 198, 7)',
                     'rgb(0, 0, 0, 0)',

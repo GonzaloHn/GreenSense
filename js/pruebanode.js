@@ -14,13 +14,22 @@ async function init() {
  init();
  */
  
-let basura = 10;
+ const io = require('socket.io')
+ const express = require('express');
+ const app = express();
+ const port = 9000;
+ 
 
- const io = require('socket.io')(9000);
+ let basura = 10;
   
  io.on('connection', socket => {
   console.log ('dato de basura enviado');
   socket.emit('basura', basura);
+});
+
+//escucha a puerto 9000
+app.listen (port, () => {
+  console.log (`Servidor en puerto ${port}, escuchando registro...`);
 });
 
  /*

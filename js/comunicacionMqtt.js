@@ -9,9 +9,9 @@ const mysql = require ('mysql');
 const express = require('express');
 const app = express();
 const port = 9000;
+const server = app.listen(port);
 
-const io = require('socket.io');
-
+const io = require('socket.io')(server);
 
 
 let date = new Date();
@@ -127,7 +127,7 @@ client.on('message', function(topic, message){
         aire = message.toString();
 
         //pasar valores a front
-        io.on('connection', socket => {
+        io.on('connection', (socket) => {
             console.log ('dato de basura enviado');
             socket.emit('aire', aire);
         });
@@ -148,7 +148,7 @@ client.on('message', function(topic, message){
         energia = message.toString();
 
         //pasar valores a front
-        io.on('connection', socket => {
+        io.on('connection', (socket) => {
             console.log ('dato de basura enviado');
             socket.emit('energia', energia);
         });
@@ -167,7 +167,8 @@ client.on('message', function(topic, message){
 });
 
 //escucha a puerto 9000
+/*
 app.listen (port, () => {
     console.log (`Servidor en puerto ${port}, escuchando registro...`);
 });
-
+*/

@@ -109,14 +109,21 @@ client.on('message', function(topic, message){
         hora = time.toLocaleTimeString();
         basura = message.toString();
 
-        //pasar valores a front
+        //pasar valores a front si recibe conexion
+        /*
         io.on('connection', socket => {
             console.log ('dato de basura enviado');
             socket.emit('basura', basura);
         });
+        */
+
+        //Mandar valores a front
+        console.log ('dato de basura enviado');
+        io.emit('basura', basura);
+
 
         //cada vez que llegue valor se va a reiniciar timer (no va a funcionar)
-        basuraDB();
+        //basuraDB();
     }
 
      //registro aire
@@ -126,11 +133,9 @@ client.on('message', function(topic, message){
         hora = time.toLocaleTimeString();
         aire = message.toString();
 
-        //pasar valores a front
-        io.on('connection', (socket) => {
-            console.log ('dato de basura enviado');
-            socket.emit('aire', aire);
-        });
+        //Mandar valores a front
+        console.log ('dato de basura enviado');
+        io.emit('basura', basura);
 
         //Insertar valores a DB
         conexion.query(`INSERT INTO aire (fecha, hora, valor) VALUES (${fecha} ,${hora} ,${aire} )`, function (error,results,fields){
@@ -147,11 +152,9 @@ client.on('message', function(topic, message){
         hora = time.toLocaleTimeString();
         energia = message.toString();
 
-        //pasar valores a front
-        io.on('connection', (socket) => {
-            console.log ('dato de basura enviado');
-            socket.emit('energia', energia);
-        });
+        //Mandar valores a front
+        console.log ('dato de basura enviado');
+        io.emit('basura', basura);
 
         //Insertar valores a DB
         conexion.query(`INSERT INTO energia (fecha, hora, valor) VALUES (${fecha} ,${hora} ,${energia} )`, function (error,results,fields){

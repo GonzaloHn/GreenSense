@@ -21,13 +21,19 @@ async function init() {
  const io = require('socket.io')(server);
 
  let basura = 10;
-  
- io.on('connection', (socket) => {
+  /*
+  io.on('connection', (socket) => {
   console.log ('dato de basura enviado');
   socket.emit('basura', basura);
-});
+  });
+  */
 
-//escucha a puerto 9000
+  //Mandar valores a front (a todos los clientes)
+  console.log ('dato de basura enviado');
+  io.emit('basura', basura);
+
+
+  //escucha a puerto 9000
 /*
 app.listen (port, () => {
   console.log (`Servidor en puerto ${port}, escuchando registro...`);

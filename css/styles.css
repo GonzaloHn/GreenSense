@@ -29,59 +29,109 @@ iframe{
 } */
 
 /*Navbar*/
-/*
+
 .navbar{
     display: flex;
     justify-content: space-between;
     align-items: center;
     background-color: greenyellow;
-    height: 60px;
+    height: 75px;
     margin-bottom: 30px;
 }
-.logo-navbar{
+
+.navbar-logo{
     font-size: 1.5rem;
     margin: .5rem;
 }
-.links-navbar ul{
-    margin: 0;
-    padding: 0;
-    display: flex;
-}
-.links-navbar li{
+
+.navbar-items{
+    display:flex;
     list-style: none;
-}
-.links-navbar li a{
-    text-decoration: none;
-    padding:1rem;
-    display:block;
-}
-.links-navbar li:hover{
-    background-color: white;
+    margin-right: 30px;
 }
 
- @media only screen and (max-width: 400px){
-    .links-navbar{
-        display:none;
-        width: 100%;
+.navbar-items li{
+    border-radius: 3px;
+    margin: 0 5px;
+}
+.navbar-items li a{
+    padding: 7px 13px;
+    text-decoration: none;
+    font-size: 18px;
+    display: block;
+}
+
+.navbar-items li:hover{
+    background-color: white;
+    transition: .4s;
+}
+
+.navbar-icon{
+    margin-right: 30px;
+    font-size: 25px;
+    cursor: pointer;
+    display: none;
+}
+
+ul.show{
+    top: 65px
+}
+
+@media only screen and (max-width: 952px){
+    .navbar-items li a{
+        font-size: 16px;
     }
+}
+@media only screen and (max-width: 858px){
     .navbar{
-        flex-direction: column;
-        align-items: flex-start;
+        height: 65px;
     }
-    .links-navbar ul{
-        width: 100%;
-        flex-direction: column;
+    .navbar-icon{
+        display: inline-flex;
     }
-    .links-navbar li{
+
+    .navbar-items{
+        position: fixed;
+        width: 100vw;
+        height: calc(100% - 65px);
+        background-color: grey;
+        top: -100vh;
         text-align: center;
+        transition: all .4s;
+        flex-direction: column;
+        overflow: hidden;
     }
-    .links-navbar li a{
-        padding: .5rem 1rem;
+    .navbar-items li{
+        margin: 30px 0 0 0;
+        line-height: 30px;
     }
-    .links-navbar:active{
-        display:flex;
+    .navbar-items li:hover{
+        background: none;
     }
-} */
+
+    .navbar-items li a{
+        font-size: 20px;
+        color: white;
+    }
+    .navbar-items li a:hover{
+        color:greenyellow;
+    }
+
+    .navbar-logo{
+        font-size: 25px;
+        padding-left: 35px;
+    }
+}
+
+@media only screen and (max-width: 858px) and (orientation:landscape){
+    .navbar-items li{
+        margin: 5px 0 0 0;
+    }
+    .navbar-items{
+        overflow: scroll;
+        height: calc(100% - 65px);
+    }
+}
 
 /*Registrar*/
 .form-wrap{
@@ -158,6 +208,119 @@ iframe{
     margin-top:10px;
 }
 .form-input div input{
+    margin-bottom: 30px!important;
+}
+
+:focus{
+    outline: none;
+}
+
+.upload-button{
+    width:180px;
+    background: blue;
+    padding: 10px;
+    border:none;
+    border-radius: 25px;
+
+    align-self: flex-end;
+
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color:white;
+    font-family: 16px;
+    font-weight: 600;
+    cursor: pointer;
+}
+.upload-button:hover{
+    background: #3371B6;
+}
+
+/*Iniciar Sesión*/
+.login-wrap{
+    width: 440px;
+    height: 530px;
+    margin: 50px auto;
+    display:flex;
+    flex-direction: column;
+
+    background-color: rgb(149, 201, 97);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0px, 0px, 20px rgb(0, 0, 0, 0.2);
+}
+
+.login-info::before{
+    content: '';
+    width:100%;
+    height: 100%;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    background-color: #4091ec;
+    opacity: 0.9;
+
+}
+.login-info{
+    height:30%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    background-image: url(../images/eolic.jpg);
+    background-size: cover;
+    background-position: center center;
+}
+
+.login-title{
+    position: relative;
+    z-index: 2;
+    color: white;
+
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+    font-size: 50px;
+    display: block;
+    text-align: center;
+}
+.login-text{
+    position: relative;
+    z-index: 2;
+    color: white;
+
+    font-size: 20px;
+    display: flex;
+    text-align: center;
+    margin-bottom: 10px;
+}
+.login-icon{
+    position: relative;
+    z-index: 2;
+    color: white;
+
+    font-size: 20px;
+    display: flex;
+    text-align: center;
+}
+
+.login{
+    height:70%;
+    display: flex;
+    flex-direction: column;
+    padding: 0 40px;
+}
+
+.login-input-title{
+    font-size: 30px;
+
+}
+.login-input-definition{
+    margin-top:10px;
+}
+.login-input div input{
     margin-bottom: 30px!important;
 }
 

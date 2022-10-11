@@ -1,3 +1,7 @@
+function showmenu() {
+    document.getElementById("navbar-items-responsive").classList.toggle("show");
+}
+
 $(document).ready(function(){
 
     //FRONT-END

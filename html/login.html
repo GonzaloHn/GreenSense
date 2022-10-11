@@ -17,22 +17,35 @@
     <!-- Icons -->
     <script src="https://kit.fontawesome.com/83ab69d178.js" crossorigin="anonymous"></script>
 
-    <title>Borrar cuenta</title>
+    <title>Iniciar sesión</title>
 
     <!-- <script src="../js/GreenSense.js" type="text/javascript"></script> -->
 
 </head>
 <body>
+    <div class="login-wrap">
+        
+        <section class="login-info">
     
-    <form action="http://localhost:3000" method="POST">
+            <div class="login-title">GreenSense</div>
+    
+            <div class="login-text">Iniciar sesión</div>
+
+            <div class="login-icon"><i class="fa-solid fa-user"></i></div>
+    
+        </section>
+
+    <form class="login" action="http://localhost:3000" method="POST">
+
+        <div class="login-input">
 
         <div>
-
-        <div>
+            <div class="login-input-definition">Usuario</div>
             <input id="u" name="usuario" type="text" placeholder="Nombre de usuario">
         </div>
 
         <div>
+            <div class="login-input-definition">Contraseña</div>
             <input id="c" name="contra" type="password" placeholder="Contraseña">
         </div>
 
@@ -40,6 +53,6 @@
 
         <input id="S" type="submit" value="Iniciar"><!--&nbsp;-->
     </form> 
-
+    </div>
 </body>
 </html>

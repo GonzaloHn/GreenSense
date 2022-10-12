@@ -14,6 +14,9 @@
 iframe{
     width:100%;
 }
+.grey-background{
+    background-color: grey;
+}
 
 @media only screen and (min-width: 993px){
     nav a.button-collapse {
@@ -140,7 +143,7 @@ ul.show{
     margin: 50px auto;
     display:flex;
 
-    background-color: rgb(149, 201, 97);
+    background-color: rgb(230, 235, 225);
     border-radius: 10px;
     overflow: hidden;
     box-shadow: 0px, 0px, 20px rgb(0, 0, 0, 0.2);
@@ -155,7 +158,7 @@ ul.show{
     top: 0;
     left: 0;
 
-    background-color: #4091ec;
+    background-color: green;
     opacity: 0.9;
 
 }
@@ -217,7 +220,7 @@ ul.show{
 
 .upload-button{
     width:180px;
-    background: blue;
+    background: green;
     padding: 10px;
     border:none;
     border-radius: 25px;
@@ -231,7 +234,7 @@ ul.show{
     cursor: pointer;
 }
 .upload-button:hover{
-    background: #3371B6;
+    background: rgb(50, 160, 50);
 }
 
 /*Iniciar Sesión*/
@@ -242,7 +245,7 @@ ul.show{
     display:flex;
     flex-direction: column;
 
-    background-color: rgb(149, 201, 97);
+    background-color: rgb(230, 235, 225);
     border-radius: 10px;
     overflow: hidden;
     box-shadow: 0px, 0px, 20px rgb(0, 0, 0, 0.2);
@@ -257,7 +260,7 @@ ul.show{
     top: 0;
     left: 0;
 
-    background-color: #4091ec;
+    background-color: green;
     opacity: 0.9;
 
 }
@@ -328,26 +331,19 @@ ul.show{
     outline: none;
 }
 
-.upload-button{
-    width:180px;
-    background: blue;
-    padding: 10px;
-    border:none;
-    border-radius: 25px;
-
-    align-self: flex-end;
-
-    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    color:white;
-    font-family: 16px;
-    font-weight: 600;
-    cursor: pointer;
-}
-.upload-button:hover{
-    background: #3371B6;
-}
 /*Pagina Inicial - Gráficos*/
 .gráficos{
+}
+
+/*Pagina Inicial - Iconos*/
+.control-icons{
+    font-size: 20px;
+    color:green;
+    padding: 30px;
+    width: fit-content;
+
+    background-color:grey;
+    border-color: green;
 }
 
 /*Pagina Inicial - Containers de Valores*/

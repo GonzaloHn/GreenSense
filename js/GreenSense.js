@@ -62,8 +62,7 @@ $(document).ready(function(){
 });
 
 // var num = 1;
-
-const socket = io('http://localhost:3000');
+const socket = io('http://localhost:9000');
 
 socket.on('connection', (data) =>{
     alert(data)

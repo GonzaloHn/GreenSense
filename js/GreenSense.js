@@ -64,8 +64,8 @@ $(document).ready(function(){
 // var num = 1;
 const socket = io('http://localhost:9000');
 
-socket.on('connection', (data) =>{
-    alert(data)
+socket.on('basura', (data) =>{
+    alert(data);
 })
 // io.on('connection'), socket => {
 //     console.log('User')

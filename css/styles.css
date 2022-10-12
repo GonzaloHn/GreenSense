@@ -336,14 +336,22 @@ ul.show{
 }
 
 /*Pagina Inicial - Iconos*/
+.control-icons-wrap{
+    background-color: green;
+    width:fit-content;
+    height: fit-content;
+    padding: 1px;
+}
 .control-icons{
     font-size: 20px;
     color:green;
     padding: 30px;
     width: fit-content;
+    height: fit-content;
 
-    background-color:grey;
-    border-color: green;
+    background-color:white;
+}
+.control-icons i{
 }
 
 /*Pagina Inicial - Containers de Valores*/

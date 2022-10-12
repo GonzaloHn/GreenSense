@@ -35,27 +35,39 @@ app.post('/', (req,res)=>{
     //Instrucciones si el usuario puso todos los datos
     if (user && pass && email) {
 
-        conexion.query('SELECT usuario FROM usuarios WHERE usuario= ?', [user], function (err, results, fields) {
+        conexion.query('SELECT usuario FROM usuarios WHERE usuario = ?', [user], function (err, results, fields) {
             
             //tira error si el usuario ya existe
             if (results.length > 0) {
-                console.log("Error: el usuario ya existe");
-                res.status(400).send("Error: El nombre de usuario ya existe");
+                console.log("Error: el nombre de usuario ya esta en uso");
+                res.status(400).send("Error: El nombre de usuario ya esta en uso");
                 
             }
 
-            //Inserta registro a DB si todos los datos cumplen requerimientos basicos
+            //Si usuario esta bien comprueba gmail
             else {
+                conexion.query('SELECT gmail FROM usuarios WHERE gmail = ?', [email], function (err, results, fields) {
+                    
+                    //Tira error si mail esta en uso
+                    if (results.length > 0) {
+                        console.log("Error: el mail ya esta en uso");
+                        res.status(400).send("Error: El mail ya esta en uso");   
+                    }
+                    
+                    //Sube datos a DB si esta todo bien (FALTA COMPROBAR QUE MAIL ESTE COMPLETO)
+                    else {
+                        conexion.query('INSERT INTO usuarios (usuario, contrasenia, gmail) VALUES ("'+user+'" ,"'+pass+'" ,"'+email+'" )', function (error,results,fields){
+                            if (error) throw error;
+                            console.log ("registro insertado");
+                            res.redirect("http://localhost/GreenSense/html");
+                            //conexion.end();
+                        });     
+                    }
 
-                conexion.query('INSERT INTO usuarios (usuario, contrasenia, gmail) VALUES ("'+user+'" ,"'+pass+'" ,"'+email+'" )', function (error,results,fields){
-                    if (error) throw error;
-                    console.log ("registro insertado");
-                    res.redirect("http://localhost/GreenSense/html");
-                    //conexion.end();
                 });
             }
 
-            //Falta error si mail ya esta en uso o si mail esta mal escrito 
+            //FALTA ERROR SI MAIL ESTA MAL ESCRITO 
 
         });
     }

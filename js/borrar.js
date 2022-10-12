@@ -34,9 +34,10 @@ app.post('/', (req,res)=>{
 
         conexion.query('SELECT usuario FROM usuarios WHERE usuario = ? AND contrasenia = ?', [user, pass], function (err, results, fields) {
             
-            //Usuario se loggea si todos los datos cumplen requerimientos basicos
+            //Se borra usuario si todos los datos cumplen requerimientos basicos
             if (results.length > 0) {
-                console.log("Usuario loggeado");
+                conexion.query('DELETE FROM usuarios WHERE usuario = ? AND contrasenia = ?', [user, pass]);
+                console.log("Usuario borrado");
                 res.redirect("http://localhost/GreenSense/html");
             }
 
@@ -59,5 +60,5 @@ app.post('/', (req,res)=>{
 
 //Escucha a puerto 3000
 app.listen (port, () => {
-    console.log (`Servidor en puerto ${port}, escuchando login...`);
+    console.log (`Servidor en puerto ${port}, escuchando borrar...`);
 });

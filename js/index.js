@@ -1,18 +1,8 @@
 //poner nombre de topicos como: GreenSense/Topico, asi no se repite con topicos de otras personas 
 //en ese caso para suscribirte a todos nuestros topicos puedo poner: GreenSense/# 
 
-
+//Variables mqtt
 const mqtt = require('mqtt');
-
-const mysql = require ('mysql');
-
-const express = require('express');
-const app = express();
-const port = 9000;
-const server = app.listen(port);
-
-const io = require('socket.io')(server);
-
 
 let date = new Date();
 let time = new Date();
@@ -23,7 +13,20 @@ let basura = "";
 let energia = "";
 let aire = "";
 
+//Variables mysql
+const mysql = require ('mysql');
+
+//Variables express
+const express = require('express');
+const app = express();
+const port = 9000;
+const server = app.listen(port);
+
+//Variables socket
+const io = require('socket.io')(server);
+
 //timer
+/*
 function sleep(ms) {
     return new Promise((resolve) => {
       setTimeout(resolve, ms);
@@ -41,9 +44,7 @@ async function basuraDB() {
         console.log("registro de basura insertado");  
     });   
   }
-
-
-
+*/
 
 
 //conexion con broker adafruit (key va cambiando)
@@ -65,25 +66,10 @@ const conexion  = mysql.createConnection({
 
 });
 
-
-//conectar a DB (ya ser conecta antes, este codigo no funciona)
-/*
-conexion.connect(function(error){
-
-    if (error){
-        throw error;
-    }
-    else{
-        console.log('conexion DB exitosa');
-    }
-
-});
-*/
-
-//Funcion conexion y suscripcion a broker
+//Conexion y suscripcion a broker
 client.on('connect', function(){
 
-    console.log("conectado a adafruit");
+    console.log("Conectado a broker de adafruit");
 
     client.subscribe('G_Air', function (err) {
 
@@ -91,7 +77,7 @@ client.on('connect', function(){
             console.log ("Suscrito a topico/s, escuchando...");
         }
         else {
-            console.log ("error de suscripcion");
+            console.log ("Error de suscripcion");
         }
     });
 });
@@ -102,31 +88,24 @@ client.on('message', function(topic, message){
     console.log(topic + " - " + message.toString())
 
       
-    //registro basura
+    //REGISTRO BASURA
     if (topic == "GreenSense/basura"){
-        //guardar valores 
+        
+        //Guardar valores 
         fecha = date.toLocaleDateString();
         hora = time.toLocaleTimeString();
         basura = message.toString();
-
-        //pasar valores a front si recibe conexion
-        /*
-        io.on('connection', socket => {
-            console.log ('dato de basura enviado');
-            socket.emit('basura', basura);
-        });
-        */
 
         //Mandar valores a front
         console.log ('dato de basura enviado');
         io.emit('basura', basura);
 
 
-        //cada vez que llegue valor se va a reiniciar timer (no va a funcionar)
+        //Cada vez que llegue valor se va a reiniciar timer (no va a funcionar)
         //basuraDB();
     }
 
-     //registro aire
+     //REGISTRO AIRE
      if (topic == "GreenSense/aire"){
         //guardar valores (para posteriormente subirlo al grafico)
         fecha = date.toLocaleDateString();
@@ -145,9 +124,9 @@ client.on('message', function(topic, message){
         });   
      }
 
-      //registro energia
+      //REGISTRO ENERGIA
       if (topic == "GreenSense/energia"){
-        //guardar valores (para posteriormente subirlo al grafico)
+        //Guardar valores (para posteriormente subirlo al grafico)
         fecha = date.toLocaleDateString();
         hora = time.toLocaleTimeString();
         energia = message.toString();

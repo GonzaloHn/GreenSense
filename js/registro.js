@@ -35,7 +35,6 @@ app.post('/', (req,res)=>{
     //Instrucciones si el usuario puso todos los datos
     if (user && pass && email) {
 
-        //
         conexion.query('SELECT usuario FROM usuarios WHERE usuario= ?', [user], function (err, results, fields) {
             
             //tira error si el usuario ya existe
@@ -69,7 +68,7 @@ app.post('/', (req,res)=>{
     
 });
 
-//escucha a puerto 3000
+//Escucha a puerto 3000
 app.listen (port, () => {
     console.log (`Servidor en puerto ${port}, escuchando registro...`);
 });

@@ -21,7 +21,9 @@ async function init() {
  const io = require('socket.io')(server);
 
  let basura = 10;
-  /*
+  
+ //Pasa valores a front si recibe conexion
+ /*
   io.on('connection', (socket) => {
   console.log ('dato de basura enviado');
   socket.emit('basura', basura);

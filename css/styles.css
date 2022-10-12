@@ -331,6 +331,34 @@ ul.show{
     outline: none;
 }
 
+/*Cuenta creada*/
+.cuenta-creada{
+    margin-top: 90px;
+    margin-left: 5vw;
+    font-size: calc(1em + 3vw);
+}
+.cuenta-creada-btn-wrap{
+    margin-top: 30px;
+    margin-left: 5vw;
+}
+.cuenta-creada-btn{
+    font-size: calc(1em + 0.5vw);
+    background-color: white;
+    border: none;
+    border-radius: 5px;
+    color: black;
+    text-decoration: none;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    border: 2px solid #4CAF50;
+    margin-bottom: 5px;
+}
+
+.cuenta-creada-btn:hover {
+    background-color: #4CAF50;
+    color: white;
+}
+
 /*Pagina Inicial - Gráficos*/
 .gráficos{
 }

@@ -1,10 +1,17 @@
 // Variables express
+const { RestartProcess } = require('concurrently');
 const express = require('express');
 const app = express();
 const port = 3000;
 
 //Variables mysql
 const mysql = require ('mysql');
+
+//Variables nodemailer
+//El sender de mail es desde ethereal
+const nodemailer = require ('nodemailer');
+let transporter;
+let mailOptions;
 
 //Variables de usuario 
 let user = "";
@@ -39,7 +46,7 @@ app.post('/', (req,res)=>{
             
             //tira error si el usuario ya existe
             if (results.length > 0) {
-                console.log("Error: el nombre de usuario ya esta en uso");
+                console.log("> error: el nombre de usuario ya esta en uso");
                 res.status(400).send("Error: El nombre de usuario ya esta en uso");
                 
             }
@@ -50,17 +57,44 @@ app.post('/', (req,res)=>{
                     
                     //Tira error si mail esta en uso
                     if (results.length > 0) {
-                        console.log("Error: el mail ya esta en uso");
+                        console.log("> error: el mail ya esta en uso");
                         res.status(400).send("Error: El mail ya esta en uso");   
                     }
                     
-                    //Sube datos a DB si esta todo bien (FALTA COMPROBAR QUE MAIL ESTE COMPLETO)
+                    //Sube datos a DB y mandar mail de registro si esta todo bien (FALTA COMPROBAR QUE MAIL ESTE COMPLETO)
                     else {
                         conexion.query('INSERT INTO usuarios (usuario, contrasenia, gmail) VALUES ("'+user+'" ,"'+pass+'" ,"'+email+'" )', function (error,results,fields){
                             if (error) throw error;
-                            console.log ("registro insertado");
-                            res.redirect("http://localhost/GreenSense/html");
-                            //conexion.end();
+                            console.log ("> registro insertado");
+                            res.redirect("http://localhost/GreenSense/html/cuentaCreada.html");
+
+                            transporter = nodemailer.createTransport({
+                                host: "smtp.ethereal.email",
+                                port: 587,
+                                secure: false,
+                                auth: {
+                                    user: "dakota64@ethereal.email",
+                                    pass: "HyxQd9KvW1ryFUnqhs",
+                                },
+                            });
+
+                            mailOptions = {
+                                from: "Remitente",
+                                to: email,
+                                subject: "Registro en Green Sense",
+                                text: "Su cuenta de Green Sense ha sido creada exitosamente.",
+                            };
+                            
+                            transporter.sendMail(mailOptions, (error, info) => {
+                                if (error) {
+                                    console.log ("> error enviando mail de registracion");
+                                    //res.status(400).send("Error: El mail de registración no ha podido ser enviado");   
+                                }
+                                else {
+                                    console.log ("> mail de registracion enviado");
+                                }
+                            });
+                            
                         });     
                     }
 
@@ -75,12 +109,12 @@ app.post('/', (req,res)=>{
     //Instrucciones si le faltaron datos al usuario
     else {
         res.status(400).send("Error: Debe ingresar todos los valores");
-        console.log ("error, faltan datos de registro")
+        console.log ("> error, faltan datos de registro")
     }
     
 });
 
 //Escucha a puerto 3000
 app.listen (port, () => {
-    console.log (`Servidor en puerto ${port}, escuchando registro...`);
+    console.log (`> servidor en puerto ${port}, escuchando registro...`);
 });

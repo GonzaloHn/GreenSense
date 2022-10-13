@@ -36,13 +36,13 @@ app.post('/', (req,res)=>{
             
             //Usuario se loggea si todos los datos cumplen requerimientos basicos
             if (results.length > 0) {
-                console.log("Usuario loggeado");
+                console.log("> usuario loggeado");
                 res.redirect("http://localhost/GreenSense/html");
             }
 
             //Tira error si el usuario o contraseña esta mal
             else {
-                console.log("Usuario o contraseña incorrectos");
+                console.log("> usuario o contraseña incorrectos");
                 res.status(400).send("Usuario o contraseña incorrectos");
             }
         });
@@ -51,7 +51,7 @@ app.post('/', (req,res)=>{
 
     //Instrucciones si le faltaron datos al usuario
     else {
-        console.log("Error, faltan datos");
+        console.log("> error: faltan datos");
         res.status(400).send("Error: Debe ingresar todos los valores");
     }
     
@@ -59,5 +59,5 @@ app.post('/', (req,res)=>{
 
 //Escucha a puerto 3000
 app.listen (port, () => {
-    console.log (`Servidor en puerto ${port}, escuchando login...`);
+    console.log (`> servidor en puerto ${port}, escuchando login...`);
 });

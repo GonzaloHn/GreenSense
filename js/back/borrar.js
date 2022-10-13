@@ -37,13 +37,13 @@ app.post('/', (req,res)=>{
             //Se borra usuario si todos los datos cumplen requerimientos basicos
             if (results.length > 0) {
                 conexion.query('DELETE FROM usuarios WHERE usuario = ? AND contrasenia = ?', [user, pass]);
-                console.log("Usuario borrado");
+                console.log("> usuario borrado");
                 res.redirect("http://localhost/GreenSense/html");
             }
 
             //Tira error si el usuario o contraseña esta mal
             else {
-                console.log("Usuario o contraseña incorrectos");
+                console.log("> usuario o contraseña incorrectos");
                 res.status(400).send("Usuario o contraseña incorrectos");
             }
         });
@@ -52,7 +52,7 @@ app.post('/', (req,res)=>{
 
     //Instrucciones si le faltaron datos al usuario
     else {
-        console.log("Error, faltan datos");
+        console.log("> error: faltan datos");
         res.status(400).send("Error: Debe ingresar todos los valores");
     }
     
@@ -60,5 +60,5 @@ app.post('/', (req,res)=>{
 
 //Escucha a puerto 3000
 app.listen (port, () => {
-    console.log (`Servidor en puerto ${port}, escuchando borrar...`);
+    console.log (`> servidor en puerto ${port}, escuchando borrar...`);
 });

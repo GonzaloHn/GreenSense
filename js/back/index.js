@@ -69,15 +69,15 @@ const conexion  = mysql.createConnection({
 //Conexion y suscripcion a broker
 client.on('connect', function(){
 
-    console.log("Conectado a broker de adafruit");
+    console.log("> conectado a broker de adafruit");
 
     client.subscribe('G_Air', function (err) {
 
         if (!err){
-            console.log ("Suscrito a topico/s, escuchando...");
+            console.log ("> suscrito a topico/s, escuchando...");
         }
         else {
-            console.log ("Error de suscripcion");
+            console.log ("> error de suscripcion");
         }
     });
 });
@@ -97,7 +97,7 @@ client.on('message', function(topic, message){
         basura = message.toString();
 
         //Mandar valores a front
-        console.log ('dato de basura enviado');
+        console.log ('> dato de basura enviado');
         io.emit('basura', basura);
 
 
@@ -113,14 +113,14 @@ client.on('message', function(topic, message){
         aire = message.toString();
 
         //Mandar valores a front
-        console.log ('dato de basura enviado');
+        console.log ('> dato de basura enviado');
         io.emit('basura', basura);
 
         //Insertar valores a DB
         conexion.query(`INSERT INTO aire (fecha, hora, valor) VALUES (${fecha} ,${hora} ,${aire} )`, function (error,results,fields){
             if (error)
             throw error;
-            console.log("registro de aire insertado");  
+            console.log("> registro de aire insertado");  
         });   
      }
 
@@ -132,14 +132,14 @@ client.on('message', function(topic, message){
         energia = message.toString();
 
         //Mandar valores a front
-        console.log ('dato de basura enviado');
+        console.log ('> dato de basura enviado');
         io.emit('basura', basura);
 
         //Insertar valores a DB
         conexion.query(`INSERT INTO energia (fecha, hora, valor) VALUES (${fecha} ,${hora} ,${energia} )`, function (error,results,fields){
             if (error)
             throw error;
-            console.log("registro de energia insertado");  
+            console.log("> registro de energia insertado");  
         });   
      }
      

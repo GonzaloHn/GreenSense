@@ -44,8 +44,8 @@ app.post('/', (req,res)=>{
             //Se borra usuario si todos los datos cumplen requerimientos basicos
             if (results.length > 0) {
 
-                conexion.query('SELECT gmail FROM usuarios WHERE usuario = ? AND contrasenia = ?' [user, pass], function (err, result) {
-                    email = result;
+                conexion.query('SELECT gmail FROM usuarios WHERE usuario = ? AND contrasenia = ?' [user, pass], function (err, res) {
+                    email = res;
                 })
 
                 conexion.query('DELETE FROM usuarios WHERE usuario = ? AND contrasenia = ?', [user, pass]);

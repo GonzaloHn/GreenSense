@@ -69,12 +69,12 @@ app.post('/', (req,res)=>{
                             res.redirect("http://localhost/GreenSense/html/cuentaCreada.html");
 
                             transporter = nodemailer.createTransport({
-                                host: "smtp.ethereal.email",
-                                port: 587,
-                                secure: false,
+                                host: "smtp.gmail.com",
+                                port: 465,
+                                secure: true,
                                 auth: {
-                                    user: "dakota64@ethereal.email",
-                                    pass: "HyxQd9KvW1ryFUnqhs",
+                                    user: "greensense22@gmail.com",
+                                    pass: "isbnptqxqxljorxv",
                                 },
                             });
 

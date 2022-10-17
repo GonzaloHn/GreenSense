@@ -38,6 +38,7 @@ iframe{
     justify-content: space-between;
     align-items: center;
     background-color: green;
+
     height: 75px;
     margin-bottom: 30px;
 }
@@ -195,6 +196,8 @@ ul.show{
     z-index: 2;
     color: white;
 
+    padding-bottom: 40px;
+
     font-size: 20px;
     display: flex;
     text-align: center;
@@ -204,7 +207,7 @@ ul.show{
     z-index: 2;
     color: white;
 
-    font-size: 70px;
+    font-size: 100px;
     display: flex;
     text-align: center;
 }
@@ -232,19 +235,35 @@ ul.show{
 .form-input-title{
     font-size: 30px;
     margin-bottom: 20px;
-
+    font-weight: 500;
 }
 .form-input-definition{
+    font-weight: 400;
+    font-size: 18px;
     margin-top:10px;
 }
 .form-input div input{
+    font-size: 15px;
+
+    background-color: rgb(230, 235, 225);
     margin-bottom: 30px;
-    border-color: black;
+    padding: 8px 0px 5px;
+
+    border-style: none;
+    border-bottom: 2px solid black;
     width: 100%;
 }
 
 :focus{
     outline: none;
+}
+
+.form-messageError{
+    display: none;
+    color:red;
+    padding: 0px 0px 16px;
+    font-weight: 600;
+
 }
 
 .upload-button{
@@ -270,7 +289,7 @@ ul.show{
 
 @media only screen and (max-width: 858px){
     .form-wrap{
-        width: 440px;
+        width: 70vw;
         height: 530px;
         margin: 50px auto;
         display:flex;
@@ -317,19 +336,19 @@ ul.show{
         margin-top: 10px;
         margin-bottom: 10px;
 
-        font-size: 50px;
+        font-size: calc(2em + 0.5vw);
         display: block;
         text-align: center;
+        margin-top: 10px;
     }
     .form-text{
         position: relative;
         z-index: 2;
         color: white;
 
-        font-size: 20px;
+        font-size: calc(1em + 0.5vw);
         display: flex;
         text-align: center;
-        margin-bottom: 10px;
     }
     .form-icon{
         position: relative;
@@ -350,20 +369,24 @@ ul.show{
     }
     
     .form-input-title{
-        font-size: 30px;
+        display: none;
     
     }
     .form-input-definition{
-        margin-top:10px;
+        margin-top:15px;
     }
     .form-input div input{
-        margin-bottom: 30px;
-        border-color: black;
-        width: 100%;    
+        background-color: rgb(230, 235, 225);
+        margin-bottom: 20px;
+        padding: 8px 0px 5px;
+
+        border-style: none;
+        border-bottom: 2px solid black;
+        width: 100%;  
     }
 }
 
-/*Iniciar Sesión*/
+/*Borrar cuenta*/
 .login-wrap{
     width: 440px;
     height: 530px;
@@ -391,7 +414,7 @@ ul.show{
 
 }
 .login-info{
-    height:30%;
+    height:35%;
     position: relative;
     display: flex;
     flex-direction: column;
@@ -436,7 +459,7 @@ ul.show{
 }
 
 .login{
-    height:70%;
+    height:65%;
     display: flex;
     flex-direction: column;
     padding: 0 40px;
@@ -448,13 +471,74 @@ ul.show{
 }
 .login-input-definition{
     margin-top:10px;
+    font-size: 18px;
+
+}
+.login-input-definition-first{
+    margin-top:30px;    
+    font-size: 18px;
+
 }
 .login-input div input{
-    margin-bottom: 30px!important;
+    background-color: rgb(230, 235, 225);
+    margin-bottom: 30px;
+    padding: 8px 0px 5px;
+    font-size: 15px;
+
+    border-style: none;
+    border-bottom: 2px solid black;
+    width: 100%;
 }
 
 :focus{
     outline: none;
+}
+
+/*Borrar cuenta - responsive*/
+@media only screen and (max-width: 858px){
+    .login-wrap{
+        width: 70vw;
+        height: 530px;
+        margin: 50px auto;
+        display:flex;
+        flex-direction: column;
+    
+        background-color: rgb(230, 235, 225);
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0px, 0px, 20px rgb(0, 0, 0, 0.2);
+    }
+    .login-title{
+        position: relative;
+        z-index: 2;
+        color: white;
+    
+        margin-top: 10px;
+        margin-bottom: 10px;
+    
+        font-size: calc(2em + 0.5vw);
+        display: block;
+        text-align: center;
+    }
+    .login-text{
+        position: relative;
+        z-index: 2;
+        color: white;
+    
+        font-size: calc(1em + 0.5vw);
+        display: flex;
+        text-align: center;
+        margin-bottom: 10px;
+    }
+    .login-icon{
+        position: relative;
+        z-index: 2;
+        color: white;
+    
+        font-size: 20px;
+        display: flex;
+        text-align: center;
+    }
 }
 
 /*Cuenta creada*/
@@ -618,3 +702,5 @@ td, th{
     padding: 10px;
     text-align: left;
 }
+
+

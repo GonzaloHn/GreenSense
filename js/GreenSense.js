@@ -4,6 +4,11 @@ function showmenu() {
 
 $(document).ready(function(){
 
+    //Forms - sign up
+     $('#S').click(function(){
+        alert("j");
+     });
+
     //FRONT-END
 
     $("#fR").click(function(){

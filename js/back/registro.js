@@ -3,6 +3,15 @@ const { RestartProcess } = require('concurrently');
 const express = require('express');
 const app = express();
 const port = 3000;
+const sesion = require ('express-session');
+const flash = require ('connect-flash');
+app.use(sesion({
+    secret: 'a',
+    cookie: {maxAge: 60000},
+    saveUninitialized: false,
+    resave: false
+}));
+app.use(flash());
 
 //Variables mysql
 const mysql = require ('mysql');
@@ -108,8 +117,11 @@ app.post('/', (req,res)=>{
 
     //Instrucciones si le faltaron datos al usuario
     else {
-        res.status(400).send("Error: Debe ingresar todos los valores");
-        console.log ("> error, faltan datos de registro")
+        //res.status(400).send("Error: Debe ingresar todos los valores");
+        console.log ("> error, faltan datos de registro");
+        
+        req.flash('error', 'Debe ingresar todos los valores');
+        res.redirect ("http://localhost/GreenSense/html/registrar.html");
     }
     
 });

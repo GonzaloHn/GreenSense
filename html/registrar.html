@@ -36,6 +36,16 @@
 
     </section>
     
+     <!--
+    </div>
+    <% } else { %>
+        <% if (message.length > 0) { %>
+        <div class="alert alert-error">
+        <%= message %>
+    </div>
+    <%= } %>
+    -->
+
     <form class="form" action="http://localhost:3000" method="POST">
 
         <div class="form-input-title">Sign up</div>
@@ -56,9 +66,7 @@
             <input id="m" name="mail" type="email">
         </div>
 
-        </div>
-        <label class="form-messageError">Por favor, complete todos los campos</label>
-        <input class="upload-button" id="S" type="submit" value="Subir"><!--&nbsp;-->
+        
     </form> 
 
 </div>

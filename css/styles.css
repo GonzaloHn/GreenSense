@@ -63,15 +63,22 @@ iframe{
     text-decoration: none;
     font-size: 18px;
     display: block;
+    color:rgb(207, 202, 202);
+
+}
+.active-item{
+    color: white !important;
 }
 
+
 .navbar-items li:hover{
-    background-color: white;
+    background-color: black;
+    color:white !important;
     transition: .4s;
 }
 
 .navbar-icon{
-    margin-top: 40px;
+    margin-top: 35px;
     margin-right: 30px;
     font-size: 25px;
     cursor: pointer;
@@ -122,7 +129,7 @@ ul.show{
         color: white;
     }
     .navbar-items li a:hover{
-        color:greenyellow;
+        color:green;
     }
 
     .navbar-logo{
@@ -131,6 +138,20 @@ ul.show{
     }
 }
 
+.config-display{
+    padding: 10px 20px 10px;
+    position: absolute;
+    display:none;
+    background-color: grey;
+}
+.config-display:hover{
+    background-color: grey;
+}
+.config-hover:hover > ul{
+    display:block;
+    background-color: grey;
+
+}
 /* @media only screen and (max-width: 858px) and (orientation:landscape){
     .navbar-items li{
         margin: 5px 0 0 0;
@@ -265,6 +286,7 @@ ul.show{
     font-weight: 600;
 
 }
+
 
 .upload-button{
     width:180px;

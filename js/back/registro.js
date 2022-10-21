@@ -3,6 +3,9 @@ const { RestartProcess } = require('concurrently');
 const express = require('express');
 const app = express();
 const port = 3000;
+const server = app.listen(port);
+
+/*
 const sesion = require ('express-session');
 const flash = require ('connect-flash');
 app.use(sesion({
@@ -12,12 +15,15 @@ app.use(sesion({
     resave: false
 }));
 app.use(flash());
+*/
+
+//Variables socket
+const io = require('socket.io')(server);
 
 //Variables mysql
 const mysql = require ('mysql');
 
 //Variables nodemailer
-//El sender de mail es desde ethereal
 const nodemailer = require ('nodemailer');
 let transporter;
 let mailOptions;
@@ -57,7 +63,7 @@ app.post('/', (req,res)=>{
             if (results.length > 0) {
                 console.log("> error: el nombre de usuario ya esta en uso");
                 res.status(400).send("Error: El nombre de usuario ya esta en uso");
-                
+                io.emit('errorusu', 'error');
             }
 
             //Si usuario esta bien comprueba gmail
@@ -68,6 +74,7 @@ app.post('/', (req,res)=>{
                     if (results.length > 0) {
                         console.log("> error: el mail ya esta en uso");
                         res.status(400).send("Error: El mail ya esta en uso");   
+                        io.emit('errormail', 'error');
                     }
                     
                     //Sube datos a DB y mandar mail de registro si esta todo bien (FALTA COMPROBAR QUE MAIL ESTE COMPLETO)
@@ -117,16 +124,19 @@ app.post('/', (req,res)=>{
 
     //Instrucciones si le faltaron datos al usuario
     else {
-        //res.status(400).send("Error: Debe ingresar todos los valores");
+        res.status(400).send("Error: Debe ingresar todos los valores");
         console.log ("> error, faltan datos de registro");
+        io.emit('errordatos', 'error');
         
-        req.flash('error', 'Debe ingresar todos los valores');
-        res.redirect ("http://localhost/GreenSense/html/registrar.html");
+        //req.flash('error', 'Debe ingresar todos los valores');
+
     }
     
 });
 
 //Escucha a puerto 3000
+/*
 app.listen (port, () => {
     console.log (`> servidor en puerto ${port}, escuchando registro...`);
 });
+*/

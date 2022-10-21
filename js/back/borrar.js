@@ -2,12 +2,15 @@
 const express = require('express');
 const app = express();
 const port = 3000;
+const server = app.listen(port);
+
+//Variables socket
+const io = require('socket.io')(server);
 
 //Variables mysql
 const mysql = require ('mysql');
 
 //Variables nodemailer
-//El sender de mail es desde ethereal
 const nodemailer = require ('nodemailer');
 let transporter;
 let mailOptions;
@@ -85,6 +88,7 @@ app.post('/', (req,res)=>{
             else {
                 console.log("> usuario o contraseña incorrectos");
                 res.status(400).send("Usuario o contraseña incorrectos");
+                io.emit('errorincor', 'error');
             }
         });
     
@@ -94,11 +98,14 @@ app.post('/', (req,res)=>{
     else {
         console.log("> error: faltan datos");
         res.status(400).send("Error: Debe ingresar todos los valores");
+        io.emit('errordatos', 'error');
     }
     
 });
 
 //Escucha a puerto 3000
+/*
 app.listen (port, () => {
     console.log (`> servidor en puerto ${port}, escuchando borrar...`);
 });
+*/

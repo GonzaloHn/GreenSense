@@ -67,14 +67,20 @@ iframe{
 
 }
 .active-item{
-    color: white !important;
+    color: white!important;
 }
 
 
 .navbar-items li:hover{
     background-color: black;
-    color:white !important;
     transition: .4s;
+}
+.navbar-items li a:hover{
+    padding: 7px 13px;
+    text-decoration: none;
+    font-size: 18px;
+    display: block;
+    color:white;
 }
 
 .navbar-icon{
@@ -108,7 +114,7 @@ ul.show{
         z-index: -1;
         width: 100vw;
         height: calc(100% - 65px);
-        background-color: grey;
+        background-color: rgb(177, 255, 140);
         top: 65px;
         left: -100vw;
         text-align: center;
@@ -124,17 +130,26 @@ ul.show{
         background: none;
     }
 
+    .active-item{
+        font-size: 20px;
+        color: black!important;
+    }
     .navbar-items li a{
         font-size: 20px;
-        color: white;
+        color: black;
     }
     .navbar-items li a:hover{
+        font-size: 20px;
         color:green;
+    }
+    .active-item:hover{
+        font-size: 20px;
+        color: green!important;
     }
 
     .navbar-logo{
-        font-size: 25px;
-        padding-left: 35px;
+        font-size: 30px;
+        padding-left: 30px;
     }
 }
 
@@ -228,7 +243,8 @@ ul.show{
     z-index: 2;
     color: white;
 
-    font-size: 100px;
+    width: 120px;
+    /* font-size: 30px; */
     display: flex;
     text-align: center;
 }
@@ -594,8 +610,9 @@ ul.show{
 /*Pagina Inicial - Gráficos*/
 .gráficos{
 }
-.hola{
-    width: 200px;
+.width-graph{
+    width: 50vw;
+    height: fit-content;
 }
 
 /*Pagina Inicial - Iconos*/
@@ -621,18 +638,25 @@ ul.show{
 
 /*Pagina Inicial - Containers de Valores*/
 .ValContainer{
-    background-color: rgb(27, 230, 44);
+    /* background-color: rgb(27, 230, 44); */
+    background-color: white;
+    border: solid 1px green;
     border-radius: 15px;
     padding: 5px;
     height: fit-content;
     margin-bottom: 30px;
     margin-top: 30px;
     width: 300px;
+    /* display:flex;
+
+    white-space:nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis; */
 }
 .ValContainerIcon img{
     max-width: 100px;
-    float:left;
     padding: 10px;
+    float: left;
 }
 
 .ValTitle{

@@ -611,8 +611,14 @@ ul.show{
 .gráficos{
 }
 .width-graph{
-    width: 50vw;
+    width: 45vw!important;
     height: fit-content;
+}
+@media only screen and (max-width: 992px){
+    .width-graph{
+        width: 50vw!important;
+        height: 50vw!important;
+    }
 }
 
 /*Pagina Inicial - Iconos*/

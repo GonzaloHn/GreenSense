@@ -13,6 +13,9 @@
     <script src="../js/materialize.js" type="text/javascript"></script>  
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js" integrity="sha512-ElRFoEQdI5Ht6kZvyzXhYG9NqjtkmlkfYk0wr6wHxU9JEHakS7UJZNeml5ALk+8IKlU6jDgMabC3vkumRokgJA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
+    <!-- Icons -->
+    <script src="https://kit.fontawesome.com/83ab69d178.js" crossorigin="anonymous"></script>
+
     <script src="../js/jquery-3.6.0.min.js" type="text/javascript"></script>   
 
     <script src="//cdnjs.cloudflare.com/ajax/libs/dygraph/2.1.0/dygraph.min.js"></script>
@@ -23,8 +26,8 @@
 
     
 </head>
-<body>
-    <nav>
+<body style="background-color:green">
+    <!-- <nav>
         <div class="nav-wrapper" style="padding:0px 10px;background-color: green;">
           <a href="#" class="brand-logo" style="">Logo</a>
           <ul id="nav-mobile" class="right hide-on-med-and-down">
@@ -33,17 +36,31 @@
             <li><a href="collapsible.html">JavaScript</a></li>
           </ul>
         </div>
-    </nav>
+    </nav> -->
+    <nav class="navbar">
 
+      <ul class="navbar-items" id="navbar-items-responsive">
+        <li><a href="index.html" class="active-item">Home</a></li>
+        <li><a href="registrar.html">Ingresar</a></li>
+        <li><a href="borrar.html">Borrar cuenta</a></li>
+      </ul>
 
-    <p><div id="graph"></div></p>
+      <div class="navbar-icon" onclick="showmenu()"><i class="fa-sharp fa-solid fa-bars"></i></div>
+  </nav>
+
+    <div class="flex">
+      <div class="title-text">GreenSense</div>
+    <div class="cuadro"></div>
+    </div>
+    
+    <!-- <p><div id="graph"></div></p>
     <div id="test">PRUEBA</div>
     <p id="sock">Holaaa</p>
-    <script src="../js/prueba.js" type="text/javascript"></script>  
+    <script src="../js/prueba.js" type="text/javascript"></script>   -->
 
     <!-- "pointer-events: none" -->
 
-    <script src="/socket.io/socket.io.js"></script>
+    <!-- <script src="/socket.io/socket.io.js"></script>
     <script src="../js/jquery-3.6.0.min.js" type="text/javascript"></script>  
      
 
@@ -64,7 +81,37 @@
       socket.on('basura', data => {
       console.log(data)
       })
-    </script>
+    </script> -->
+
+    <!-- <script src="../js/three.js"></script>
+    <script>
+      const scene = new THREE.Scene();
+      const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
+
+      const renderer = new THREE.WebGLRenderer();
+      renderer.setSize( window.innerWidth, window.innerHeight );
+      document.body.appendChild( renderer.domElement );
+
+
+      const geometry = new THREE.BoxGeometry( 1, 1, 1 );
+      const material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
+      const cube = new THREE.Mesh( geometry, material );
+      scene.add( cube );
+
+      camera.position.z = 5;
+
+
+      function animate() {
+	      requestAnimationFrame( animate );
+
+        cube.rotation.x += 0.01;
+        cube.rotation.y += 0.01;
+      
+	      renderer.render( scene, camera );
+      }
+      animate();
+
+    </script> -->
 
 </body>
 </html>

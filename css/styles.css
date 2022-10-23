@@ -110,6 +110,7 @@ ul.show{
     }
 
     .navbar-items{
+        z-index: 2;
         position: fixed;
         z-index: -1;
         width: 100vw;
@@ -755,4 +756,29 @@ td, th{
     text-align: left;
 }
 
-
+.flex{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.title-text{
+    color: white;
+    font-size: calc(2em + 3vw);
+    margin-left: 50px;
+    margin-bottom: 70px;
+}
+.cuadro{
+    margin-top: -30px;
+    width: 850px;
+    /* height: 540px; */
+    height: calc(100vh - 75px);
+ 
+    background: #d9d9d9;
+ 
+    border-radius: 1000px 0px 0px 0px; 
+}
+@media only screen and (max-width: 858px){
+    .cuadro{
+        height: calc(100vh - 65px);
+    }
+}

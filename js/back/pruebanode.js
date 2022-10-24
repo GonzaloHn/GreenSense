@@ -13,43 +13,50 @@ async function init() {
 
  init();
  */
+
+const express = require('express');
+const app = express();
+const port = 9000;
+
+const server = app.listen(port, () => {
+  console.log(`> servidor en puerto ${port}, escuchando registro...`);
+});
+
+const io = require('socket.io')(server);
+
+let basura = 10;
+
+//Pasa valores a front si recibe conexion 
+
+io.on('connection', (socket) => {
+  console.log('dato de basura enviado');
+  socket.emit('basura', basura);
+});
+
+//Mandar valores a front (a todos los clientes)
+
+// console.log('dato de basura enviado');
+// io.emit('basura', basura);
+
+
+// .---------------------------------------------------------------------------------
+
 /*
- const express = require('express');
- const app = express();
- const port = 9000;
- const server = app.listen(port);
- const io = require('socket.io')(server);
+const mysql = require ('mysql');
 
- let basura = 10;
+const conexion  = mysql.createConnection({
 
- //Pasa valores a front si recibe conexion 
-  io.on('connection', (socket) => {
-    console.log ('dato de basura enviado');
-    socket.emit('basura', basura);
-  });
-*/
-  //Mandar valores a front (a todos los clientes)
-  /*
-  console.log ('dato de basura enviado');
-  io.emit('basura', basura);
-  */
-
- // .---------------------------------------------------------------------------------
-
- const mysql = require ('mysql');
-
- const conexion  = mysql.createConnection({
-    
-  host: 'localhost',
-  database: 'greensense',
-  user: 'root',
-  password: 'rootroot'
+ host: 'localhost',
+ database: 'greensense',
+ user: 'root',
+ password: 'rootroot'
 
 });
 
 conexion.query("SELECT gmail FROM usuarios", function (error,result,fields){
-  if (error)throw error;
-  let mails = [result];
-  console.log(mails);  
-});   
+ if (error)throw error;
+ let mails = [result];
+ console.log(mails);
+});
 
+*/

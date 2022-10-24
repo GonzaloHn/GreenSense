@@ -1,8 +1,10 @@
 // Variables express
 const express = require('express');
 const app = express();
-const port = 3000;
-const server = app.listen(port);
+const port = 9000; //necesitaria poner otro puerto aca
+const server = app.listen (port, () => {
+    console.log (`> servidor en puerto ${port}, escuchando registro...`);
+});;
 
 //Variables socket
 const io = require('socket.io')(server);
@@ -47,6 +49,7 @@ app.post('/', (req,res)=>{
             //Se borra usuario si todos los datos cumplen requerimientos basicos
             if (results.length > 0) {
 
+                //no se si esto agarra bien mail para enviarle a user
                 conexion.query('SELECT gmail FROM usuarios WHERE usuario = ? AND contrasenia = ?' [user, pass], function (err, res) {
                     email = res;
                 })
@@ -61,7 +64,7 @@ app.post('/', (req,res)=>{
                     secure: true,
                     auth: {
                         user: "greensense22@gmail.com",
-                        pass: "isbnptqxqxljorxv",
+                        pass: "eszqbyjxfmokosk",
                     },
                 });
 

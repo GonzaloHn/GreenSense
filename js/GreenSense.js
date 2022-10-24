@@ -67,10 +67,11 @@ $(document).ready(function(){
 });
 
 // var num = 1;
-const socket = io('http://localhost:9000');
+var socket = io('http://localhost:9000');
 
 socket.on('basura', (data) =>{
     alert(data);
+    console.log(data);
 })
 // io.on('connection'), socket => {
 //     console.log('User')

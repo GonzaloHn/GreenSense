@@ -3,7 +3,9 @@ const { RestartProcess } = require('concurrently');
 const express = require('express');
 const app = express();
 const port = 3000;
-const server = app.listen(port);
+const server = app.listen (port, () => {
+    console.log (`> servidor en puerto ${port}, escuchando registro...`);
+});
 
 /*
 const sesion = require ('express-session');
@@ -90,12 +92,12 @@ app.post('/', (req,res)=>{
                                 secure: true,
                                 auth: {
                                     user: "greensense22@gmail.com",
-                                    pass: "isbnptqxqxljorxv",
+                                    pass: "eszqbyjxfmokosk",
                                 },
                             });
 
                             mailOptions = {
-                                from: "Remitente",
+                                from: "greensense22@gmail.com",
                                 to: email,
                                 subject: "Registro en Green Sense",
                                 text: "Su cuenta de Green Sense ha sido creada exitosamente.",

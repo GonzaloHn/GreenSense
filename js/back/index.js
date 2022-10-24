@@ -16,11 +16,18 @@ let aire = "";
 //Variables mysql
 const mysql = require ('mysql');
 
+//Variables nodemailer
+const nodemailer = require ('nodemailer');
+let transporter;
+let mailOptions;
+
 //Variables express
 const express = require('express');
 const app = express();
-const port = 9000;
-const server = app.listen(port);
+const port = 4000;
+const server = app.listen (port, () => {
+    console.log (`> servidor en puerto ${port}, escuchando registro...`);
+});
 
 //Variables socket
 const io = require('socket.io')(server);
@@ -71,7 +78,7 @@ client.on('connect', function(){
 
     console.log("> conectado a broker de adafruit");
 
-    client.subscribe('G_Air', function (err) {
+    client.subscribe('G/#', function (err) {
 
         if (!err){
             console.log ("> suscrito a topico/s, escuchando...");
@@ -89,7 +96,7 @@ client.on('message', function(topic, message){
 
       
     //REGISTRO BASURA
-    if (topic == "GreenSense/basura"){
+    if (topic == "G/weigh"){
         
         //Guardar valores 
         fecha = date.toLocaleDateString();
@@ -100,7 +107,39 @@ client.on('message', function(topic, message){
         console.log ('> dato de basura enviado');
         io.emit('basura', basura);
 
+        //Esto mandaria muchos mails, tiene que mandar solo uno (ademas no se si manda mails a todos bien)
+        if (basura > 20)
+        {
+            conexion.query('SELECT gmail FROM usuarios', function (err, res) {
+                email = res;
+            })
+            transporter = nodemailer.createTransport({
+                host: "smtp.gmail.com",
+                port: 465,
+                secure: true,
+                auth: {
+                    user: "greensense22@gmail.com",
+                    pass: "eszqbyjxfmokosk",
+                },
+            });
 
+            mailOptions = {
+                from: "Remitente",
+                to: email,
+                subject: "Green Sense: Basura inoptima",
+                text: "La basura pasa los x kg.",
+            };
+            
+            transporter.sendMail(mailOptions, (error, info) => {
+                if (error) {
+                    console.log ("> error enviando mail de registracion");
+                    //res.status(400).send("Error: El mail de registración no ha podido ser enviado");   
+                }
+                else {
+                    console.log ("> mail de registracion enviado");
+                }
+            });
+        }
         //Cada vez que llegue valor se va a reiniciar timer (no va a funcionar)
         //basuraDB();
     }
@@ -113,8 +152,8 @@ client.on('message', function(topic, message){
         aire = message.toString();
 
         //Mandar valores a front
-        console.log ('> dato de basura enviado');
-        io.emit('basura', basura);
+        console.log ('> dato de aire enviado');
+        io.emit('aire', aire);
 
         //Insertar valores a DB
         conexion.query(`INSERT INTO aire (fecha, hora, valor) VALUES (${fecha} ,${hora} ,${aire} )`, function (error,results,fields){
@@ -132,8 +171,8 @@ client.on('message', function(topic, message){
         energia = message.toString();
 
         //Mandar valores a front
-        console.log ('> dato de basura enviado');
-        io.emit('basura', basura);
+        console.log ('> dato de energia enviado');
+        io.emit('energia', energia);
 
         //Insertar valores a DB
         conexion.query(`INSERT INTO energia (fecha, hora, valor) VALUES (${fecha} ,${hora} ,${energia} )`, function (error,results,fields){

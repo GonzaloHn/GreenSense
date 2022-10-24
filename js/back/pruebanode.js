@@ -22,7 +22,12 @@ const server = app.listen(port, () => {
   console.log(`> servidor en puerto ${port}, escuchando registro...`);
 });
 
-const io = require('socket.io')(server);
+const io = require('socket.io')(server, {
+  cors: {
+    origin: "http://localhost",
+    methods: ["GET", "POST"]
+  }
+});
 
 let basura = 10;
 
@@ -45,7 +50,7 @@ io.on('connection', (socket) => {
 const mysql = require ('mysql');
 
 const conexion  = mysql.createConnection({
-
+  
  host: 'localhost',
  database: 'greensense',
  user: 'root',
@@ -56,7 +61,7 @@ const conexion  = mysql.createConnection({
 conexion.query("SELECT gmail FROM usuarios", function (error,result,fields){
  if (error)throw error;
  let mails = [result];
- console.log(mails);
-});
+ console.log(mails);  
+});   
 
 */

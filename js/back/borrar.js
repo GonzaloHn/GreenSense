@@ -7,8 +7,12 @@ const server = app.listen (port, () => {
 });;
 
 //Variables socket
-const io = require('socket.io')(server);
-
+const io = require('socket.io')(server, {
+    cors: {
+      origin: "http://localhost",
+      methods: ["GET", "POST"]
+    }
+  });
 //Variables mysql
 const mysql = require ('mysql');
 

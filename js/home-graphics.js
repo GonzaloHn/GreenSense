@@ -102,6 +102,7 @@ var line_chart_weight = new Dygraph(document.getElementById("graph-weight"), dat
 var graphNum = 1;
 var dynamicUpdate = 1;
 var changeGraphic = 1;
+var fadeInNum = 350;
 
 //Codigo funciones jquery
 $(document).ready(function(){
@@ -112,19 +113,19 @@ $(document).ready(function(){
     $("#change-g").click(function(){
         if (graphNum == 1){
             //$("#hide-e-g").fadeOut(050);
-            $("#hide-e-g").hide()
-            $("#hide-a-g").fadeIn(300)
+            $("#hide-e-g").hide();
+            $("#hide-a-g").fadeIn(fadeInNum);
             //$("#hide-a-g").show()
             graphNum++;
         }
         else if (graphNum == 2){
             $("#hide-a-g").hide();
-            $("#hide-w-g").show();
+            $("#hide-w-g").fadeIn(fadeInNum);
             graphNum++;
         }
         else if (graphNum == 3){
             $("#hide-w-g").hide();
-            $("#hide-e-g").show();
+            $("#hide-e-g").fadeIn(fadeInNum);
             graphNum = 1;
         }
     });
@@ -148,17 +149,17 @@ window.setInterval(function() {
 if(changeGraphic == 1){
     if (graphNum == 1){
         $("#hide-e-g").hide();
-        $("#hide-a-g").show();
+        $("#hide-a-g").fadeIn(fadeInNum);
         graphNum++;
     }
     else if (graphNum == 2){
         $("#hide-a-g").hide();
-        $("#hide-w-g").show();
+        $("#hide-w-g").fadeIn(fadeInNum);
         graphNum++;
     }
     else if (graphNum == 3){
         $("#hide-w-g").hide();
-        $("#hide-e-g").show();
+        $("#hide-e-g").fadeIn(fadeInNum);
         graphNum = 1;
     }
 }

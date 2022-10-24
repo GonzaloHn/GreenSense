@@ -38,7 +38,7 @@ const centerText = {
       ctx.font = 'bolder 25px Arial';
       ctx.fillStyle = 'rgba(1, 1, 1)';
       ctx.textAlign = 'center';
-      ctx.fillText('electrica', width / 2, height / 2 - 30);
+      ctx.fillText('eléctrica', width / 2, height / 2 - 30);
       ctx.restore();
 
       const val_actual = 'Valor actual: numero';

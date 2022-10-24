@@ -8,11 +8,11 @@ const data = {
       label: 'My First Dataset',
       data: [60, 40],
       borderColor: [
-          'rgb(241, 198, 7)',
+          'rgb(0, 255, 255)',
           'rgb(0, 0, 0, 0)',
       ],
       backgroundColor: [
-        'rgb(241, 198, 7)',
+        'rgb(0, 255, 255)',
         'rgb(0, 0, 0, 0)',
       ],
       hoverOffset: 4,
@@ -32,13 +32,13 @@ const centerText = {
       ctx.font = 'bolder 25px Arial';
       ctx.fillStyle = 'rgba(1, 1, 1)';
       ctx.textAlign = 'center';
-      ctx.fillText('Energía', width / 2, height / 2 - 60);
+      ctx.fillText('Calidad del', width / 2, height / 2 - 60);
       ctx.restore();
   
       ctx.font = 'bolder 25px Arial';
       ctx.fillStyle = 'rgba(1, 1, 1)';
       ctx.textAlign = 'center';
-      ctx.fillText('electrica', width / 2, height / 2 - 30);
+      ctx.fillText('aire', width / 2, height / 2 - 30);
       ctx.restore();
 
       const val_actual = 'Valor actual: numero';

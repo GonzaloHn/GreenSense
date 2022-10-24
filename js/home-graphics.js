@@ -130,16 +130,43 @@ $(document).ready(function(){
         }
     });
 
+    $("#back-g").click(function(){
+        if (graphNum == 1){
+            //$("#hide-e-g").fadeOut(050);
+            $("#hide-e-g").hide();
+            $("#hide-w-g").fadeIn(fadeInNum);
+            //$("#hide-a-g").show()
+            graphNum = 3;
+        }
+        else if (graphNum == 2){
+            $("#hide-a-g").hide();
+            $("#hide-e-g").fadeIn(fadeInNum);
+            graphNum = 1;
+        }
+        else if (graphNum == 3){
+            $("#hide-w-g").hide();
+            $("#hide-a-g").fadeIn(fadeInNum);
+            graphNum = 2;
+        }
+    });
+
+    $("#play-g").hide();
     $("#pause-g").click(function(){
 
         dynamicUpdate = 0;
         changeGraphic = 0;
+
+        $("#pause-g").hide();
+        $("#play-g").show();
         
     });
     $("#play-g").click(function(){
 
         dynamicUpdate = 1;
         changeGraphic = 1;
+
+        $("#play-g").hide();
+        $("#pause-g").show();
 
     })
 });

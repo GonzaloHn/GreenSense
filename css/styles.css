@@ -2,6 +2,13 @@
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     box-sizing: border-box;
 }
+
+:root {
+    --green: green;
+    --white: #ffffff;
+    --light-gray: 'rgb(207, 202, 202)';
+}
+
 .separador{
 }
 .none{
@@ -17,6 +24,7 @@ iframe{
 .grey-background{
     background-color: grey;
 }
+
 
 @media only screen and (min-width: 993px){
     nav a.button-collapse {
@@ -641,8 +649,13 @@ ul.show{
     background-color:white;
 }
 .control-icons i{
-    margin: 0 3px;
-
+    margin: 0 5px;
+    cursor: pointer;
+    color:black;
+    transition-duration: 0.4s;
+}
+.control-icons i:hover{
+    color:green;
 }
 
 /*Pagina Inicial - Containers de Valores*/
@@ -759,6 +772,7 @@ td, th{
     text-align: left;
 }
 
+
 .flex{
     display: flex;
     justify-content: space-between;
@@ -772,8 +786,8 @@ td, th{
 }
 .cuadro{
     margin-top: -30px;
-    width: 850px;
-    /* height: 540px; */
+    width: 800px;
+
     height: calc(100vh - 75px);
  
     background: #d9d9d9;

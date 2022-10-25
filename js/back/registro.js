@@ -96,7 +96,7 @@ app.post('/', (req,res)=>{
                                 secure: true,
                                 auth: {
                                     user: "greensense22@gmail.com",
-                                    pass: "eszqbyjxfmokosk",
+                                    pass: "tsagmhszxpxreyck",
                                 },
                             });
 
@@ -110,6 +110,7 @@ app.post('/', (req,res)=>{
                             transporter.sendMail(mailOptions, (error, info) => {
                                 if (error) {
                                     console.log ("> error enviando mail de registracion");
+                                    console.log (error);
                                     //res.status(400).send("Error: El mail de registración no ha podido ser enviado");   
                                 }
                                 else {

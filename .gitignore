@@ -2,6 +2,8 @@ js/jquery-3.6.0.min.js
 
 js/materialize.js
 
+js/three.js
+
 css/materialize.css
 
 node_modules

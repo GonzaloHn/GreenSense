@@ -772,27 +772,54 @@ td, th{
     text-align: left;
 }
 
-
+.absolute-three{
+    position:absolute;
+}
+.fondo-verde{
+    background-image: url(../images/fondo\ verde\ recortar.png);
+    background-size: cover;
+    background-position: center center;
+}
 .flex{
-    display: flex;
+    display: flex!important;
     justify-content: space-between;
     align-items: center;
 }
 .title-text{
+    /* background-image: url(../images/fondo\ verde\ recortar.png);
+    background-size: cover;
+    background-position: center center; */
     color: white;
-    font-size: calc(2em + 3vw);
-    margin-left: 50px;
-    margin-bottom: 70px;
-}
-.cuadro{
+    font-size: calc(3em + 3vw);
+    padding-left: 60px;
+    padding-top: 100px;
+    z-index: 2;
+
     margin-top: -30px;
     width: 800px;
+    height: calc(100vh - 75px);
+    -moz-border-radius: 0 50% / 0 100%;
+    -webkit-border-radius: 0 50% / 0 100%;
+    border-radius: 0px 0px 1000px 0px;
+    background: green;
+}
+.cuadro{
+    position: absolute;
+    width: 860px;
+    height: 100vh;
+    -moz-border-radius: 0 50% / 0 100%;
+    -webkit-border-radius: 0 50% / 0 100%;
+    border-radius: 0px 0px 1000px 0px;
+    background: green;
+    margin-top: 340px;
+    /* margin-top: -30px;
+    width: 860px;
 
     height: calc(100vh - 75px);
  
     background: #d9d9d9;
  
-    border-radius: 1000px 0px 0px 0px; 
+    border-radius: 1000px 0px 0px 0px;  */
 }
 @media only screen and (max-width: 858px){
     .cuadro{

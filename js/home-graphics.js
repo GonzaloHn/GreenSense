@@ -1,5 +1,5 @@
 
-$(document).ready(function(){
+// $(document).ready(function(){
 // const line_energy = $('#line-chart-energy');
 // const line_chart_energy = new Chart(line_energy, {
 //     type: 'line',
@@ -80,7 +80,7 @@ $(document).ready(function(){
 //         },
 //     },
 // });
-});
+// });
 
 var data_energy = [];
 var data_air = [];
@@ -195,15 +195,14 @@ if(changeGraphic == 1){
 //Sockets
 var socket = io('http://localhost:9000');
 
-// socket.on('energia', (data_s_energy) =>{
-//     console.log("Socket enegía: " + data_s_energy);
-// })
-// socket.on('aire', (data_s_air) =>{
-//     console.log("Socket calidad aire: " + data_s_air);
-// })
-socket.on('basura', (dataa) =>{
-    console.log(dataa);
-    alert(dataa);
+socket.on('energia', (data_s_energy) =>{
+    console.log("Socket enegía: " + data_s_energy);
+})
+ socket.on('aire', (data_s_air) =>{
+     console.log("Socket calidad aire: " + data_s_air);
+})
+socket.on('basura', (data_s_weight) =>{
+    console.log("Socket basura: " + data_s_weight);
 })
 
 

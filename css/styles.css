@@ -589,10 +589,28 @@ ul.show{
 }
 
 /*Cuenta creada*/
+.creada-wrap{
+    width: 75vw;
+    height: calc(100vh - 75px);
+    -moz-border-radius: 0 50% / 0 100%;
+    -webkit-border-radius: 0 50% / 0 100%;
+    border-radius: 0px 0px 1000px 0px;
+    background: green;
+}
+.creada-wrap-n{
+    width: 85vw;
+    height: calc(100vh - 75px);
+    -moz-border-radius: 0 50% / 0 100%;
+    -webkit-border-radius: 0 50% / 0 100%;
+    border-radius: 0px 0px 1000px 0px;
+    background: green;
+}
 .cuenta-creada{
-    margin-top: 90px;
-    margin-left: 5vw;
-    font-size: calc(1em + 3vw);
+    color: white;
+    font-size: calc(1em + 2vw);
+    padding-left: 5vw;
+    padding-top: 120px;
+    z-index: 2;
 }
 .cuenta-creada-btn-wrap{
     margin-top: 30px;
@@ -614,6 +632,61 @@ ul.show{
 .cuenta-creada-btn:hover {
     background-color: #4CAF50;
     color: white;
+}
+.white-block{
+    display:none;
+    z-index: 1;
+    width: 100vw;
+    height: 30px;
+    border-radius: 1000px 1000px 0px 0px;
+    background: white;
+}
+@media only screen and (max-width: 670px){
+    .creada-wrap-n{
+        width: 95vw;
+        height: calc(100vh - 75px);
+        -moz-border-radius: 0 50% / 0 100%;
+        -webkit-border-radius: 0 50% / 0 100%;
+        border-radius: 0px 0px 1000px 0px;
+        background: green;
+    }
+}
+@media only screen and (max-width: 600px){
+    .cuenta-creada{
+        margin:auto;
+        text-align: center;
+        color: white;
+        font-size: calc(1.1em + 3vw);
+        padding-top: 100px;
+        z-index: 2;
+    }
+    .creada-wrap{
+        width: 100vw;
+        height: 100vh;
+        border-radius: 0px;
+        background: green;
+    }
+    .creada-wrap-n{
+        width: 100vw;
+        height: 100vh;
+        border-radius: 0px;
+        background: green;
+        overflow: hidden;
+    }
+    .cuenta-creada-btn-wrap{
+        margin: 20px auto;
+        text-align: center;
+    }
+    .white-block{
+        position: absolute;
+        bottom: 0;
+        display: block;
+        z-index: 1;
+        width: 100vw;
+        height: 40vh;
+        border-radius: 2000px 2000px 0px 0px;
+        background: white;
+    }
 }
 
 /*Pagina Inicial - Gráficos*/

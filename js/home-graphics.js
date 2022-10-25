@@ -192,11 +192,29 @@ if(changeGraphic == 1){
 }
 }, 10000);
 
+//Sockets
+var socket = io('http://localhost:9000');
+
+socket.on('energia', (data_s_energy) =>{
+    console.log("Socket enegía: " + data_s_energy);
+})
+socket.on('aire', (data_s_air) =>{
+    console.log("Socket calidad aire: " + data_s_air);
+})
+socket.on('basura', (data_s_weight) =>{
+    console.log("Socket peso: " + data_s_weight);
+})
+
+
 window.setInterval(function() {
 if(dynamicUpdate == 1){
     var x = new Date(); 
     var y = Math.random(); //agarra un valor random para Y
-   
+
+    // var y_energy = data_s_energy; //y de los sockets, prueba
+    // var y_air = data_s_air; //y de los sockets, prueba
+    // var y_weight = data_s_weight; //y de los sockets, prueba
+
     data_energy.shift(); //remueve el primer dato del array, adelantando a todos los demas por uno adelante
     data_energy.push([x, y]); //añade un nuevo elemtno al final de un array
     
@@ -205,6 +223,10 @@ if(dynamicUpdate == 1){
     
     data_weight.shift(); //remueve el primer dato del array, adelantando a todos los demas por uno adelante
     data_weight.push([x, y]); //añade un nuevo elemtno al final de un array
+
+    // data_energy.push([x, y_energy]); //añadir la 'y' de los sockets
+    // data_air.push([x, y_air]); //añadir la 'y' de los sockets
+    // data_weight.push([x, y_weight]); //añadir la 'y' de los sockets
     
     line_chart_energy.updateOptions( { 'file': data_energy } ); //actualiza el grafico con nuevos valores, los de data
     line_chart_air.updateOptions( { 'file': data_air } ); //actualiza el grafico con nuevos valores, los de data

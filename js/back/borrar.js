@@ -95,7 +95,11 @@ app.post('/', (req,res)=>{
             else {
                 console.log("> usuario o contraseña incorrectos");
                 res.status(400).send("Usuario o contraseña incorrectos");
-                io.emit('errorincor', 'error');
+                io.on('connection', (socket) => {
+                    console.log('> error de datos incorrectos enviado');
+                    socket.emit('errorincor', 'error');
+                  });
+                
             }
         });
     
@@ -105,7 +109,10 @@ app.post('/', (req,res)=>{
     else {
         console.log("> error: faltan datos");
         res.status(400).send("Error: Debe ingresar todos los valores");
-        io.emit('errordatos', 'error');
+        io.on('connection', (socket) => {
+            console.log('> error de falta de datos incorrectos enviado');
+            socket.emit('errordatos', 'error');
+          });
     }
     
 });

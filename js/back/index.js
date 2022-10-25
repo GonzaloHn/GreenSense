@@ -108,8 +108,10 @@ client.on('message', function(topic, message){
         basura = message.toString();
 
         //Mandar valores a front
-        console.log ('> dato de basura enviado');
-        io.emit('basura', basura);
+        io.on('connection', (socket) => {
+            console.log('> dato de basura enviado');
+            socket.emit('basura', basura);
+          });
 
         //Esto mandaria muchos mails, tiene que mandar solo uno (ademas no se si manda mails a todos bien)
         if (basura > 20)
@@ -156,8 +158,10 @@ client.on('message', function(topic, message){
         aire = message.toString();
 
         //Mandar valores a front
-        console.log ('> dato de aire enviado');
-        io.emit('aire', aire);
+        io.on('connection', (socket) => {
+            console.log('> dato de aire enviado');
+            socket.emit('aire', aire);
+          });
 
         //Insertar valores a DB
         conexion.query(`INSERT INTO aire (fecha, hora, valor) VALUES (${fecha} ,${hora} ,${aire} )`, function (error,results,fields){
@@ -175,8 +179,10 @@ client.on('message', function(topic, message){
         energia = message.toString();
 
         //Mandar valores a front
-        console.log ('> dato de energia enviado');
-        io.emit('energia', energia);
+        io.on('connection', (socket) => {
+            console.log('> dato de energia enviado');
+            socket.emit('energia', energia);
+          });
 
         //Insertar valores a DB
         conexion.query(`INSERT INTO energia (fecha, hora, valor) VALUES (${fecha} ,${hora} ,${energia} )`, function (error,results,fields){

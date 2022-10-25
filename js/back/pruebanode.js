@@ -38,11 +38,12 @@ io.on('connection', (socket) => {
   socket.emit('basura', basura);
 });
 
+
 //Mandar valores a front (a todos los clientes)
 
-// console.log('dato de basura enviado');
-// io.emit('basura', basura);
-
+console.log('dato de basura enviado');
+io.emit('basura', basura);
+//socket.emit('basura', basura);
 
 // .---------------------------------------------------------------------------------
 

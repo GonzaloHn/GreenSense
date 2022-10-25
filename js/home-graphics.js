@@ -195,14 +195,15 @@ if(changeGraphic == 1){
 //Sockets
 var socket = io('http://localhost:9000');
 
-socket.on('energia', (data_s_energy) =>{
-    console.log("Socket enegía: " + data_s_energy);
-})
-socket.on('aire', (data_s_air) =>{
-    console.log("Socket calidad aire: " + data_s_air);
-})
-socket.on('basura', (data_s_weight) =>{
-    console.log("Socket peso: " + data_s_weight);
+// socket.on('energia', (data_s_energy) =>{
+//     console.log("Socket enegía: " + data_s_energy);
+// })
+// socket.on('aire', (data_s_air) =>{
+//     console.log("Socket calidad aire: " + data_s_air);
+// })
+socket.on('basura', (dataa) =>{
+    console.log(dataa);
+    alert(dataa);
 })
 
 
@@ -213,7 +214,7 @@ if(dynamicUpdate == 1){
 
     // var y_energy = data_s_energy; //y de los sockets, prueba
     // var y_air = data_s_air; //y de los sockets, prueba
-    // var y_weight = data_s_weight; //y de los sockets, prueba
+    // var y_weight = data; //y de los sockets, prueba
 
     data_energy.shift(); //remueve el primer dato del array, adelantando a todos los demas por uno adelante
     data_energy.push([x, y]); //añade un nuevo elemtno al final de un array

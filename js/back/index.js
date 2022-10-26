@@ -120,6 +120,10 @@ client.on('message', function(topic, message){
         if (basura < optimobasura)
         {
             basura = optimobasura;
+            io.on('connection', (socket) => {
+                console.log('> dato de basura optima enviado');
+                socket.emit('optimobasura', optimobasura);
+            });
         }
     
 
@@ -162,11 +166,9 @@ client.on('message', function(topic, message){
     }
 
      //REGISTRO AIRE
-<<<<<<< Updated upstream
-     if (topic == "G-Air"){
-=======
-    if (topic == "GreenSense/aire"){
->>>>>>> Stashed changes
+
+    if (topic == "G-Air"){
+
         //guardar valores (para posteriormente subirlo al grafico)
         fecha = date.toLocaleDateString();
         hora = time.toLocaleTimeString();
@@ -181,6 +183,10 @@ client.on('message', function(topic, message){
         if (aire < optimoaire)
         {
             aire = optimoaire;
+            io.on('connection', (socket) => {
+                console.log('> dato de aire optimo enviado');
+                socket.emit('optimoaire', optimoaire);
+            });
         }
 
         //Insertar valores a DB
@@ -199,14 +205,15 @@ client.on('message', function(topic, message){
         energia = message.toString();
 
         //Mandar valores a front
-        io.on('connection', (socket) => {
-            console.log('> dato de energia enviado');
-            socket.emit('energia', energia);
-        });
+         
 
         if (energia < optimoenergia)
         {
             energia = optimoenergia;
+            io.on('connection', (socket) => {
+                console.log('> dato de energia optima enviado');
+                socket.emit('optimoenergia', optimoenergia);
+            });
         }
 
         //Insertar valores a DB

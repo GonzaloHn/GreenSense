@@ -34,15 +34,37 @@ let basura = 10;
 //Pasa valores a front si recibe conexion 
 
 io.on('connection', (socket) => {
-  console.log('dato de basura enviado');
+  console.log('> dato de basura enviado');
   socket.emit('basura', basura);
 });
 
+io.on('connection', (socket) => {
+  console.log('> dato de basura enviado');
+  socket.emit('basura', basura++);
+});
+io.on('connection', (socket) => {
+  console.log('> dato de basura enviado');
+  socket.emit('basura', basura++);
+});
+
+
+
+
+
+io.on('connection', (socket) => {
+  console.log('> dato de energia enviado');
+  socket.emit('energia', '12000');
+});
+
+io.on('connection', (socket) => {
+  console.log('> dato de aire enviado');
+  socket.emit('aire', '3000');
+});
 
 //Mandar valores a front (a todos los clientes)
 
-console.log('dato de basura enviado');
-io.emit('basura', basura);
+//console.log('dato de basura enviado');
+//io.emit('basura', basura);
 //socket.emit('basura', basura);
 
 // .---------------------------------------------------------------------------------

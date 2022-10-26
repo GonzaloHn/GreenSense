@@ -12,6 +12,9 @@ let hora = "";
 let basura = "";
 let energia = "";
 let aire = "";
+let optimobasura = 1;
+let optimoenergia = 1;
+let optimoaire = 1;
 
 //Variables mysql
 const mysql = require ('mysql');
@@ -112,11 +115,17 @@ client.on('message', function(topic, message){
         io.on('connection', (socket) => {
             console.log('> dato de basura enviado');
             socket.emit('basura', basura);
-          });
+        });
+
+        if (basura < optimobasura)
+        {
+            basura = optimobasura;
+        }
+    
 
         //Esto mandaria muchos mails, tiene que mandar solo uno (ademas no se si manda mails a todos bien)
-        if (basura > 20)
-        {
+        
+        if (basura > 500) {
             conexion.query('SELECT gmail FROM usuarios', function (err, res) {
                 email = res;
             })
@@ -147,12 +156,17 @@ client.on('message', function(topic, message){
                 }
             });
         }
+        
         //Cada vez que llegue valor se va a reiniciar timer (no va a funcionar)
         //basuraDB();
     }
 
      //REGISTRO AIRE
+<<<<<<< Updated upstream
      if (topic == "G-Air"){
+=======
+    if (topic == "GreenSense/aire"){
+>>>>>>> Stashed changes
         //guardar valores (para posteriormente subirlo al grafico)
         fecha = date.toLocaleDateString();
         hora = time.toLocaleTimeString();
@@ -162,7 +176,12 @@ client.on('message', function(topic, message){
         io.on('connection', (socket) => {
             console.log('> dato de aire enviado');
             socket.emit('aire', aire);
-          });
+        });
+
+        if (aire < optimoaire)
+        {
+            aire = optimoaire;
+        }
 
         //Insertar valores a DB
         conexion.query(`INSERT INTO aire (fecha, hora, valor) VALUES (${fecha} ,${hora} ,${aire} )`, function (error,results,fields){
@@ -183,7 +202,12 @@ client.on('message', function(topic, message){
         io.on('connection', (socket) => {
             console.log('> dato de energia enviado');
             socket.emit('energia', energia);
-          });
+        });
+
+        if (energia < optimoenergia)
+        {
+            energia = optimoenergia;
+        }
 
         //Insertar valores a DB
         conexion.query(`INSERT INTO energia (fecha, hora, valor) VALUES (${fecha} ,${hora} ,${energia} )`, function (error,results,fields){
@@ -191,8 +215,7 @@ client.on('message', function(topic, message){
             throw error;
             console.log("> registro de energia insertado");  
         });   
-     }
-     
+    }     
 
     //conexion.end();
     //client.end()

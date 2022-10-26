@@ -876,23 +876,23 @@ td, th{
     border-radius: 0px 0px 1000px 0px;
     background: green;
 }
-.cuadro{
+.background-logo{
     position: absolute;
-    width: 860px;
-    height: 100vh;
-    -moz-border-radius: 0 50% / 0 100%;
-    -webkit-border-radius: 0 50% / 0 100%;
-    border-radius: 0px 0px 1000px 0px;
-    background: green;
-    margin-top: 340px;
-    /* margin-top: -30px;
-    width: 860px;
+    right: 0;
+    margin-top: -50px;
+    width:800px;
+    z-index: -1;
+    overflow: hidden;
+    animation: rotation 10s infinite linear;
+}
 
-    height: calc(100vh - 75px);
- 
-    background: #d9d9d9;
- 
-    border-radius: 1000px 0px 0px 0px;  */
+@keyframes rotation {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(359deg);
+    }
 }
 @media only screen and (max-width: 858px){
     .cuadro{

@@ -1,6 +1,8 @@
+#include <Adafruit_MQTT.h>
+#include <Adafruit_MQTT_Client.h>
+#include <Adafruit_MQTT_FONA.h>
 #include <MQ135.h>
 #include <ESP8266WiFi.h>
-#include <Adafruit_MQTT.h>
 
 
 #define WLAN_SSID       ""
@@ -13,7 +15,8 @@
 #define AIO_KEY       ""
 
 WiFiClient client;
-Adafruit_MQTT_Client mqtt(&client, AIO_SERVER, AIO_SERVERPORT, AIO_USERNAME, AIO_USERNAME, AIO_KEY);
+
+Adafruit_MQTT_Client mqtt(&client, AIO_SERVER, AIO_SERVERPORT, AIO_USERNAME, AIO_KEY);
 Adafruit_MQTT_Publish G_Air = Adafruit_MQTT_Publish(&mqtt, AIO_USERNAME "/feeds/G_Air");
 
 void MQTT_connect();
@@ -46,7 +49,7 @@ Serial.print(air_quality);
   } else {
     Serial.println(F(" OK!"));
   }
- delay(5000);
+ delay(1000);
 }
 void MQTT_connect() {
   int8_t ret;

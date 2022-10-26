@@ -63,7 +63,7 @@ const client = mqtt.connect('mqtt://io.adafruit.com', {
     //username: 'Soficasares', 
     //password: 'aio_MrNz95gaeOlLSkBTwzS3xyQrgBII'
     username: 'SantiR', 
-    password: 'aio_NDug04yb9PQpvqkV81gFzyWRhMPv'
+    password: 'aio_YPHY89pviqnN5VscYugHsos3Kdd4'
 }); 
 
 
@@ -82,7 +82,8 @@ client.on('connect', function(){
 
     console.log("> conectado a broker de adafruit");
 
-    client.subscribe('G/#', function (err) {
+    //o /g-air -- tambien ver de que el feed se llame g/air asi me suscribo a g/# (si no anda /f poner /feeds)
+    client.subscribe('SantiR/f/G_Air', function (err) {
 
         if (!err){
             console.log ("> suscrito a topico/s, escuchando...");
@@ -151,7 +152,7 @@ client.on('message', function(topic, message){
     }
 
      //REGISTRO AIRE
-     if (topic == "GreenSense/aire"){
+     if (topic == "G-Air"){
         //guardar valores (para posteriormente subirlo al grafico)
         fecha = date.toLocaleDateString();
         hora = time.toLocaleTimeString();

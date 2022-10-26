@@ -5,7 +5,7 @@
 #include <ESP8266WiFi.h>
 
 
-#define WLAN_SSID       ""
+#define WLAN_SSID       "Familia Resnik"
 #define WLAN_PASS       ""
 
 
@@ -17,7 +17,7 @@
 WiFiClient client;
 
 Adafruit_MQTT_Client mqtt(&client, AIO_SERVER, AIO_SERVERPORT, AIO_USERNAME, AIO_KEY);
-Adafruit_MQTT_Publish G_Air = Adafruit_MQTT_Publish(&mqtt, AIO_USERNAME "/feeds/G_Air");
+Adafruit_MQTT_Publish G_Air = Adafruit_MQTT_Publish(&mqtt, AIO_USERNAME "/feeds/g-air");
 
 void MQTT_connect();
 
@@ -42,14 +42,14 @@ void loop() {
   MQTT_connect();
   // put your main code here, to run repeatedly:
 MQ135 gasSensor = MQ135(A0);
-float air_quality = gasSensor.getPPM();
+float air_quality = gasSensor.getPPM() / 1000;
 Serial.print(air_quality);
   if (! G_Air.publish(air_quality)) {
     Serial.println(F("Failed"));
   } else {
     Serial.println(F(" OK!"));
   }
- delay(1000);
+ delay(2500);
 }
 void MQTT_connect() {
   int8_t ret;

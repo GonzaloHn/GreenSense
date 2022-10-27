@@ -54,41 +54,43 @@ app.post('/', (req,res)=>{
             if (results.length > 0) {
 
                 //no se si esto agarra bien mail para enviarle a user
-                conexion.query('SELECT gmail FROM usuarios WHERE usuario = ? AND contrasenia = ?' [user, pass], function (err, res) {
-                    email = res;
-                    console.log(email);
+                conexion.query('SELECT gmail FROM usuarios WHERE usuario = ?', [user], function (err, result) {
+                    email = result.gmail;
+
+                    conexion.query('DELETE FROM usuarios WHERE usuario = ? AND contrasenia = ?', [user, pass]);
+                    console.log("> usuario borrado");
+                    res.redirect("http://localhost/GreenSense/html");
+
+                    transporter = nodemailer.createTransport({
+                        host: "smtp.gmail.com",
+                        port: 465,
+                        secure: true,
+                        auth: {
+                            user: "greensense22@gmail.com",
+                            pass: "tsagmhszxpxreyck",
+                        },
+                    });
+
+                    mailOptions = {
+                        from: "Remitente",
+                        to: email,
+                        subject: "Cuenta borrada en Green Sense",
+                        text: "Su cuenta de Green Sense ha sido borrada exitosamente.",
+                    };
+                    
+                    transporter.sendMail(mailOptions, (error, info) => {
+                        if (error) {
+                            console.log ("> error enviando mail de borrado de cuenta");
+                            //res.status(400).send("Error: El mail de registración no ha podido ser enviado");   
+                        }
+                        else {
+                            console.log ("> mail de borrado de cuenta enviado");
+                        }
+                    });
+
                 })
 
-                conexion.query('DELETE FROM usuarios WHERE usuario = ? AND contrasenia = ?', [user, pass]);
-                console.log("> usuario borrado");
-                res.redirect("http://localhost/GreenSense/html");
-
-                transporter = nodemailer.createTransport({
-                    host: "smtp.gmail.com",
-                    port: 465,
-                    secure: true,
-                    auth: {
-                        user: "greensense22@gmail.com",
-                        pass: "tsagmhszxpxreyck",
-                    },
-                });
-
-                mailOptions = {
-                    from: "Remitente",
-                    to: email,
-                    subject: "Cuenta borrada en Green Sense",
-                    text: "Su cuenta de Green Sense ha sido borrada exitosamente.",
-                };
                 
-                transporter.sendMail(mailOptions, (error, info) => {
-                    if (error) {
-                        console.log ("> error enviando mail de borrado de cuenta");
-                        //res.status(400).send("Error: El mail de registración no ha podido ser enviado");   
-                    }
-                    else {
-                        console.log ("> mail de borrado de cuenta enviado");
-                    }
-                });
 
             }
 

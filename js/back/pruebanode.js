@@ -72,8 +72,9 @@ io.on('connection', (socket) => {
 
 const mysql = require ('mysql');
 
-let user = "mailNOrepe";
-let pass = "norepeaver";
+let user = "prueba3000";
+let pass = "aasdasd";
+let email = "";
 
 const conexion  = mysql.createConnection({
   
@@ -84,9 +85,12 @@ const conexion  = mysql.createConnection({
 
 });
 
-conexion.query('SELECT * FROM usuarios WHERE usuario = ?' [user], function (err, res, rows) {
-  console.log (rows);
-  //let email = res;
-  //console.log(email);
+conexion.query('SELECT gmail FROM usuarios WHERE usuario = ?', [user], function (err, res) {
+
+  if (err) throw err;
+
+  email = res;
+  console.log(email);
+
 })
 

@@ -3,7 +3,7 @@ const express = require('express');
 const app = express();
 const port = 9000; //necesitaria poner otro puerto aca
 const server = app.listen (port, () => {
-    console.log (`> servidor en puerto ${port}, escuchando registro...`);
+    console.log (`> servidor en puerto ${port}, escuchando borrar...`);
 });;
 
 //Variables socket
@@ -56,6 +56,7 @@ app.post('/', (req,res)=>{
                 //no se si esto agarra bien mail para enviarle a user
                 conexion.query('SELECT gmail FROM usuarios WHERE usuario = ? AND contrasenia = ?' [user, pass], function (err, res) {
                     email = res;
+                    console.log(email);
                 })
 
                 conexion.query('DELETE FROM usuarios WHERE usuario = ? AND contrasenia = ?', [user, pass]);

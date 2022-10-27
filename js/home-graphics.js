@@ -89,14 +89,15 @@ var data_weight = [];
 var t = new Date();
 for (var i = 10; i >= 0; i--) {
     var x = new Date(t.getTime() - i * 1000);
-    data_energy.push([x, Math.random()]);
-    data_air.push([x, Math.random()]);
-    data_weight.push([x, Math.random()]);
+    var ran = Math.random();
+    data_energy.push([x, ran, ran + 1]);
+    data_air.push([x, ran, ran + 1]);
+    data_weight.push([x, ran, ran + 1]);
 } // todo esto sirve para agarrar el momento actual y guardarlo en el data de arriba
 
-var line_chart_energy = new Dygraph(document.getElementById("graph-energy"), data_energy, {width:600, height:400, color:"gold"}); //crea el nuevo grafico
-var line_chart_air = new Dygraph(document.getElementById("graph-air"), data_air, {width:600, height:400, color:"blue"}); //crea el nuevo grafico
-var line_chart_weight = new Dygraph(document.getElementById("graph-weight"), data_weight, {width:600, height:400, color:"red"}); //crea el nuevo grafico
+var line_chart_energy = new Dygraph(document.getElementById("graph-energy"), data_energy, {width:600, height:400, colors:["gold", "black"]}); //crea el nuevo grafico
+var line_chart_air = new Dygraph(document.getElementById("graph-air"), data_air, {width:600, height:400, colors:["blue", "black"]}); //crea el nuevo grafico
+var line_chart_weight = new Dygraph(document.getElementById("graph-weight"), data_weight, {width:600, height:400, colors:["red", "black"]}); //crea el nuevo grafico
 
 //Variables para jquery
 var graphNum = 1;
@@ -205,6 +206,17 @@ socket.on('basura', (data_s_weight) =>{
     console.log("Socket basura: " + data_s_weight);
 })
 
+//Sockets - valores óptimos
+socket.on('optimoenergia', (data_o_energy) =>{
+    console.log("El valor óptimo de energía es: " + data_o_energy);
+})
+ socket.on('optimoaire', (data_o_air) =>{
+     console.log("El valor óptimo de calidad de aire es: " + data_o_air);
+})
+socket.on('optimobasura', (data_o_weight) =>{
+    console.log("El valor óptimo de basura es: " + data_o_weight);
+})
+
 
 window.setInterval(function() {
 if(dynamicUpdate == 1){
@@ -216,13 +228,13 @@ if(dynamicUpdate == 1){
     // var y_weight = data; //y de los sockets, prueba
 
     data_energy.shift(); //remueve el primer dato del array, adelantando a todos los demas por uno adelante
-    data_energy.push([x, y]); //añade un nuevo elemtno al final de un array
+    data_energy.push([x, y, y + 1]); //añade un nuevo elemtno al final de un array
     
     data_air.shift(); //remueve el primer dato del array, adelantando a todos los demas por uno adelante
-    data_air.push([x, y]); //añade un nuevo elemtno al final de un array
+    data_air.push([x, y, y + 1]); //añade un nuevo elemtno al final de un array
     
     data_weight.shift(); //remueve el primer dato del array, adelantando a todos los demas por uno adelante
-    data_weight.push([x, y]); //añade un nuevo elemtno al final de un array
+    data_weight.push([x, y, y + 1]); //añade un nuevo elemtno al final de un array
 
     // data_energy.push([x, y_energy]); //añadir la 'y' de los sockets
     // data_air.push([x, y_air]); //añadir la 'y' de los sockets

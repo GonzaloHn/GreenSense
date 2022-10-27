@@ -252,7 +252,7 @@ ul.show{
     z-index: 2;
     color: white;
 
-    width: 120px;
+    width: 130px;
     /* font-size: 30px; */
     display: flex;
     text-align: center;
@@ -287,6 +287,9 @@ ul.show{
     font-weight: 400;
     font-size: 18px;
     margin-top:10px;
+}
+.form-input-definition i{
+    margin-right: 7px;
 }
 .form-input div input{
     font-size: 15px;
@@ -334,7 +337,7 @@ ul.show{
 
 /*Registrar - Responsive*/
 
-@media only screen and (max-width: 858px){
+@media only screen and (max-width: 1058px){
     .form-wrap{
         width: 70vw;
         height: 530px;
@@ -363,7 +366,7 @@ ul.show{
     }
     .form-info{
         width: 100%;
-        height:30%;
+        height:35%;
         position: relative;
         display: flex;
         flex-direction: column;
@@ -380,7 +383,6 @@ ul.show{
         z-index: 2;
         color: white;
 
-        margin-top: 10px;
         margin-bottom: 10px;
 
         font-size: calc(2em + 0.5vw);
@@ -398,17 +400,18 @@ ul.show{
         text-align: center;
     }
     .form-icon{
+        margin-top: 25px;
         position: relative;
         z-index: 2;
         color: white;
     
-        font-size: 20px;
+        width: 70px;
         display: flex;
         text-align: center;
     }
     
     .form{
-        height:70%;
+        height:65%;
         width: 100%;
         display: flex;
         flex-direction: column;
@@ -425,12 +428,52 @@ ul.show{
     .form-input div input{
         background-color: rgb(230, 235, 225);
         margin-bottom: 20px;
-        padding: 8px 0px 5px;
+        padding: 8px 0px 6px 90px;
+
+        border-style: none;
+        border-bottom: 2px solid black;
+        width: 70%;  
+    }
+}
+
+@media only screen and (max-width: 745px){
+    .form{
+        height:65%;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        padding: 0 40px;
+    }
+    .form-input div input{
+        background-color: rgb(230, 235, 225);
+        margin-bottom: 20px;
+        padding: 8px 0px 6px;
 
         border-style: none;
         border-bottom: 2px solid black;
         width: 100%;  
     }
+}
+
+@media only screen and (max-width: 420px){
+.upload-button{
+    width:100px;
+    background: green;
+    padding: 10px;
+    border:none;
+    border-radius: 25px;
+
+    margin:auto;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color:white;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+}
 }
 
 /*Borrar cuenta*/
@@ -878,12 +921,13 @@ td, th{
 }
 .background-logo{
     position: absolute;
+    margin-right: 330px;
     right: 0;
-    margin-top: -50px;
-    width:800px;
+    margin-top: -340px;
+    width:1000px;
     z-index: -1;
     overflow: hidden;
-    animation: rotation 10s infinite linear;
+    animation: rotation 20s infinite linear;
 }
 
 @keyframes rotation {

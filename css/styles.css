@@ -521,12 +521,13 @@ ul.show{
     z-index: 2;
     color: white;
 
-    margin-top: 10px;
-    margin-bottom: 10px;
+    margin-top: 8px;
+    margin-bottom: 5px;
 
-    font-size: 50px;
+    font-size: calc(2em + 0.5vw);
     display: block;
     text-align: center;
+    
 }
 .login-text{
     position: relative;
@@ -543,7 +544,7 @@ ul.show{
     z-index: 2;
     color: white;
 
-    font-size: 20px;
+    width: 70px;
     display: flex;
     text-align: center;
 }
@@ -569,6 +570,12 @@ ul.show{
     font-size: 18px;
 
 }
+.login-input-definition-first i{
+    margin-right: 7px;
+}
+.login-input-definition i{
+    margin-right: 7px;
+}
 .login-input div input{
     background-color: rgb(230, 235, 225);
     margin-bottom: 30px;
@@ -584,8 +591,28 @@ ul.show{
     outline: none;
 }
 
+.delete-button{
+    margin-top: 20px;
+    width:180px;
+    background: green;
+    padding: 10px;
+    border:none;
+    border-radius: 25px;
+
+    align-self: flex-end;
+
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color:white;
+    font-family: 16px;
+    font-weight: 600;
+    cursor: pointer;
+}
+.delete-button:hover{
+    background: rgb(50, 160, 50);
+}
+
 /*Borrar cuenta - responsive*/
-@media only screen and (max-width: 858px){
+@media only screen and (max-width: 700px){
     .login-wrap{
         width: 70vw;
         height: 530px;
@@ -630,7 +657,24 @@ ul.show{
         text-align: center;
     }
 }
-
+@media only screen and (max-width: 420px){
+    .delete-button{
+        width:100px;
+        background: green;
+        padding: 10px;
+        border:none;
+        border-radius: 25px;
+        margin-top: 10px;
+    
+        align-self:flex-end;
+    
+        font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        color:white;
+        font-size: 14px;
+        font-weight: 600;
+        cursor: pointer;
+    }
+    }
 /*Cuenta creada*/
 .creada-wrap{
     width: 75vw;
@@ -765,11 +809,12 @@ ul.show{
     background-color:white;
 }
 .control-icons i{
-    margin: 0 5px;
+    margin: 0 7px;
     cursor: pointer;
     color:black;
     transition-duration: 0.4s;
 }
+
 .control-icons i:hover{
     color:green;
 }

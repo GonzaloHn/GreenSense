@@ -75,6 +75,12 @@ const mysql = require ('mysql');
 let user = "prueba3000";
 let pass = "aasdasd";
 let email = "";
+let emails = "";
+
+//Variables nodemailer
+const nodemailer = require ('nodemailer');
+let transporter;
+let mailOptions;
 
 const conexion  = mysql.createConnection({
   
@@ -88,9 +94,45 @@ const conexion  = mysql.createConnection({
 conexion.query('SELECT gmail FROM usuarios', function (err, res) {
 
   if (err) throw err;
+  
 
   email = JSON.parse(JSON.stringify(res));
-  console.log(email);
+  
+   emails = email.map(function (obj) {
+     return (obj.gmail);
+  });
+
+  transporter = nodemailer.createTransport({
+    host: "smtp.gmail.com",
+    port: 465,
+    secure: true,
+    auth: {
+        user: "greensense22@gmail.com",
+        pass: "tjdngfvodfqdlsbn",
+    },
+  });
+
+  mailOptions = {
+      from: "Remitente",
+      to: emails,
+      subject: "Green Sense: Basura inoptima",
+      text: "La basura pasa los x kg.",
+  };
+
+  transporter.sendMail(mailOptions, (error, info) => {
+      if (error) {
+          console.log ("> error enviando mail de registracion");
+          //res.status(400).send("Error: El mail de registración no ha podido ser enviado");   
+      }
+      else {
+          console.log ("> mail de registracion enviado");
+      }
+  });
+  
+  //console.log (emails);
+  //console.log(email[0].gmail);
+
+
 
 })
 

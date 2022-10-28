@@ -23,6 +23,8 @@ const mysql = require ('mysql');
 const nodemailer = require ('nodemailer');
 let transporter;
 let mailOptions;
+let email = "";
+let emils = "";
 
 //Variables express
 const express = require('express');
@@ -132,7 +134,11 @@ client.on('message', function(topic, message){
         if (basura > 500) {
             conexion.query('SELECT gmail FROM usuarios', function (err, result) {
                 
-                email = result; //aca tengo que hacer que me pase todos los objetos a array
+                email = JSON.parse(JSON.stringify(result));
+
+                emails = email.map(function (obj) {
+                    return (obj.gmail);
+                });
 
                 transporter = nodemailer.createTransport({
                     host: "smtp.gmail.com",
@@ -146,23 +152,21 @@ client.on('message', function(topic, message){
     
                 mailOptions = {
                     from: "Remitente",
-                    to: email,
+                    to: emails,
                     subject: "Green Sense: Basura inoptima",
                     text: "La basura pasa los x kg.",
                 };
                 
                 transporter.sendMail(mailOptions, (error, info) => {
                     if (error) {
-                        console.log ("> error enviando mail de registracion");
+                        console.log ("> error enviando mail de basura inoptima");
                         //res.status(400).send("Error: El mail de registración no ha podido ser enviado");   
                     }
                     else {
-                        console.log ("> mail de registracion enviado");
+                        console.log ("> mail de basura inoptima enviado");
                     }
                 });
-
-            })
-            
+            })   
         }
         
         //Cada vez que llegue valor se va a reiniciar timer (no va a funcionar)
@@ -193,6 +197,44 @@ client.on('message', function(topic, message){
             });
         }
 
+        if (aire > 60) {
+            conexion.query('SELECT gmail FROM usuarios', function (err, result) {
+                
+                email = JSON.parse(JSON.stringify(result));
+
+                emails = email.map(function (obj) {
+                    return (obj.gmail);
+                });
+
+                transporter = nodemailer.createTransport({
+                    host: "smtp.gmail.com",
+                    port: 465,
+                    secure: true,
+                    auth: {
+                        user: "greensense22@gmail.com",
+                        pass: "tjdngfvodfqdlsbn",
+                    },
+                });
+    
+                mailOptions = {
+                    from: "Remitente",
+                    to: emails,
+                    subject: "Green Sense: aire inoptim",
+                    text: "El aire pasa los 60 ICA.",
+                };
+                
+                transporter.sendMail(mailOptions, (error, info) => {
+                    if (error) {
+                        console.log ("> error enviando mail de aire inoptimo");
+                        //res.status(400).send("Error: El mail de registración no ha podido ser enviado");   
+                    }
+                    else {
+                        console.log ("> mail de aire inoptimo enviado");
+                    }
+                });
+            })   
+        }
+
         //Insertar valores a DB
         conexion.query(`INSERT INTO aire (fecha, hora, valor) VALUES (${fecha} ,${hora} ,${aire} )`, function (error,results,fields){
             if (error)
@@ -218,6 +260,44 @@ client.on('message', function(topic, message){
                 console.log('> dato de energia optima enviado');
                 socket.emit('optimoenergia', optimoenergia);
             });
+        }
+
+        if (eergia > 500) {
+            conexion.query('SELECT gmail FROM usuarios', function (err, result) {
+                
+                email = JSON.parse(JSON.stringify(result));
+
+                emails = email.map(function (obj) {
+                    return (obj.gmail);
+                });
+
+                transporter = nodemailer.createTransport({
+                    host: "smtp.gmail.com",
+                    port: 465,
+                    secure: true,
+                    auth: {
+                        user: "greensense22@gmail.com",
+                        pass: "tjdngfvodfqdlsbn",
+                    },
+                });
+    
+                mailOptions = {
+                    from: "Remitente",
+                    to: emails,
+                    subject: "Green Sense: energia inoptima",
+                    text: "La energia pasa los x kwh.",
+                };
+                
+                transporter.sendMail(mailOptions, (error, info) => {
+                    if (error) {
+                        console.log ("> error enviando mail de energia inoptima");
+                        //res.status(400).send("Error: El mail de registración no ha podido ser enviado");   
+                    }
+                    else {
+                        console.log ("> mail de energia inoptima enviado");
+                    }
+                });
+            })   
         }
 
         //Insertar valores a DB

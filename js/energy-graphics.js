@@ -1,3 +1,9 @@
+var socket = io('http://localhost:9000');
+
+socket.on('energia', (data_s_energy) =>{
+  console.log("Socket enegía: " + data_s_energy);
+})
+
 // setup 
 const data = {
     labels: [

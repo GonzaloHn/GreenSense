@@ -1,3 +1,9 @@
+var socket = io('http://localhost:9000');
+
+socket.on('basura', (data_s_weight) =>{
+  console.log("Socket basura: " + data_s_weight);
+})
+
 // setup 
 const data = {
     labels: [

@@ -82,6 +82,31 @@
 // });
 // });
 
+//Sockets
+var socket = io('http://localhost:9000');
+
+socket.on('energia', (data_s_energy) =>{
+    console.log("Socket enegía: " + data_s_energy);
+})
+ socket.on('aire', (data_s_air) =>{
+     console.log("Socket calidad aire: " + data_s_air);
+})
+socket.on('basura', (data_s_weight) =>{
+    console.log("Socket basura: " + data_s_weight);
+})
+
+//Sockets - valores óptimos
+socket.on('optimoenergia', (data_o_energy) =>{
+    console.log("El valor óptimo de energía es: " + data_o_energy);
+})
+ socket.on('optimoaire', (data_o_air) =>{
+     console.log("El valor óptimo de calidad de aire es: " + data_o_air);
+})
+socket.on('optimobasura', (data_o_weight) =>{
+    console.log("El valor óptimo de basura es: " + data_o_weight);
+})
+
+// Setear DyGraph
 var data_energy = [];
 var data_air = [];
 var data_weight = [];
@@ -93,7 +118,7 @@ for (var i = 10; i >= 0; i--) {
     data_energy.push([x, ran, ran + 1]);
     data_air.push([x, ran, ran + 1]);
     data_weight.push([x, ran, ran + 1]);
-} // todo esto sirve para agarrar el momento actual y guardarlo en el data de arriba
+} 
 
 var line_chart_energy = new Dygraph(document.getElementById("graph-energy"), data_energy, {width:600, height:400, colors:["gold", "black"]}); //crea el nuevo grafico
 var line_chart_air = new Dygraph(document.getElementById("graph-air"), data_air, {width:600, height:400, colors:["blue", "black"]}); //crea el nuevo grafico
@@ -107,10 +132,32 @@ var fadeInNum = 350;
 
 //Codigo funciones jquery
 $(document).ready(function(){
+    
+    //Funcion de las configuraciones
+    $(".config-tab-wrap").hide();
 
+    $("#config-g").click(function(){
+        $(".config-tab-wrap").show();
+    });
+    $(".config-tab-close").click(function(){
+        $(".config-tab-wrap").hide();
+    });
+
+    //Cambiar los ValNow
+    setInterval(swapValNow,1000);
+    function swapValNow(){
+        if(data_s_energy != Null){
+            $("#ValNow_energy").html("Valor actual: " + data_s_energy);
+            $("#ValNow_air").html("Valor actual: " + data_s_air);
+            $("#ValNow_weight").html("Valor actual: " + data_s_weight);
+        }
+    }
+
+    //Esconder gráficos
     $("#hide-a-g").hide();
     $("#hide-w-g").hide();
 
+    //Cambiar gráficos
     $("#change-g").click(function(){
         if (graphNum == 1){
             //$("#hide-e-g").fadeOut(050);
@@ -151,6 +198,7 @@ $(document).ready(function(){
         }
     });
 
+    //Pausar gráficos
     $("#play-g").hide();
     $("#pause-g").click(function(){
 
@@ -192,30 +240,6 @@ if(changeGraphic == 1){
     }
 }
 }, 10000);
-
-//Sockets
-var socket = io('http://localhost:9000');
-
-socket.on('energia', (data_s_energy) =>{
-    console.log("Socket enegía: " + data_s_energy);
-})
- socket.on('aire', (data_s_air) =>{
-     console.log("Socket calidad aire: " + data_s_air);
-})
-socket.on('basura', (data_s_weight) =>{
-    console.log("Socket basura: " + data_s_weight);
-})
-
-//Sockets - valores óptimos
-socket.on('optimoenergia', (data_o_energy) =>{
-    console.log("El valor óptimo de energía es: " + data_o_energy);
-})
- socket.on('optimoaire', (data_o_air) =>{
-     console.log("El valor óptimo de calidad de aire es: " + data_o_air);
-})
-socket.on('optimobasura', (data_o_weight) =>{
-    console.log("El valor óptimo de basura es: " + data_o_weight);
-})
 
 
 window.setInterval(function() {

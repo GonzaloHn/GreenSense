@@ -1,3 +1,9 @@
+var socket = io('http://localhost:9000');
+
+socket.on('aire', (data_s_air) =>{
+  console.log("Socket calidad aire: " + data_s_air);
+})
+
 // setup 
 const data = {
     labels: [

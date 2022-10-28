@@ -45,12 +45,16 @@ $(document).ready(function(){
 });
 
 // var num = 1;
-var socket = io('http://localhost:9000');
 
-socket.on('basura', (data) =>{
-    alert(data);
-    console.log(data);
-})
+
+// var socket = io('http://localhost:9000');
+
+// socket.on('basura', (data) =>{
+//     alert(data);
+//     console.log(data);
+// })
+
+
 // io.on('connection'), socket => {
 //     console.log('User')
 //     socket.emit('message', "Hello")

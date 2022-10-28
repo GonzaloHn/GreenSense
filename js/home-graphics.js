@@ -132,7 +132,7 @@ var fadeInNum = 350;
 
 //Codigo funciones jquery
 $(document).ready(function(){
-    
+    $(".carga-tab-wrap").hide();
     //Funcion de las configuraciones
     $(".config-tab-wrap").hide();
 
@@ -249,20 +249,24 @@ if(dynamicUpdate == 1){
 
     // var y_energy = data_s_energy; //y de los sockets, prueba
     // var y_air = data_s_air; //y de los sockets, prueba
-    // var y_weight = data; //y de los sockets, prueba
+    // var y_weight = data_s_weight; //y de los sockets, prueba
+
+    // var y_opt_energy = data_o_energy; //y de los sockets optimo, prueba
+    // var y_opt_air = data_o_air; //y de los sockets optimo, prueba
+    // var y_opt_weight = data_o_weight; //y de los sockets optimo, prueba
 
     data_energy.shift(); //remueve el primer dato del array, adelantando a todos los demas por uno adelante
     data_energy.push([x, y, y + 1]); //añade un nuevo elemtno al final de un array
+    // data_energy.push([x, y_energy, y_opt_energy]); //añade un nuevo elemtno al final de un array
     
     data_air.shift(); //remueve el primer dato del array, adelantando a todos los demas por uno adelante
     data_air.push([x, y, y + 1]); //añade un nuevo elemtno al final de un array
-    
+    // data_air.push([x, y_air, y_opt_air]); //añade un nuevo elemtno al final de un array
+
     data_weight.shift(); //remueve el primer dato del array, adelantando a todos los demas por uno adelante
     data_weight.push([x, y, y + 1]); //añade un nuevo elemtno al final de un array
+    // data_weight.push([x, y_weight, y_opt_weight]); //añade un nuevo elemtno al final de un array
 
-    // data_energy.push([x, y_energy]); //añadir la 'y' de los sockets
-    // data_air.push([x, y_air]); //añadir la 'y' de los sockets
-    // data_weight.push([x, y_weight]); //añadir la 'y' de los sockets
     
     line_chart_energy.updateOptions( { 'file': data_energy } ); //actualiza el grafico con nuevos valores, los de data
     line_chart_air.updateOptions( { 'file': data_air } ); //actualiza el grafico con nuevos valores, los de data

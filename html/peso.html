@@ -17,11 +17,23 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js" integrity="sha512-ElRFoEQdI5Ht6kZvyzXhYG9NqjtkmlkfYk0wr6wHxU9JEHakS7UJZNeml5ALk+8IKlU6jDgMabC3vkumRokgJA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
 <body>
-    <div class="row">
+    <nav class="navbar">
+        <div class="navbar-logo"><img class="navbar-logo-icon" src="../images/LogoInvW.png"><span class="navbar-logo-title">GreenSense</span></div>
+  
+        <ul class="navbar-items" id="navbar-items-responsive">
+          <li><a href="index.html" class="active-item">Home</a></li>
+          <li><a href="registrar.html">Ingresar</a></li>
+          <li><a href="borrar.html">Borrar cuenta</a></li>
+        </ul>
+  
+        <div class="navbar-icon" onclick="showmenu()"><i class="fa-sharp fa-solid fa-bars"></i></div>
+    </nav>
 
-        <div id="show-g" class="col s12 m7 offset-m2 l4 offset-l1"><canvas id="donut-chart-weight" width="400" height="400"></canvas></div>
+    <div class="row" >
 
-        <section class="tables col s12 l6">
+        <div id="show-g" class="col s12 m7 offset-m2 l4 offset-l4"><canvas id="donut-chart-weight" width="500" height="500"></canvas></div>
+
+        <!-- <section class="tables col s12 l6">
             <div class="Situation-Now">
         
                 <div class="Situation-Now-Title">
@@ -57,7 +69,7 @@
                     </tbody>
                 </table>
             
-            </section>
+            </section> -->
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.5.2/socket.io.js" integrity="sha512-VJ6+sp2E5rFQk05caiXXzQd1wBABpjEj1r5kMiLmGAAgwPItw1YpqsCCBtq8Yr1x6C49/mTpRdXtq8O2RcZhlQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>

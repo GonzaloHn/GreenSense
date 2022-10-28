@@ -1,7 +1,10 @@
+num_val=1;
+
 var socket = io('http://localhost:9000');
 
 socket.on('basura', (data_s_weight) =>{
   console.log("Socket basura: " + data_s_weight);
+  num_val = data_s_weight;
 })
 
 // setup 
@@ -11,7 +14,7 @@ const data = {
       'Blue',
     ],
     datasets: [{
-      label: 'My First Dataset',
+      label: '',
       data: [60, 40],
       borderColor: [
           'rgb(255, 0, 7)',
@@ -47,7 +50,7 @@ const centerText = {
       ctx.fillText('de la basura', width / 2, height / 2 - 30);
       ctx.restore();
 
-      const val_actual = 'Valor actual: numero';
+      var val_actual = 'Valor actual: ' + num_val;
 
       ctx.font = 'bolder 30px Arial';
       ctx.fillStyle = 'rgba(1, 1, 1)';

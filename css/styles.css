@@ -33,7 +33,7 @@ iframe{
     nav a.button-collapse {
         display: block;
     }
-    }
+}
 
 /* @media only screen and (max-width: 600px) {
     .inline-itmes section{
@@ -59,14 +59,17 @@ iframe{
     margin: .9rem;
 }
 .navbar-logo-title{
-    margin-top:-10px;
+    margin-top:100px;
+    color:white;
 }
 .navbar-logo-icon{
     width: 45px;
     margin-top: 10px;
+    margin-bottom: -4px;
+    padding-right: 2px;
 }
 .navbar-logo-icon{
-    width: 45px;
+    width: 30px;
     margin-top: 10px;
 }
 .navbar-items{
@@ -174,11 +177,10 @@ ul.show{
         padding-left: 30px;
     }
 }
-@media only screen and (max-width: 340px){
+@media only screen and (max-width: 330px){
 
 .navbar-logo-icon{
-    width: 30px;
-    margin-top: 10px;
+    display: none;
 }
 }
 
@@ -228,7 +230,7 @@ ul.show{
     top: 0;
     left: 0;
 
-    background-color: green;
+    background-color: var(--bluish-gren);
     opacity: 0.9;
 
 }
@@ -338,7 +340,7 @@ ul.show{
 
 .upload-button{
     width:180px;
-    background: green;
+    background: var(--bluish-gren);
     padding: 10px;
     border:none;
     border-radius: 25px;
@@ -352,7 +354,7 @@ ul.show{
     cursor: pointer;
 }
 .upload-button:hover{
-    background: rgb(50, 160, 50);
+    background: rgb(50, 167, 112);
 }
 
 /*Registrar - Responsive*/
@@ -478,7 +480,7 @@ ul.show{
 @media only screen and (max-width: 420px){
 .upload-button{
     width:100px;
-    background: green;
+    background: var(--bluish-gren);
     padding: 10px;
     border:none;
     border-radius: 25px;
@@ -519,7 +521,7 @@ ul.show{
     top: 0;
     left: 0;
 
-    background-color: green;
+    background-color: var(--bluish-gren);
     opacity: 0.9;
 
 }
@@ -614,7 +616,7 @@ ul.show{
 .delete-button{
     margin-top: 20px;
     width:180px;
-    background: green;
+    background: var(--bluish-gren);
     padding: 10px;
     border:none;
     border-radius: 25px;
@@ -628,7 +630,7 @@ ul.show{
     cursor: pointer;
 }
 .delete-button:hover{
-    background: rgb(50, 160, 50);
+    background: rgb(50, 167, 112);
 }
 
 /*Borrar cuenta - responsive*/
@@ -680,7 +682,7 @@ ul.show{
 @media only screen and (max-width: 420px){
     .delete-button{
         width:100px;
-        background: green;
+        background: var(--bluish-gren);
         padding: 10px;
         border:none;
         border-radius: 25px;
@@ -694,7 +696,7 @@ ul.show{
         font-weight: 600;
         cursor: pointer;
     }
-    }
+}
 /*Cuenta creada*/
 .creada-wrap{
     width: 75vw;
@@ -805,8 +807,8 @@ ul.show{
 }
 @media only screen and (max-width: 992px){
     .width-graph{
-        width: 50vw!important;
-        height: 50vw!important;
+        width: 80vw!important;
+        height: 70vw!important;
     }
 }
 
@@ -859,6 +861,64 @@ ul.show{
     background-size: cover;
     background-position: center center;
 }
+@media only screen and (max-width: 350px){
+    .ValContainer{
+        /* background-color: rgb(27, 230, 44); */
+        background-color: transparent;
+    
+        border-radius: 15px;
+        padding: 5px;
+        height: fit-content;
+        margin-bottom: 30px;
+        margin-top: 30px;
+        width: 300px;
+        display:flex;
+        border-style: 2px solid green;
+    
+        /* white-space:nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis; */
+        background-image: none;
+        background-size: none;
+        background-position: none;
+    }
+
+    .ValContainerIcon img{
+        width: 15px;
+        margin-left:13px;
+        margin-right: 15px;
+        margin-top:8px;
+        display: none;
+        
+    }
+    
+    .ValTitle{ 
+        padding-top: 15px;
+    }
+    .ValNow{
+        font-size: calc(0.5em + 0.5vw);
+        padding-bottom: 4px;
+    }
+    .ValInfo{
+        border-style: 2px solid green;
+
+        margin-left:5px;
+        margin-bottom: 8px;
+    }
+    .ValBtn{
+        font-size: 80%;
+        background-color: white;
+        border: none;
+        border-radius: 5px;
+        color: black;
+        text-decoration: none;
+        transition-duration: 0.4s;
+        cursor: pointer;
+        border: 2px solid #4CAF50;
+    
+    }
+}
+
 .ValContainerIcon{
     /* float: left; */
 }
@@ -903,6 +963,8 @@ ul.show{
 
 /*Pagina Inicial - config-tab*/
 .config-tab-wrap{
+    display:none;
+
     width:100%;
     height: 100vh;
     background-color: rgb(0, 0, 0, 0.7);
@@ -942,8 +1004,26 @@ ul.show{
 .config-tab-close{
     font-size: 20px;
     font-weight: 400;
+    color: red;
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+.config-tab-close:hover{
+    color: rgb(187, 5, 5);
 }
 
+.content-input input,
+.content-select select{
+	appearance: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+}
+ 
+.content-input input{
+	visibility: hidden;
+	position: absolute;
+	right: 0;
+}
 
 .content-input{
 	position: relative;
@@ -1017,6 +1097,47 @@ debemos poner definir este valor.
 .content-input input[type=checkbox]:checked + i:after{
  opacity: 1;
 }
+
+/*Cargando...*/
+.carga-tab-wrap{
+    display:none;
+
+    width:100%;
+    height: 100vh;
+    background-color: rgb(0, 0, 0);
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 3;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.carga-tab{
+    background-color: white;
+    box-shadow: 0px 0px 15px rgb(0, 0, 0, 0.5);
+    width:300px;
+    height: 200px;
+    padding: 30px 20px 15px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.carga-tab-img img{
+    width:60px;
+}
+.carga-tab-title{
+    font-size: 20px;
+    font-weight: 400;
+}
+.carga-tab-title{
+
+}
+
 
 /*Pagina Valores Particulares*/
 .changing-background{

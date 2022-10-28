@@ -1,4 +1,4 @@
-num_val=1;
+var num_val=1;
 
 var socket = io('http://localhost:9000');
 
@@ -84,3 +84,16 @@ const myChart = new Chart(
     document.getElementById('donut-chart-weight'),
     config
 );
+
+function updateChart(){
+  var updateDisplay = [num_val, 100 - num_val];
+  // var updateVal = num_val;
+
+  config.data.datasets[0].data = updateDisplay;
+  console.log(config.data.datasets[0].data);
+  myChart.update();
+};
+window.setInterval(function() {
+  num_val++;
+  updateChart();  
+}, 1000);

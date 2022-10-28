@@ -1,12 +1,18 @@
-#include <dummy.h>
+#include <MQ135.h>
+#include <ESP8266WiFi.h>
 
 void setup() {
-  Serial.begin(115200);
+Serial.begin(115200); //Init serial port
+  delay(200);
+
 }
 
-void loop() {  
-  int sensorValue = analogRead(A0); //Lectura analógica
-  float voltajeSensor = analogRead(A0) * (1.1 / 1023.0); //voltaje del sensor
-  float corriente=voltajeSensor*30.0; //corriente=VoltajeSensor*(30A/1V)
-  Serial.println(corriente,3);//enviamos por el puerto serie
-}
+void loop() {
+   MQ135 gasSensor = MQ135(A0);
+    float air_quality = gasSensor.getPPM();
+    Serial.print("Air Quality: ");  
+    Serial.print(air_quality);
+    Serial.println("  PPM");   
+     Serial.println();
+     delay(500);
+}  

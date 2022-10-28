@@ -85,12 +85,12 @@ const conexion  = mysql.createConnection({
 
 });
 
-conexion.query('SELECT gmail FROM usuarios WHERE usuario = ?', [user], function (err, res) {
+conexion.query('SELECT gmail FROM usuarios', function (err, res) {
 
   if (err) throw err;
 
   email = JSON.parse(JSON.stringify(res));
-  console.log(email[0].gmail);
+  console.log(email);
 
 })
 

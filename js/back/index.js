@@ -130,35 +130,39 @@ client.on('message', function(topic, message){
         //Esto mandaria muchos mails, tiene que mandar solo uno (ademas no se si manda mails a todos bien)
         
         if (basura > 500) {
-            conexion.query('SELECT gmail FROM usuarios', function (err, res) {
-                email = res;
-            })
-            transporter = nodemailer.createTransport({
-                host: "smtp.gmail.com",
-                port: 465,
-                secure: true,
-                auth: {
-                    user: "greensense22@gmail.com",
-                    pass: "tjdngfvodfqdlsbn",
-                },
-            });
+            conexion.query('SELECT gmail FROM usuarios', function (err, result) {
+                
+                email = result; //aca tengo que hacer que me pase todos los objetos a array
 
-            mailOptions = {
-                from: "Remitente",
-                to: email,
-                subject: "Green Sense: Basura inoptima",
-                text: "La basura pasa los x kg.",
-            };
+                transporter = nodemailer.createTransport({
+                    host: "smtp.gmail.com",
+                    port: 465,
+                    secure: true,
+                    auth: {
+                        user: "greensense22@gmail.com",
+                        pass: "tjdngfvodfqdlsbn",
+                    },
+                });
+    
+                mailOptions = {
+                    from: "Remitente",
+                    to: email,
+                    subject: "Green Sense: Basura inoptima",
+                    text: "La basura pasa los x kg.",
+                };
+                
+                transporter.sendMail(mailOptions, (error, info) => {
+                    if (error) {
+                        console.log ("> error enviando mail de registracion");
+                        //res.status(400).send("Error: El mail de registración no ha podido ser enviado");   
+                    }
+                    else {
+                        console.log ("> mail de registracion enviado");
+                    }
+                });
+
+            })
             
-            transporter.sendMail(mailOptions, (error, info) => {
-                if (error) {
-                    console.log ("> error enviando mail de registracion");
-                    //res.status(400).send("Error: El mail de registración no ha podido ser enviado");   
-                }
-                else {
-                    console.log ("> mail de registracion enviado");
-                }
-            });
         }
         
         //Cada vez que llegue valor se va a reiniciar timer (no va a funcionar)

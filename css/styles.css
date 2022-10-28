@@ -863,6 +863,7 @@ ul.show{
 }
 @media only screen and (max-width: 350px){
     .ValContainer{
+        margin:auto;
         /* background-color: rgb(27, 230, 44); */
         background-color: transparent;
     
@@ -871,9 +872,9 @@ ul.show{
         height: fit-content;
         margin-bottom: 30px;
         margin-top: 30px;
-        width: 300px;
+        width: 170px;
         display:flex;
-        border-style: 2px solid green;
+        border: 2px solid green;
     
         /* white-space:nowrap;
         overflow: hidden;
@@ -983,6 +984,9 @@ ul.show{
     box-shadow: 0px 0px 15px rgb(0, 0, 0, 0.5);
     width:400px;
     padding: 30px 20px 15px;
+
+    border: 2px solid black;
+
 }
 
 .config-tab-header{
@@ -1002,14 +1006,27 @@ ul.show{
     font-weight: 400;
 }
 .config-tab-close{
-    font-size: 20px;
+    margin-top: -3px;
+    font-size: 25px;
     font-weight: 400;
     color: red;
     transition-duration: 0.4s;
     cursor: pointer;
 }
 .config-tab-close:hover{
-    color: rgb(187, 5, 5);
+    color: rgb(143, 6, 6);
+}
+@media only screen and (max-width: 320px){
+    .config-tab{
+        background-color: white;
+        box-shadow: 0px 0px 15px rgb(0, 0, 0, 0.5);
+        width:80vw;
+        padding: 30px 20px 15px;
+        margin:auto;
+    
+        border: 2px solid black;
+    
+    }
 }
 
 .content-input input,

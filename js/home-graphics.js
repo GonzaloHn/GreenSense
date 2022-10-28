@@ -132,10 +132,12 @@ var fadeInNum = 350;
 
 //Codigo funciones jquery
 $(document).ready(function(){
-    $(".carga-tab-wrap").hide();
-    //Funcion de las configuraciones
+    
     $(".config-tab-wrap").hide();
 
+    $(".carga-tab-wrap").hide();
+
+    //Funcion de las configuraciones
     $("#config-g").click(function(){
         $(".config-tab-wrap").show();
     });

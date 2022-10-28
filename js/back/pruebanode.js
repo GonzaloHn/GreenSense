@@ -89,8 +89,8 @@ conexion.query('SELECT gmail FROM usuarios WHERE usuario = ?', [user], function 
 
   if (err) throw err;
 
-  email = res;
-  console.log(email);
+  email = JSON.parse(JSON.stringify(res));
+  console.log(email[0].gmail);
 
 })
 

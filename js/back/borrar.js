@@ -55,7 +55,10 @@ app.post('/', (req,res)=>{
 
                 //no se si esto agarra bien mail para enviarle a user
                 conexion.query('SELECT gmail FROM usuarios WHERE usuario = ?', [user], function (err, result) {
-                    email = result.gmail;
+                    
+                    if (err) throw err;
+
+                    email = JSON.parse(JSON.stringify(result));
 
                     conexion.query('DELETE FROM usuarios WHERE usuario = ? AND contrasenia = ?', [user, pass]);
                     console.log("> usuario borrado");
@@ -67,13 +70,13 @@ app.post('/', (req,res)=>{
                         secure: true,
                         auth: {
                             user: "greensense22@gmail.com",
-                            pass: "tsagmhszxpxreyck",
+                            pass: "tjdngfvodfqdlsbn",
                         },
                     });
 
                     mailOptions = {
                         from: "Remitente",
-                        to: email,
+                        to: (email[0].gmail),
                         subject: "Cuenta borrada en Green Sense",
                         text: "Su cuenta de Green Sense ha sido borrada exitosamente.",
                     };
@@ -81,6 +84,7 @@ app.post('/', (req,res)=>{
                     transporter.sendMail(mailOptions, (error, info) => {
                         if (error) {
                             console.log ("> error enviando mail de borrado de cuenta");
+                            console.log (error);
                             //res.status(400).send("Error: El mail de registración no ha podido ser enviado");   
                         }
                         else {

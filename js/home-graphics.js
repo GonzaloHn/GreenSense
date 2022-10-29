@@ -82,28 +82,41 @@
 // });
 // });
 
+var data_s_energy;
+var data_s_air;
+var data_s_weight;
+
+var data_o_energy;
+var data_o_air;
+var data_o_weight;
 //Sockets
 var socket = io('http://localhost:9000');
 
-socket.on('energia', (data_s_energy) =>{
-    console.log("Socket enegía: " + data_s_energy);
+socket.on('energia', (socketEnergy) =>{
+    console.log("Socket enegía: " + socketEnergy);
+    data_s_energy = socketEnergy;
 })
- socket.on('aire', (data_s_air) =>{
-     console.log("Socket calidad aire: " + data_s_air);
+ socket.on('aire', (socketAir) =>{
+     console.log("Socket calidad aire: " + socketAir);
+     data_s_air = socketAir;
 })
-socket.on('basura', (data_s_weight) =>{
-    console.log("Socket basura: " + data_s_weight);
+socket.on('basura', (socketWeight) =>{
+    console.log("Socket basura: " + socketWeight);
+    data_s_weight = socketWeight;
 })
 
 //Sockets - valores óptimos
-socket.on('optimoenergia', (data_o_energy) =>{
-    console.log("El valor óptimo de energía es: " + data_o_energy);
+socket.on('optimoenergia', (socketOptEnergy) =>{
+    console.log("El valor óptimo de energía es: " + socketOptEnergy);
+    data_o_energy = socketOptEnergy;
 })
- socket.on('optimoaire', (data_o_air) =>{
-     console.log("El valor óptimo de calidad de aire es: " + data_o_air);
+ socket.on('optimoaire', (socketOptAir) =>{
+     console.log("El valor óptimo de calidad de aire es: " + socketOptAir);
+     data_o_air = socketOptAir;
 })
-socket.on('optimobasura', (data_o_weight) =>{
-    console.log("El valor óptimo de basura es: " + data_o_weight);
+socket.on('optimobasura', (socketOptWeight) =>{
+    console.log("El valor óptimo de basura es: " + socketOptWeight);
+    data_o_weight = socketOptWeight;
 })
 
 // Setear DyGraph

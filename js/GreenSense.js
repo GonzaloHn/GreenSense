@@ -2,12 +2,12 @@ function showmenu() {
     document.getElementById("navbar-items-responsive").classList.toggle("show");
 }
 
-$(document).ready(function(){
+// $(document).ready(function(){
 
     //Forms - sign up
-     $('#S').click(function(){
-        alert("j");
-     });
+    //  $('#S').click(function(){
+    //     alert("j");
+    //  });
 
     //FRONT-END
     //Funciones de Home
@@ -42,7 +42,7 @@ $(document).ready(function(){
     //     $("body").css("background-color","#008000");
     // });
 
-});
+// });
 
 // var num = 1;
 

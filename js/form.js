@@ -14,7 +14,8 @@ socket.on('errordatos', (missingData) =>{
     errData = missingData;
 })
 
-
+$(document).ready(function(){
+$("#S").click(function(){
     if(errUser ==null)
     {
         console.log(1);
@@ -33,3 +34,5 @@ socket.on('errordatos', (missingData) =>{
     } else{
         console.log("Faltan datos");
     }
+});
+});

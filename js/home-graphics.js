@@ -161,7 +161,7 @@ $(document).ready(function(){
     //Cambiar los ValNow
     setInterval(swapValNow,1000);
     function swapValNow(){
-        if(data_s_energy != Null){
+        if(data_s_energy != null){
             $("#ValNow_energy").html("Valor actual: " + data_s_energy);
             $("#ValNow_air").html("Valor actual: " + data_s_air);
             $("#ValNow_weight").html("Valor actual: " + data_s_weight);

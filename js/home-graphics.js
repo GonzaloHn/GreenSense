@@ -142,6 +142,8 @@ var graphNum = 1;
 var dynamicUpdate = 1;
 var changeGraphic = 1;
 var fadeInNum = 350;
+var showOpt = 1;
+var deleteVal = 1;
 
 //Codigo funciones jquery
 $(document).ready(function(){
@@ -156,6 +158,21 @@ $(document).ready(function(){
     });
     $(".config-tab-close").click(function(){
         $(".config-tab-wrap").hide();
+    });
+
+    $("#config-showOpt").click(function(){
+        if( $("#config-showOpt").is(':checked') ){
+            showOpt = 1;
+        } else {
+            showOpt = 0;
+        }
+    });
+    $("#config-deleteVal").click(function(){
+        if( $("#onfig-deleteVal").is(':checked') ){
+            deleteVal = 1;
+        } else {
+            deleteVal = 0;
+        }
     });
 
     //Cambiar los ValNow

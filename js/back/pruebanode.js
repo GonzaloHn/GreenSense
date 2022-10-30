@@ -1,25 +1,12 @@
-/*
-async function init() {
-    console.log(1);
-    await sleep(1000);
-    console.log(2);
-  }
-  
-  function sleep(ms) {
-    return new Promise((resolve) => {
-      setTimeout(resolve, ms);
-    });
-  }
 
- init();
- */
+ 
 
 const express = require('express');
 const app = express();
-const port = 9000;
+const port = 4000;
 
 const server = app.listen(port, () => {
-  console.log(`> servidor en puerto ${port}, escuchando registro...`);
+  console.log(`> servidor en puerto ${port}, escuchando prueba...`);
 });
 
 const io = require('socket.io')(server, {
@@ -30,24 +17,53 @@ const io = require('socket.io')(server, {
 });
 
 let basura = 10;
+/*
+async function init() {
+  io.on('connection', (socket) => {
+    console.log('> dato de basura enviado');
+    socket.emit('basura', basura);
+  });
+  await sleep(1000);
+  io.on('connection', (socket) => {
+    console.log('> dato de basura enviado');
+    socket.emit('basura', 13);
+  });
+  
+  io.on('connection', (socket) => {
+    console.log('> dato de energia enviado');
+    socket.emit('energia', 1000);
+  });
+  
+  await sleep(1000);
+  io.on('connection', (socket) => {
+    console.log('> dato de energia enviado');
+    socket.emit('energia', 500);
+  });
+  
+}
+
+function sleep(ms) {
+  return new Promise((resolve) => {
+    setTimeout(resolve, ms);
+  });
+}
+
+init();
+*/
 
 //Pasa valores a front si recibe conexion 
 
-io.on('connection', (socket) => {
-  console.log('> dato de basura enviado');
-  socket.emit('basura', basura);
-});
+
+
+
+
 
 /*
+
 io.on('connection', (socket) => {
   console.log('> dato de basura enviado');
-  socket.emit('basura', basura++);
+  socket.emit('basura', '2');
 });
-io.on('connection', (socket) => {
-  console.log('> dato de basura enviado');
-  socket.emit('basura', basura++);
-});
-*/
 
 
 io.on('connection', (socket) => {
@@ -55,10 +71,24 @@ io.on('connection', (socket) => {
   socket.emit('energia', '1000');
 });
 
+
+io.on('connection', (socket) => {
+  console.log('> dato de energia enviado');
+  socket.emit('energia', '500');
+});
+
+
+io.on('connection', (socket) => {
+  console.log('> dato de energia enviado');
+  socket.emit('energia', '100');
+});
+
+
 io.on('connection', (socket) => {
   console.log('> dato de aire enviado');
   socket.emit('aire', '3000');
 });
+*/
 
 
 //Mandar valores a front (a todos los clientes)
@@ -66,6 +96,7 @@ io.on('connection', (socket) => {
 //console.log('dato de basura enviado');
 //io.emit('basura', basura);
 //socket.emit('basura', basura);
+
 
 // .---------------------------------------------------------------------------------
 

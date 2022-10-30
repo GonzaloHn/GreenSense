@@ -4,17 +4,17 @@
 //Variables mqtt
 const mqtt = require('mqtt');
 
-let date = new Date();
-let time = new Date();
+let date = "";
+let time = "";
 
 let fecha = "";
 let hora = "";
-let basura = "";
-let energia = "";
-let aire = "";
-let optimobasura = 1;
-let optimoenergia = 1;
-let optimoaire = 1;
+let basura = 0;
+let energia = 0;
+let aire = 0;
+let optimobasura = 1000;
+let optimoenergia = 1000;
+let optimoaire = 1000;
 
 //Variables mysql
 const mysql = require ('mysql');
@@ -24,7 +24,7 @@ const nodemailer = require ('nodemailer');
 let transporter;
 let mailOptions;
 let email = "";
-let emils = "";
+let emails = "";
 
 //Variables express
 const express = require('express');
@@ -40,27 +40,7 @@ const io = require('socket.io')(server, {
       origin: "http://localhost",
       methods: ["GET", "POST"]
     }
-  });
-//timer
-/*
-function sleep(ms) {
-    return new Promise((resolve) => {
-      setTimeout(resolve, ms);
-    });
-}
-
-//prueba timer (no va a andar)
-async function basuraDB() {
-    //esperar 15 mins
-    await sleep(900000);
-    //Insertar valores a DB
-    conexion.query(`INSERT INTO basura (fecha, hora, valor) VALUES (${fecha} ,${hora} ,${basura} )`, function (error,results,fields){
-        if (error)
-        throw error;
-        console.log("registro de basura insertado");  
-    });   
-  }
-*/
+});
 
 
 //conexion con broker adafruit (key va cambiando)
@@ -88,7 +68,7 @@ client.on('connect', function(){
     console.log("> conectado a broker de adafruit");
 
     //o /g-air -- tambien ver de que el feed se llame g/air asi me suscribo a g/# (si no anda /f poner /feeds)
-    client.subscribe('SantiR/f/G_Air', function (err) {
+    client.subscribe('SantiR/f/G-Elc', function (err) {
 
         if (!err){
             console.log ("> suscrito a topico/s, escuchando...");
@@ -106,13 +86,14 @@ client.on('message', function(topic, message){
 
       
     //REGISTRO BASURA
-    if (topic == "G/weigh"){
+    if (topic == "SantiR/f/G/Weight"){
         
         //Guardar valores 
+        date = new Date();
+        time = new Date();
         fecha = date.toLocaleDateString();
         hora = time.toLocaleTimeString();
-        basura = message.toString();
-
+        basura = parseFloat(message);
         //Mandar valores a front
         io.on('connection', (socket) => {
             console.log('> dato de basura enviado');
@@ -168,20 +149,26 @@ client.on('message', function(topic, message){
                 });
             })   
         }
+
+        //Insertar valores a DB
+        conexion.query('INSERT INTO basura (fecha, hora, valor) VALUES ("'+fecha+'" ,"'+hora+'" ,"'+basura+'")', function (error,results,fields){
+            if (error)
+            throw error;
+            console.log("> registro de basura insertado");  
+        });   
         
-        //Cada vez que llegue valor se va a reiniciar timer (no va a funcionar)
-        //basuraDB();
     }
 
      //REGISTRO AIRE
 
-    if (topic == "G-Air"){
+    if (topic == "SantiR/f/G/Air"){
 
         //guardar valores (para posteriormente subirlo al grafico)
+        date = new Date();
+        time = new Date();
         fecha = date.toLocaleDateString();
         hora = time.toLocaleTimeString();
-        aire = message.toString();
-
+        aire = parseFloat(message);
         //Mandar valores a front
         io.on('connection', (socket) => {
             console.log('> dato de aire enviado');
@@ -236,7 +223,7 @@ client.on('message', function(topic, message){
         }
 
         //Insertar valores a DB
-        conexion.query(`INSERT INTO aire (fecha, hora, valor) VALUES (${fecha} ,${hora} ,${aire} )`, function (error,results,fields){
+        conexion.query('INSERT INTO aire (fecha, hora, valor) VALUES ("'+fecha+'" ,"'+hora+'" ,"'+aire+'")', function (error,results,fields){
             if (error)
             throw error;
             console.log("> registro de aire insertado");  
@@ -244,25 +231,27 @@ client.on('message', function(topic, message){
      }
 
       //REGISTRO ENERGIA
-      if (topic == "GreenSense/energia"){
+      if (topic == "SantiR/f/G-Elc"){
         //Guardar valores (para posteriormente subirlo al grafico)
+        
+        date = new Date();
+        time = new Date();
         fecha = date.toLocaleDateString();
         hora = time.toLocaleTimeString();
-        energia = message.toString();
-
+        energia = parseFloat(message);
         //Mandar valores a front
          
 
         if (energia < optimoenergia)
         {
-            energia = optimoenergia;
+            optimoenergia = energia;
             io.on('connection', (socket) => {
                 console.log('> dato de energia optima enviado');
                 socket.emit('optimoenergia', optimoenergia);
             });
         }
 
-        if (eergia > 500) {
+        if (energia > 2000) {
             conexion.query('SELECT gmail FROM usuarios', function (err, result) {
                 
                 email = JSON.parse(JSON.stringify(result));
@@ -301,7 +290,7 @@ client.on('message', function(topic, message){
         }
 
         //Insertar valores a DB
-        conexion.query(`INSERT INTO energia (fecha, hora, valor) VALUES (${fecha} ,${hora} ,${energia} )`, function (error,results,fields){
+        conexion.query('INSERT INTO energia (fecha, hora, valor) VALUES ("'+fecha+'" ,"'+hora+'" ,"'+energia+'")', function (error,results,fields){
             if (error)
             throw error;
             console.log("> registro de energia insertado");  

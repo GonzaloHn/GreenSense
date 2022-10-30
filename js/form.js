@@ -19,19 +19,19 @@ $("#S").click(function(){
     if(errUser ==null)
     {
         console.log(1);
-    }else{
+    }else if (errUser != null){
         console.log("El usuario ya esta en uso");
     }
     if(errMail == null)
     {
         console.log(2);
-    } else{
+    } else if (errMail != null){
         console.log("El mail ya esta en uso");
     }
     if(errData == null)
     {
         console.log(3);
-    } else{
+    } else if(errData != null){
         console.log("Faltan datos");
     }
 });

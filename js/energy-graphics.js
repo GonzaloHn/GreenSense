@@ -1,7 +1,10 @@
-var socket = io('http://localhost:9000');
+var num_val=1;
+
+var socket = io('http://localhost:4000');
 
 socket.on('energia', (data_s_energy) =>{
-  console.log("Socket enegía: " + data_s_energy);
+  console.log("Socket basura: " + data_s_energy);
+  num_val = data_s_energy;
 })
 
 // setup 
@@ -12,7 +15,7 @@ const data = {
     ],
     datasets: [{
       label: 'My First Dataset',
-      data: [60, 40],
+      data: [1, 99],
       borderColor: [
           'rgb(241, 198, 7)',
           'rgb(0, 0, 0, 0)',
@@ -47,7 +50,7 @@ const centerText = {
       ctx.fillText('eléctrica', width / 2, height / 2 - 30);
       ctx.restore();
 
-      const val_actual = 'Valor actual: numero';
+      const val_actual = 'Valor actual: ' + num_val;
 
       ctx.font = 'bolder 30px Arial';
       ctx.fillStyle = 'rgba(1, 1, 1)';
@@ -81,86 +84,16 @@ const myChart = new Chart(
     document.getElementById('donut-chart-energy'),
     config
 );
-// $(document).ready(function(){
 
-//     $(window).resize(function() {
-//         var widthBrowser =$(window).height();
-//         var heightBrowser =$(window).width();
-//         console.log("Tamaño de la pantalla del navegador: width="+widthBrowser +" height="+heightBrowser );
-//     });
+function updateChart(){
+  var updateDisplay = [num_val, 100 - num_val];
+  // var updateVal = num_val;
 
-//     // const centerText = {
-//     //     id = 'centerText',
-//     //     afterDatasetsDraw(chart, args, options) {
-//     //         const { donut_energy, chartArea: {left, right, top, bottom, width, height } } = chart;
-
-//     //         donut_energy.save();
-//     //         console.log(top);
-
-//     //         donut_energy.font = 'bolder 30px Arial';
-//     //         donut_energy.fillStyle = 'rgba(255, 26, 104, 1)';
-//     //         donut_energy.fillText('Sales:', 100, 100)
-//     //     }
-//     // }
-//     const centerText = {
-//         id: 'centerText',
-//         afterDatasetsDraw(chart, args, options) {
-//           const { donut_energy, chartArea: {left, right, top, bottom, width, height} } = chart;
-  
-//           donut_energy.save();
-//           console.log(top);
-  
-//           donut_energy.font = 'bolder 30px Arial';
-//           donut_energy.fillStyle = 'rgba(1, 11, 21)';
-//           donut_energy.textAlign = 'center';
-//           donut_energy.fillText('Prueba', width / 2, height / 2);
-//           donut_energy.restore();
-  
-//           donut_energy.font = 'bolder 30px Arial';
-//           donut_energy.fillStyle = 'rgba(54, 162, 235)';
-//           donut_energy.textAlign = 'center';
-//           donut_energy.fillText('Prueba', width / 2, height / 2 + top);
-//           donut_energy.restore();
-//         }
-//     }
-
-//     const donut_energy = $('#donut-chart-energy');
-//     const donut_chart_energy = new Chart(donut_energy, {
-//         type: 'doughnut',
-//         data: {
-//             labels: [
-//                 'Green',
-//                 'Blue',
-//               ],
-//               datasets: [{
-//                 label: 'My First Dataset',
-//                 data: [60, 40],
-//                 borderColor: [
-//                     'rgb(241, 198, 7)',
-//                     'rgb(0, 0, 0, 0)',
-//                 ],
-//                 backgroundColor: [
-//                   'rgb(241, 198, 7)',
-//                   'rgb(0, 0, 0, 0)',
-//                 ],
-//                 hoverOffset: 4,
-//                 borderWidth: 1
-//             }]
-//         },
-//         options: {
-//             responsive: true,
-//             events: ["", "mouseout", "", "", "touchmove", "touchend"],
-//             cutout:'90%',
-//             plugins: {
-//                 legend: {
-//                    display: false
-//                 },
-//             },
-//         },
-//         plugins: [
-//             centerText
-//         ]
-//         // plugins: [centerText],
-
-//     });
-//     });
+  config.data.datasets[0].data = updateDisplay;
+  console.log(config.data.datasets[0].data);
+  myChart.update();
+};
+window.setInterval(function() {
+  //num_val++;
+  updateChart();  
+}, 1000);

@@ -15,7 +15,7 @@ const data = {
     ],
     datasets: [{
       label: '',
-      data: [60, 40],
+      data: [1, 99],
       borderColor: [
           'rgb(255, 0, 7)',
           'rgb(0, 0, 0, 0)',

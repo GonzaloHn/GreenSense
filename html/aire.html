@@ -3,27 +3,42 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Green Sense</title>
+    <title>Calidad de aire</title>
 
     <!--Archivos CSS (styles.css //Materialize.css)-->
     <link rel="stylesheet" href="../css/materialize.css">
     <link rel="stylesheet" href="../css/styles.css">
+
+    <!-- Icons -->
+    <script src="https://kit.fontawesome.com/83ab69d178.js" crossorigin="anonymous"></script>
 
     <!--Archivos JS (GreenSense.css // Jquery.js // Materialize.js)-->
     <script src="../js/jquery-3.6.0.min.js" type="text/javascript"></script>   
     <script src="../js/GreenSense.js" type="text/javascript"></script>  
     <script src="../js/materialize.js" type="text/javascript"></script>
     <!--Archivos JS (Chart.js -> Hacer graficos // home-graphics.js)-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js" integrity="sha512-ElRFoEQdI5Ht6kZvyzXhYG9NqjtkmlkfYk0wr6wHxU9JEHakS7UJZNeml5ALk+8IKlU6jDgMabC3vkumRokgJA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> 
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js" integrity="sha512-ElRFoEQdI5Ht6kZvyzXhYG9NqjtkmlkfYk0wr6wHxU9JEHakS7UJZNeml5ALk+8IKlU6jDgMabC3vkumRokgJA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
-<body>
+<body class="particular-background">
+<div class="particular-background-image"></div>
 
-    <div class="row">
+    <nav class="navbar">
+        <div class="navbar-logo"><img class="navbar-logo-icon" src="../images/LogoInvW.png"><span class="navbar-logo-title">GreenSense</span></div>
 
-        <div class="col s12 m7 offset-m2 l4 offset-l1"><canvas id="donut-chart-air" width="400" height="400"></canvas></div>
+        <ul class="navbar-items" id="navbar-items-responsive">
+            <li><a href="index.html" class="active-item">Home</a></li>
+            <li><a href="registrar.html">Ingresar</a></li>
+            <li><a href="borrar.html">Borrar cuenta</a></li>
+        </ul>
+
+        <div class="navbar-icon" onclick="showmenu()"><i class="fa-sharp fa-solid fa-bars"></i></div>
+    </nav>
+
+    <div class="row" id="particular-graph-pos">
+
+        <div class="col s12 m7 offset-m2 l4 offset-l2"><canvas id="donut-chart-air" width="400" height="400"></canvas></div>
         
-        <section class="tables col s12 l7">
+        <section class="tables col s12 l6">
         <div class="Situation-Now">
     
             <div class="Situation-Now-Title">
@@ -38,23 +53,23 @@
     
         </div>
     
-            <table class="index-Table col s12 l5">
+            <table class="index-Table col s12 m7 ">
                 <tbody>
                 <tr>
-                    <th>Index de energía electrica</th>
+                    <th>Index de la calidad de aire</th>
                     <th>Efectos</th>
                 </tr>
                 <tr>
-                    <th>Menos de 50</th>
-                    <td>Todo bien</td>
+                    <th>Menos de 40</th>
+                    <td>Valores aceptables</td>
                 </tr>
                 <tr>
-                    <th>Entre 50 y 150</th>
-                    <td>Arriesgado</td>
+                    <th>Entre 40 y 50</th>
+                    <td>Valores comprometidos</td>
                 </tr>
                 <tr>
-                    <th>Mas de 150</th>
-                    <td>Estamos muy mal</td>
+                    <th>Más de 50</th>
+                    <td>Valores peligrosos</td>
                 </tr>
                 </tbody>
             </table>

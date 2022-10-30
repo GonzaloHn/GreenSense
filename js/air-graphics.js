@@ -1,7 +1,10 @@
-var socket = io('http://localhost:9000');
+var num_val=1;
+
+var socket = io('http://localhost:4000');
 
 socket.on('aire', (data_s_air) =>{
-  console.log("Socket calidad aire: " + data_s_air);
+  console.log("Socket basura: " + data_s_air);
+  num_val = data_s_air;
 })
 
 // setup 
@@ -12,7 +15,7 @@ const data = {
     ],
     datasets: [{
       label: 'My First Dataset',
-      data: [60, 40],
+      data: [1, 99],
       borderColor: [
           'rgb(0, 255, 255)',
           'rgb(0, 0, 0, 0)',
@@ -47,7 +50,7 @@ const centerText = {
       ctx.fillText('aire', width / 2, height / 2 - 30);
       ctx.restore();
 
-      const val_actual = 'Valor actual: numero';
+      const val_actual = 'Valor actual: ' + num_val;
 
       ctx.font = 'bolder 30px Arial';
       ctx.fillStyle = 'rgba(1, 1, 1)';
@@ -81,3 +84,16 @@ const myChart = new Chart(
     document.getElementById('donut-chart-air'),
     config
 );
+
+function updateChart(){
+  var updateDisplay = [num_val, 100 - num_val];
+  // var updateVal = num_val;
+
+  config.data.datasets[0].data = updateDisplay;
+  console.log(config.data.datasets[0].data);
+  myChart.update();
+};
+window.setInterval(function() {
+  //num_val++;
+  updateChart();  
+}, 1000);

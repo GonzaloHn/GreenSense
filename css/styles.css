@@ -696,14 +696,23 @@ ul.show{
         cursor: pointer;
     }
 }
+
 /*Cuenta creada*/
+.creada-background{
+    background-color: var(--light-gray);
+    background-image: url(../images/fondoGreenSense.png);
+    background-size: cover;
+    background-position: center 1%;
+}
 .creada-wrap{
-    width: 75vw;
-    height: calc(100vh - 75px);
-    -moz-border-radius: 0 50% / 0 100%;
-    -webkit-border-radius: 0 50% / 0 100%;
-    border-radius: 0px 0px 1000px 0px;
-    background: green;
+    background-color: rgb(250, 249, 249);
+    box-shadow: 0px 0px 15px rgb(0, 0, 0, 0.5);
+    width:500px;
+    height: 460px;
+    padding: 30px 20px 15px;
+    margin:95px auto;
+    
+    border: 2px solid green;
 }
 .creada-wrap-n{
     width: 85vw;
@@ -714,19 +723,18 @@ ul.show{
     background: green;
 }
 .cuenta-creada{
-    color: white;
-    font-size: calc(1em + 2vw);
-    padding-left: 5vw;
-    padding-top: 120px;
-    z-index: 2;
+    margin-top: 70px;
+    text-align: center;
+    font-size: 2.4em;
+
 }
 .cuenta-creada-btn-wrap{
     margin-top: 30px;
     margin-left: 5vw;
 }
 .cuenta-creada-btn{
-    font-size: calc(1em + 0.5vw);
-    background-color: white;
+    font-size: calc(1em + 0.2vw);
+    background-color: rgb(250, 249, 249);
     border: none;
     border-radius: 5px;
     color: black;
@@ -734,7 +742,8 @@ ul.show{
     transition-duration: 0.4s;
     cursor: pointer;
     border: 2px solid #4CAF50;
-    margin-bottom: 5px;
+    padding: 8px;
+    margin-left: 111px
 }
 
 .cuenta-creada-btn:hover {
@@ -1081,10 +1090,22 @@ ul.show{
 
 
 /*Pagina Valores Particulares*/
-.changing-background{
-    /*background-color: rgb(0, 247, 21);*/
+.particular-background{
+    background-color: rgb(230, 230, 230);
 }
-
+.particular-background-image{
+    height: 100vh;
+    width: 100%;
+    position: absolute;
+    z-index: -2;
+    opacity: 0.2;
+    background-image: url(../images/fondoGreenSense1.png);
+    background-size: cover;
+    background-position: center center;
+}
+#particular-graph-pos{
+    margin-top:80px;
+}
 
 /*Pagina Valores Particulares - Tabla Situacion*/
 .Situation-Now{
@@ -1122,6 +1143,7 @@ table{
     table-layout: fixed;
     border-collapse: collapse;
     color: black;
+    background-color: rgb(230, 230, 230);
     
 }
 table, tr, td, th{ 

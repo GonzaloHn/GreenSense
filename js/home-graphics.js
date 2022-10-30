@@ -168,7 +168,7 @@ $(document).ready(function(){
         }
     });
     $("#config-deleteVal").click(function(){
-        if( $("#onfig-deleteVal").is(':checked') ){
+        if( $("#config-deleteVal").is(':checked') ){
             deleteVal = 1;
         } else {
             deleteVal = 0;
@@ -287,19 +287,34 @@ if(dynamicUpdate == 1){
      var y_opt_air = data_o_air; //y de los sockets optimo, prueba
      var y_opt_weight = data_o_weight; //y de los sockets optimo, prueba
 
-    data_energy.shift(); //remueve el primer dato del array, adelantando a todos los demas por uno adelante
+    //data_energy.shift(); //remueve el primer dato del array, adelantando a todos los demas por uno adelante
     //data_energy.push([x, y, y + 1]); //añade un nuevo elemtno al final de un array
-     data_energy.push([x, y_energy, y_opt_energy]); //añade un nuevo elemtno al final de un array
+    //data_energy.push([x, y_energy, y_opt_energy]); //añade un nuevo elemtno al final de un array
     
-    data_air.shift(); //remueve el primer dato del array, adelantando a todos los demas por uno adelante
+    //data_air.shift(); //remueve el primer dato del array, adelantando a todos los demas por uno adelante
     //data_air.push([x, y, y + 1]); //añade un nuevo elemtno al final de un array
-     data_air.push([x, y_air, y_opt_air]); //añade un nuevo elemtno al final de un array
+    //data_air.push([x, y_air, y_opt_air]); //añade un nuevo elemtno al final de un array
 
-    data_weight.shift(); //remueve el primer dato del array, adelantando a todos los demas por uno adelante
+    //data_weight.shift(); //remueve el primer dato del array, adelantando a todos los demas por uno adelante
     //data_weight.push([x, y, y + 1]); //añade un nuevo elemtno al final de un array
-     data_weight.push([x, y_weight, y_opt_weight]); //añade un nuevo elemtno al final de un array
+    //data_weight.push([x, y_weight, y_opt_weight]); //añade un nuevo elemtno al final de un array
 
-    
+    if(showOpt == 1){
+        data_energy.push([x, y_energy, y_opt_energy]);
+        data_air.push([x, y_air, y_opt_air]);
+        data_weight.push([x, y_weight, y_opt_weight]);
+    } else{
+        data_energy.push([x, y_energy, null]);
+        data_air.push([x, y_air, null]);
+        data_weight.push([x, y_weight, null]);
+    }
+
+    if(deleteVal == 1){
+        data_energy.shift();
+        data_air.shift();
+        data_weight.shift();
+    }
+
     line_chart_energy.updateOptions( { 'file': data_energy } ); //actualiza el grafico con nuevos valores, los de data
     line_chart_air.updateOptions( { 'file': data_air } ); //actualiza el grafico con nuevos valores, los de data
     line_chart_weight.updateOptions( { 'file': data_weight } ); //actualiza el grafico con nuevos valores, los de data

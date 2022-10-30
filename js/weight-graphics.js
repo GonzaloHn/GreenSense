@@ -1,6 +1,6 @@
 var num_val=1;
 
-var socket = io('http://localhost:9000');
+var socket = io('http://localhost:4000');
 
 socket.on('basura', (data_s_weight) =>{
   console.log("Socket basura: " + data_s_weight);
@@ -94,6 +94,6 @@ function updateChart(){
   myChart.update();
 };
 window.setInterval(function() {
-  num_val++;
+  //num_val++;
   updateChart();  
 }, 1000);

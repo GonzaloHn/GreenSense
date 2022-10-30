@@ -68,7 +68,7 @@ app.post('/', (req,res)=>{
             //tira error si el usuario ya existe
             if (results.length > 0) {
                 console.log("> error: el nombre de usuario ya esta en uso");
-                res.status(400).send("Error: El nombre de usuario ya esta en uso");
+                //res.status(400).send("Error: El nombre de usuario ya esta en uso");
                 io.on('connection', (socket) => {
                     console.log('> dato de error de usuario enviado');
                     socket.emit('errorusu', 'error');
@@ -82,7 +82,7 @@ app.post('/', (req,res)=>{
                     //Tira error si mail esta en uso
                     if (results.length > 0) {
                         console.log("> error: el mail ya esta en uso");
-                        res.status(400).send("Error: El mail ya esta en uso");   
+                        //res.status(400).send("Error: El mail ya esta en uso");   
                         io.on('connection', (socket) => {
                             console.log('> dato de error de mail enviado');
                             socket.emit('errormail', 'error');
@@ -137,7 +137,7 @@ app.post('/', (req,res)=>{
 
     //Instrucciones si le faltaron datos al usuario
     else {
-        res.status(400).send("Error: Debe ingresar todos los valores");
+        //res.status(400).send("Error: Debe ingresar todos los valores");
         console.log ("> error, faltan datos de registro");
         io.on('connection', (socket) => {
             console.log('> dato de error de datos enviado');

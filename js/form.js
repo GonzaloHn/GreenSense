@@ -2,7 +2,7 @@ var errUser;
 var errMail;
 var errData;
 
-var socket = io('http://localhost:9000');
+var socket = io('http://localhost:3000');
 
 socket.on('errorusu', (usedUser) =>{
     errUser = usedUser;

@@ -32,12 +32,13 @@ const io = require('socket.io')(server, {
 let basura = 10;
 
 //Pasa valores a front si recibe conexion 
-/*
+
 io.on('connection', (socket) => {
   console.log('> dato de basura enviado');
   socket.emit('basura', basura);
 });
 
+/*
 io.on('connection', (socket) => {
   console.log('> dato de basura enviado');
   socket.emit('basura', basura++);
@@ -46,20 +47,19 @@ io.on('connection', (socket) => {
   console.log('> dato de basura enviado');
   socket.emit('basura', basura++);
 });
-
-
+*/
 
 
 io.on('connection', (socket) => {
   console.log('> dato de energia enviado');
-  socket.emit('energia', '12000');
+  socket.emit('energia', '1000');
 });
 
 io.on('connection', (socket) => {
   console.log('> dato de aire enviado');
   socket.emit('aire', '3000');
 });
-*/
+
 
 //Mandar valores a front (a todos los clientes)
 
@@ -69,6 +69,7 @@ io.on('connection', (socket) => {
 
 // .---------------------------------------------------------------------------------
 
+/*
 
 const mysql = require ('mysql');
 
@@ -136,3 +137,4 @@ conexion.query('SELECT gmail FROM usuarios', function (err, res) {
 
 })
 
+*/

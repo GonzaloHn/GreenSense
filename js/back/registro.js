@@ -70,7 +70,6 @@ app.post('/', (req,res)=>{
                     //Tira error si mail esta en uso
                     if (results.length > 0) {
                         console.log("> error: el mail ya esta en uso");
-                        //res.status(400).send("Error: El mail ya esta en uso");  
                         res.redirect("http://localhost/GreenSense/html/registrar.html");
                         io.on('connection', (socket) => {
                             console.log('> dato de error de mail enviado');
@@ -106,13 +105,11 @@ app.post('/', (req,res)=>{
                                 if (error) {
                                     console.log ("> error enviando mail de registracion");
                                     console.log (error);
-                                    //res.status(400).send("Error: El mail de registración no ha podido ser enviado");   
                                 }
                                 else {
                                     console.log ("> mail de registracion enviado");
                                 }
                             });
-                            
                         });     
                     }
                 });

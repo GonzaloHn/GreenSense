@@ -14,8 +14,7 @@ socket.on('errordatos', (missingData) =>{
     errData = missingData;
 })
 
-$(document).ready(function(){
-$("#S").click(function(){
+function findErr(){
     if(errUser ==null)
     {
         console.log(1);
@@ -34,5 +33,28 @@ $("#S").click(function(){
     } else if(errData != null){
         console.log("Faltan datos");
     }
-});
-});
+  };
+window.setInterval(function() {
+    findErr();  
+  }, 1000);
+
+// $(document).ready(function(){
+//     if(errUser ==null)
+//     {
+//         console.log(1);
+//     }else if (errUser != null){
+//         console.log("El usuario ya esta en uso");
+//     }
+//     if(errMail == null)
+//     {
+//         console.log(2);
+//     } else if (errMail != null){
+//         console.log("El mail ya esta en uso");
+//     }
+//     if(errData == null)
+//     {
+//         console.log(3);
+//     } else if(errData != null){
+//         console.log("Faltan datos");
+//     }
+// });

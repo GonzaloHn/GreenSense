@@ -1,10 +1,10 @@
 // Variables express
 const express = require('express');
 const app = express();
-const port = 9000; //necesitaria poner otro puerto aca
+const port = 9000; 
 const server = app.listen (port, () => {
     console.log (`> servidor en puerto ${port}, escuchando borrar...`);
-});;
+});
 
 //Variables socket
 const io = require('socket.io')(server, {
@@ -12,7 +12,8 @@ const io = require('socket.io')(server, {
       origin: "http://localhost",
       methods: ["GET", "POST"]
     }
-  });
+});
+
 //Variables mysql
 const mysql = require ('mysql');
 
@@ -53,7 +54,7 @@ app.post('/', (req,res)=>{
             //Se borra usuario si todos los datos cumplen requerimientos basicos
             if (results.length > 0) {
 
-                //no se si esto agarra bien mail para enviarle a user
+                //envia mail de borrado al usuario
                 conexion.query('SELECT gmail FROM usuarios WHERE usuario = ?', [user], function (err, result) {
                     
                     if (err) throw err;
@@ -62,7 +63,7 @@ app.post('/', (req,res)=>{
 
                     conexion.query('DELETE FROM usuarios WHERE usuario = ? AND contrasenia = ?', [user, pass]);
                     console.log("> usuario borrado");
-                    res.redirect("http://localhost/GreenSense/html");
+                    res.redirect("http://localhost/GreenSense/html/cuentaBorrada.html");
 
                     transporter = nodemailer.createTransport({
                         host: "smtp.gmail.com",
@@ -84,8 +85,7 @@ app.post('/', (req,res)=>{
                     transporter.sendMail(mailOptions, (error, info) => {
                         if (error) {
                             console.log ("> error enviando mail de borrado de cuenta");
-                            console.log (error);
-                            //res.status(400).send("Error: El mail de registración no ha podido ser enviado");   
+                            console.log (error);   
                         }
                         else {
                             console.log ("> mail de borrado de cuenta enviado");
@@ -101,32 +101,22 @@ app.post('/', (req,res)=>{
             //Tira error si el usuario o contraseña esta mal
             else {
                 console.log("> usuario o contraseña incorrectos");
-                res.status(400).send("Usuario o contraseña incorrectos");
+                res.redirect("http://localhost/GreenSense/html/borrar.html");
                 io.on('connection', (socket) => {
                     console.log('> error de datos incorrectos enviado');
                     socket.emit('errorincor', 'error');
-                  });
-                
+                });
             }
         });
-    
     }
 
     //Instrucciones si le faltaron datos al usuario
     else {
         console.log("> error: faltan datos");
-        res.status(400).send("Error: Debe ingresar todos los valores");
+        res.redirect("http://localhost/GreenSense/html/borrar.html");
         io.on('connection', (socket) => {
             console.log('> error de falta de datos incorrectos enviado');
             socket.emit('errordatos', 'error');
-          });
+        });
     }
-    
 });
-
-//Escucha a puerto 3000
-/*
-app.listen (port, () => {
-    console.log (`> servidor en puerto ${port}, escuchando borrar...`);
-});
-*/

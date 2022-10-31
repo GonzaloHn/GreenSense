@@ -7,9 +7,10 @@
     --green: green;
     --white: #ffffff;
     --light-gray: rgb(207, 202, 202);
-    --light-gren: rgb(80, 242, 73);
-    --medium-gren: rgb(77, 219, 113);
-    --bluish-gren: rgb(73, 209, 146);
+    --lighter-gray: rgb(248, 248, 248);
+    --light-green: rgb(80, 242, 73);
+    --medium-green: rgb(77, 219, 113);
+    --bluish-green: rgb(73, 209, 146);
 }
 
 .separador{
@@ -48,7 +49,7 @@ iframe{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: var(--bluish-gren);
+    background-color: var(--bluish-green);
 
     height: 75px;
     margin-bottom: 30px;
@@ -63,15 +64,12 @@ iframe{
     color:white;
 }
 .navbar-logo-icon{
-    width: 45px;
-    margin-top: 10px;
-    margin-bottom: -4px;
-    padding-right: 2px;
-}
-.navbar-logo-icon{
     width: 30px;
     margin-top: 10px;
+    margin-bottom: -3px;
+    padding-right: 2px;
 }
+
 .navbar-items{
     display:flex;
     list-style: none;
@@ -87,13 +85,9 @@ iframe{
     text-decoration: none;
     font-size: 18px;
     display: block;
-    color:rgb(226, 219, 219);
+    color:rgb(236, 236, 236);
 
 }
-.active-item{
-    color: white!important;
-}
-
 
 .navbar-items li:hover{
     background-color: black;
@@ -154,21 +148,13 @@ ul.show{
         background: none;
     }
 
-    .active-item{
-        font-size: 20px;
-        color: black!important;
-    }
     .navbar-items li a{
         font-size: 20px;
         color: black;
     }
     .navbar-items li a:hover{
         font-size: 20px;
-        color:green;
-    }
-    .active-item:hover{
-        font-size: 20px;
-        color: green!important;
+        color:white;
     }
 
     .navbar-logo{
@@ -229,7 +215,7 @@ ul.show{
     top: 0;
     left: 0;
 
-    background-color: var(--bluish-gren);
+    background-color: var(--bluish-green);
     opacity: 0.9;
 
 }
@@ -339,7 +325,7 @@ ul.show{
 
 .upload-button{
     width:180px;
-    background: var(--bluish-gren);
+    background: var(--bluish-green);
     padding: 10px;
     border:none;
     border-radius: 25px;
@@ -381,7 +367,7 @@ ul.show{
         top: 0;
         left: 0;
 
-        background-color: green;
+        background-color: var(--bluish-green);
         opacity: 0.9;
     
     }
@@ -479,7 +465,7 @@ ul.show{
 @media only screen and (max-width: 420px){
 .upload-button{
     width:100px;
-    background: var(--bluish-gren);
+    background: var(--bluish-green);
     padding: 10px;
     border:none;
     border-radius: 25px;
@@ -520,7 +506,7 @@ ul.show{
     top: 0;
     left: 0;
 
-    background-color: var(--bluish-gren);
+    background-color: var(--bluish-green);
     opacity: 0.9;
 
 }
@@ -615,7 +601,7 @@ ul.show{
 .delete-button{
     margin-top: 20px;
     width:180px;
-    background: var(--bluish-gren);
+    background: var(--bluish-green);
     padding: 10px;
     border:none;
     border-radius: 25px;
@@ -681,7 +667,7 @@ ul.show{
 @media only screen and (max-width: 420px){
     .delete-button{
         width:100px;
-        background: var(--bluish-gren);
+        background: var(--bluish-green);
         padding: 10px;
         border:none;
         border-radius: 25px;
@@ -700,9 +686,17 @@ ul.show{
 /*Cuenta creada*/
 .creada-background{
     background-color: var(--light-gray);
+
+}
+.creada-background-image{
+    height: 100vh;
+    width: 100%;
+    margin-top: -95px;
+    position: absolute;
+    z-index: -2;
     background-image: url(../images/fondoGreenSense.png);
     background-size: cover;
-    background-position: center 1%;
+    background-position: center center;
 }
 .creada-wrap{
     background-color: rgb(250, 249, 249);
@@ -713,14 +707,9 @@ ul.show{
     margin:95px auto;
     
     border: 2px solid green;
-}
-.creada-wrap-n{
-    width: 85vw;
-    height: calc(100vh - 75px);
-    -moz-border-radius: 0 50% / 0 100%;
-    -webkit-border-radius: 0 50% / 0 100%;
-    border-radius: 0px 0px 1000px 0px;
-    background: green;
+
+    display: flex;
+    flex-direction: column;
 }
 .cuenta-creada{
     margin-top: 70px;
@@ -743,7 +732,8 @@ ul.show{
     cursor: pointer;
     border: 2px solid #4CAF50;
     padding: 8px;
-    margin-left: 111px
+
+    margin: auto 110px   
 }
 
 .cuenta-creada-btn:hover {
@@ -758,69 +748,68 @@ ul.show{
     border-radius: 1000px 1000px 0px 0px;
     background: white;
 }
-@media only screen and (max-width: 670px){
-    .creada-wrap-n{
-        width: 95vw;
-        height: calc(100vh - 75px);
-        -moz-border-radius: 0 50% / 0 100%;
-        -webkit-border-radius: 0 50% / 0 100%;
-        border-radius: 0px 0px 1000px 0px;
-        background: green;
-    }
-}
-@media only screen and (max-width: 600px){
-    .cuenta-creada{
-        margin:auto;
-        text-align: center;
-        color: white;
-        font-size: calc(1.1em + 3vw);
-        padding-top: 100px;
-        z-index: 2;
-    }
+
+@media only screen and (max-width: 540px){
     .creada-wrap{
-        width: 100vw;
-        height: 100vh;
-        border-radius: 0px;
-        background: green;
+        background-color: rgb(250, 249, 249);
+        box-shadow: 0px 0px 15px rgb(0, 0, 0, 0.5);
+        width:80vw;
+        height: 50vh;
+        padding: 30px 20px 15px;
+        margin:95px auto;
+        
+        border: 2px solid green;
     }
-    .creada-wrap-n{
-        width: 100vw;
-        height: 100vh;
-        border-radius: 0px;
-        background: green;
-        overflow: hidden;
-    }
-    .cuenta-creada-btn-wrap{
-        margin: 20px auto;
+    .cuenta-creada{
+        margin-top: 70px;
         text-align: center;
-    }
-    .white-block{
-        position: absolute;
-        bottom: 0;
-        display: block;
-        z-index: 1;
-        width: 100vw;
-        height: 40vh;
-        border-radius: 2000px 2000px 0px 0px;
-        background: white;
+        font-size: calc(1.5em + 0.5vw);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    
     }
 }
 
 /*Pagina Inicial - Gráficos*/
-.gráficos{
+.graph-background{
+    background-color: var(--lighter-gray);
 }
 .width-graph{
+    pointer-events: none;
     width: 45vw!important;
     height: fit-content;
 }
+.g-title{
+    font-size: calc(1em + 0.5vw);
+    margin-left:10%;
+    margin-top: 10px;
+    padding: 10px 20px 10px 20px;
+    border: 2px solid black;
+    width: fit-content;
+}
+#energy-title{
+    background-color: rgb(255, 217, 0, 0.2);
+}
+#air-title{
+    display: none;
+    background-color: rgb(0, 0, 255, 0.05);
+}
+#weight-title{
+    display: none;
+    background-color: rgb(255, 0, 0, 0.07);
+}
+
 @media only screen and (max-width: 590px){
     .width-graph{
+        pointer-events: none;
         width: 80vw!important;
         height: 70vw!important;
     }
 }
 @media only screen and (max-width: 990px) and (min-width: 591px){
     .width-graph{
+        pointer-events: none;
         width: 60vw!important;
         height: 40vw!important;
     }
@@ -828,11 +817,11 @@ ul.show{
 
 /*Pagina Inicial - Iconos*/
 .control-icons-wrap{
-    background-color: green;
+    background-color: black;
     width:fit-content;
     height: fit-content;
     padding: 1px;
-    margin-left:10%;
+    margin-left:5%;
     margin-top:2%;
 }
 .control-icons{
@@ -842,7 +831,7 @@ ul.show{
     width: fit-content;
     height: fit-content;
 
-    background-color:white;
+    background-color:var(--lighter-gray);
 }
 .control-icons i{
     margin: 0 7px;
@@ -855,6 +844,36 @@ ul.show{
     color:green;
 }
 
+.flex-graph{
+    display:flex;
+}
+@media only screen and (max-width: 730px){
+    .flex-graph{
+        display: block;
+    }
+    .control-icons-wrap{
+        background-color: black;
+        width:fit-content;
+        height: fit-content;
+        padding: 1px;
+        margin-left:10%;
+        margin-top:2%;
+    }
+}
+@media only screen and (max-width: 1069px) and (min-width: 992px){
+    .flex-graph{
+        display: block;
+    }
+    .control-icons-wrap{
+        background-color: black;
+        width:fit-content;
+        height: fit-content;
+        padding: 1px;
+        margin-left:10%;
+        margin-top:2%;
+    }
+}
+
 /*Pagina Inicial - Containers de Valores*/
 .ValContainer{
     /* background-color: rgb(27, 230, 44); */
@@ -865,7 +884,7 @@ ul.show{
     height: fit-content;
     margin-bottom: 30px;
     margin-top: 30px;
-    width: 300px;
+    width: 305px;
     display:flex;
 
     /* white-space:nowrap;
@@ -922,7 +941,7 @@ ul.show{
     }
     .ValBtn{
         font-size: 80%;
-        background-color: white;
+        background-color: var(--lighter-gray);
         border: none;
         border-radius: 5px;
         color: black;
@@ -939,9 +958,9 @@ ul.show{
 }
 .ValContainerIcon img{
     width: 80px;
-    margin-left:13px;
+    margin-left:14px;
     margin-right: 15px;
-    margin-top:8px;
+    margin-top:12.5px;
     
 }
 
@@ -955,8 +974,8 @@ ul.show{
     padding-bottom: 4px;
 }
 .ValInfo{
-    margin-left:5px;
-    margin-bottom: 8px;
+    margin-left:7px;
+    margin-bottom: 9px;
 }
 .ValBtn{
     font-size: 80%;
@@ -1043,11 +1062,20 @@ ul.show{
     }
 }
 
-.checkbox-blue-grey[type="checkbox"].filled-in:checked+span:not(.lever):after {
+.checkbox-green[type="checkbox"].filled-in:checked+span:not(.lever):after {
     border: 2px solid green;
     background-color: green;
 }
-
+.config-tab-checkbox label span{
+    font-size: 17px!important;
+    margin-bottom: 15px;
+}
+@media only screen and (max-width: 311px){
+    .config-tab-checkbox label span{
+        font-size: 17px!important;
+        margin-bottom: 30px;
+    }
+}
 /*Cargando...*/
 .carga-tab-wrap{
     display:none;
@@ -1114,6 +1142,25 @@ ul.show{
     margin-bottom: 10px;
     height: fit-content;
 }
+@media only screen and (max-width: 350px){
+    .Situation-Now{
+        width: 80vw;
+    }
+    .Situation-Now-Line{
+        content: '';
+        display: block;
+        width: 70vw;
+        height: 1px;
+        background-color: black;
+        margin: 10px 10px 5px;    
+    }
+    .Situation-Now-Text{
+        color:black;
+        font-size: 150%;
+        width: 70vw;
+        padding: 10px;
+    }
+}
 .Situation-Now-Title{
     font-size: 200%;
     padding-left: 10px;
@@ -1154,24 +1201,40 @@ td, th{
     text-align: left;
 }
 
-.absolute-three{
-    position:absolute;
+
+/* Home */
+.home-back{
+    /* background-color: var(--bluish-green); */
+    background-color: var(--lighter-gray);
+
 }
-.fondo-verde{
-    background-image: url(../images/fondo\ verde\ recortar.png);
-    background-size: cover;
-    background-position: center center;
+.home-logo img{
+    
+    width: 600px;
+    position: absolute;
+    z-index: -1;
+    margin-right:450px;
+    right: 0;
+    opacity: 0.4;
+    margin-top: -200px;
+   
 }
-.flex{
-    display: flex!important;
-    justify-content: space-between;
-    align-items: center;
+.home-content{
+    color:black;
+    margin-top: 35vh;
+    margin-left: 10vw;;
+}
+.home-title{
+    font-size: calc(4em + 2vw);
+}
+.home-sign{
+    font-size: calc(1em + 1vw);
 }
 .title-text{
     /* background-image: url(../images/fondo\ verde\ recortar.png);
     background-size: cover;
     background-position: center center; */
-    color: white;
+    /* color: white;
     font-size: calc(3em + 3vw);
     padding-left: 60px;
     padding-top: 100px;
@@ -1183,19 +1246,19 @@ td, th{
     -moz-border-radius: 0 50% / 0 100%;
     -webkit-border-radius: 0 50% / 0 100%;
     border-radius: 0px 0px 1000px 0px;
-    background: green;
+    background: green; */
 }
 .background-logo{
-    position: absolute;
+    /* position: absolute;
     margin-right: 330px;
     right: 0;
     margin-top: -340px;
     width:1000px;
     z-index: -1;
     overflow: hidden;
-    animation: rotation 20s infinite linear;
+    animation: rotation 20s infinite linear; */
 }
-
+/* 
 @keyframes rotation {
     from {
         transform: rotate(0deg);
@@ -1208,4 +1271,4 @@ td, th{
     .cuadro{
         height: calc(100vh - 65px);
     }
-}
+} */

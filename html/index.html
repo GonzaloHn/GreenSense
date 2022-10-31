@@ -3,6 +3,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="../images/LogoInvG.png">
     <title>Green Sense</title>
 
     <!--Archivos CSS (styles.css //Materialize.css)-->
@@ -24,13 +25,13 @@
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/dygraph/2.1.0/dygraph.min.css">
 
 </head>
-<body style="">
+<body class="graph-background">
     
     <nav class="navbar">
         <div class="navbar-logo"><img class="navbar-logo-icon" src="../images/LogoInvW.png"><span class="navbar-logo-title">GreenSense</span></div>
   
         <ul class="navbar-items" id="navbar-items-responsive">
-          <li><a href="index.html" class="active-item">Home</a></li>
+          <li><a href="index.html">Home</a></li>
           <li><a href="registrar.html">Registrar</a></li>
           <li><a href="borrar.html">Borrar cuenta</a></li>
         </ul>
@@ -46,8 +47,12 @@
         <div id="hide-e-g"><div class="width-graph" id="graph-energy"></div></div>
         <div id="hide-a-g"><div class="width-graph" id="graph-air"></div></div>
         <div id="hide-w-g"><div class="width-graph" id="graph-weight"></div></div>
+        
+        <div class="flex-graph">
 
-        <div style="background-color: red; width: 600px; display:none">medir</div>
+        <div class="g-title" id="energy-title">Energía eléctrica</div>
+        <div class="g-title" id="air-title">Calidad del aire</div>
+        <div class="g-title" id="weight-title"> Peso de la basura</div>
 
 
         <!-- <div style="background-color: greenyellow; width: fit-content;">   <canvas id="line-chart-energy" width="400" height="400"></canvas>
@@ -64,6 +69,7 @@
         </div>
         </div>
 
+        </div>
     </div>
 
     <div class="col l1">--</div>
@@ -133,14 +139,14 @@
 
             <div class="config-tab-checkbox">
                 <label>
-                    <input type="checkbox" class="filled-in checkbox-blue-grey" checked="checked" id="config-showOpt">
+                    <input type="checkbox" class="filled-in checkbox-green" checked="checked" id="config-showOpt">
                     <span>Mostrar valores óptimos</span>
                 </label>         
             </div>
             <div class="config-tab-checkbox">
                 <label>
-                    <input type="checkbox" class="filled-in checkbox-blue-grey" checked="checked" id="config-deleteVal"/>
-                    <span>Borrar valores</span>
+                    <input type="checkbox" class="filled-in checkbox-green" checked="checked" id="config-deleteVal"/>
+                    <span>Borrar valores antiguos</span>
                 </label>        
             </div>
         </div>

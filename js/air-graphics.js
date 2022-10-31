@@ -50,7 +50,7 @@ const centerText = {
       ctx.fillText('aire', width / 2, height / 2 - 30);
       ctx.restore();
 
-      const val_actual = 'Valor actual: ' + num_val;
+      const val_actual = 'Valor actual: ' + num_val + 'ppm';
 
       ctx.font = 'bolder 30px Arial';
       ctx.fillStyle = 'rgba(1, 1, 1)';
@@ -86,7 +86,13 @@ const myChart = new Chart(
 );
 
 function updateChart(){
-  var updateDisplay = [num_val, 100 - num_val];
+  var empty_val = 90;
+  if (num_val > 90){
+    empty_val = 0;
+  }else{
+    empty_val = empty_val - num_val
+  }
+  var updateDisplay = [num_val, empty_val];
   // var updateVal = num_val;
 
   config.data.datasets[0].data = updateDisplay;
@@ -95,5 +101,23 @@ function updateChart(){
 };
 window.setInterval(function() {
   //num_val++;
-  updateChart();  
+  updateChart(); 
 }, 1000);
+
+$(document).ready(function(){
+
+  setInterval(swapSitNow,1000);
+  function swapSitNow(){
+      if(num_val < 40){
+        $(".Situation-Now-Title").text('Valores correctos');
+        $(".Situation-Now-Text").html("La calidad de aire actual es aceptable.");
+      } else if(num_val > 40 && num_val <= 50){
+        $(".Situation-Now-Title").html("Valores arreiesgados");
+        $(".Situation-Now-Text").html("La calidad de aire actual no es la indicada.");
+      } else if (num_val > 50){
+        $(".Situation-Now-Title").html("Valores perjudiciales");
+        $(".Situation-Now-Text").html("La caidad de aire actual es perjudicial.");
+      }        
+  }
+    
+});

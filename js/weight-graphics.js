@@ -15,7 +15,7 @@ const data = {
     ],
     datasets: [{
       label: '',
-      data: [1, 99],
+      data: [1, 499],
       borderColor: [
           'rgb(255, 0, 7)',
           'rgb(0, 0, 0, 0)',
@@ -50,7 +50,7 @@ const centerText = {
       ctx.fillText('de la basura', width / 2, height / 2 - 30);
       ctx.restore();
 
-      var val_actual = 'Valor actual: ' + num_val;
+      var val_actual = 'Valor actual: ' + num_val + 'g';
 
       ctx.font = 'bolder 30px Arial';
       ctx.fillStyle = 'rgba(1, 1, 1)';
@@ -86,7 +86,13 @@ const myChart = new Chart(
 );
 
 function updateChart(){
-  var updateDisplay = [num_val, 100 - num_val];
+  var empty_val = 500;
+  if (num_val > 500){
+    empty_val = 0;
+  }else{
+    empty_val = empty_val - num_val
+  }
+  var updateDisplay = [num_val, empty_val];
   // var updateVal = num_val;
 
   config.data.datasets[0].data = updateDisplay;

@@ -15,7 +15,7 @@ const data = {
     ],
     datasets: [{
       label: 'My First Dataset',
-      data: [1, 99],
+      data: [1, 499],
       borderColor: [
           'rgb(241, 198, 7)',
           'rgb(0, 0, 0, 0)',
@@ -86,7 +86,13 @@ const myChart = new Chart(
 );
 
 function updateChart(){
-  var updateDisplay = [num_val, 100 - num_val];
+  var empty_val = 500;
+  if (num_val > 500){
+    empty_val = 0;
+  }else{
+    empty_val = empty_val - num_val
+  }
+  var updateDisplay = [num_val, empty_val];
   // var updateVal = num_val;
 
   config.data.datasets[0].data = updateDisplay;
@@ -94,6 +100,6 @@ function updateChart(){
   myChart.update();
 };
 window.setInterval(function() {
-  //num_val++;
+  num_val++;
   updateChart();  
 }, 1000);

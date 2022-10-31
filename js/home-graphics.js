@@ -195,17 +195,29 @@ $(document).ready(function(){
             //$("#hide-e-g").fadeOut(050);
             $("#hide-e-g").hide();
             $("#hide-a-g").fadeIn(fadeInNum);
+
+            $("#energy-title").hide();
+            $("#air-title").fadeIn(fadeInNum);
+
             //$("#hide-a-g").show()
             graphNum++;
         }
         else if (graphNum == 2){
             $("#hide-a-g").hide();
             $("#hide-w-g").fadeIn(fadeInNum);
+
+            $("#air-title").hide();
+            $("#weight-title").fadeIn(fadeInNum);
+
             graphNum++;
         }
         else if (graphNum == 3){
             $("#hide-w-g").hide();
             $("#hide-e-g").fadeIn(fadeInNum);
+
+            $("#weight-title").hide();
+            $("#energy-title").fadeIn(fadeInNum);
+            
             graphNum = 1;
         }
     });
@@ -215,17 +227,29 @@ $(document).ready(function(){
             //$("#hide-e-g").fadeOut(050);
             $("#hide-e-g").hide();
             $("#hide-w-g").fadeIn(fadeInNum);
+
+            $("#energy-title").hide();
+            $("#weight-title").fadeIn(fadeInNum);
+
             //$("#hide-a-g").show()
             graphNum = 3;
         }
         else if (graphNum == 2){
             $("#hide-a-g").hide();
             $("#hide-e-g").fadeIn(fadeInNum);
+
+            $("#air-title").hide();
+            $("#energy-title").fadeIn(fadeInNum);
+
             graphNum = 1;
         }
         else if (graphNum == 3){
             $("#hide-w-g").hide();
             $("#hide-a-g").fadeIn(fadeInNum);
+
+            $("#weight-title").hide();
+            $("#air-title").fadeIn(fadeInNum);
+
             graphNum = 2;
         }
     });
@@ -258,20 +282,32 @@ if(changeGraphic == 1){
     if (graphNum == 1){
         $("#hide-e-g").hide();
         $("#hide-a-g").fadeIn(fadeInNum);
+
+        $("#energy-title").hide();
+        $("#air-title").fadeIn(fadeInNum);
+
         graphNum++;
     }
     else if (graphNum == 2){
         $("#hide-a-g").hide();
         $("#hide-w-g").fadeIn(fadeInNum);
+
+        $("#air-title").hide();
+        $("#weight-title").fadeIn(fadeInNum);
+
         graphNum++;
     }
     else if (graphNum == 3){
         $("#hide-w-g").hide();
         $("#hide-e-g").fadeIn(fadeInNum);
+
+        $("#weight-title").hide();
+        $("#energy-title").fadeIn(fadeInNum);
+
         graphNum = 1;
     }
 }
-}, 10000);
+}, 900000);
 
 
 window.setInterval(function() {
@@ -304,9 +340,9 @@ if(dynamicUpdate == 1){
         data_air.push([x, y_air, y_opt_air]);
         data_weight.push([x, y_weight, y_opt_weight]);
     } else{
-        data_energy.push([x, y_energy, null]);
-        data_air.push([x, y_air, null]);
-        data_weight.push([x, y_weight, null]);
+        data_energy.push([x, 1, null]);
+        data_air.push([x, 1, null]);
+        data_weight.push([x, 1, null]);
     }
 
     if(deleteVal == 1){

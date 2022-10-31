@@ -6,6 +6,7 @@
 :root {
     --green: green;
     --white: #ffffff;
+    --dark-gray: rgb(173, 168, 168);
     --light-gray: rgb(207, 202, 202);
     --lighter-gray: rgb(248, 248, 248);
     --light-green: rgb(80, 242, 73);
@@ -26,7 +27,7 @@ iframe{
     width:100%;
 }
 .grey-background{
-    background-color: grey;
+    background-color: var(--dark-gray);
 }
 
 
@@ -200,7 +201,7 @@ ul.show{
     margin: 50px auto;
     display:flex;
 
-    background-color: rgb(230, 235, 225);
+    background-color: rgb(242, 243, 242);
     border-radius: 10px;
     overflow: hidden;
     box-shadow: 0px, 0px, 20px rgb(0, 0, 0, 0.2);
@@ -260,23 +261,9 @@ ul.show{
     color: white;
 
     width: 130px;
-    /* font-size: 30px; */
     display: flex;
     text-align: center;
 }
-/* .form-icon{
-    position: relative;
-    z-index: 2;
-    color: white;
-
-    font-size: 70px;
-    display: flex;
-    text-align: center;
-} */
-/* .form-icon::after{
-    content: '';
-    height: 40px;
-} */
 
 .form{
     width:62%;
@@ -315,11 +302,11 @@ ul.show{
 }
 
 .form-messageError{
-    display: none;
+    display:none;
+    font-size: 15px;
     color:red;
-    padding: 0px 0px 16px;
-    font-weight: 600;
-
+    padding: 0px 0px 4px;
+    font-weight: 400;
 }
 
 
@@ -1141,6 +1128,25 @@ ul.show{
     width: fit-content;
     margin-bottom: 10px;
     height: fit-content;
+    background-color: rgb(230, 230, 230);
+}
+.Situation-Now-Title{
+    font-size: 200%;
+    padding-left: 10px;
+    padding-top: 10px;
+}
+.Situation-Now-Line{
+    content: '';
+    display: block;
+    width: 20rem;
+    height: 1px;
+    background-color: black;
+    margin: 10px 10px 5px;
+}
+.Situation-Now-Text{
+    font-size: 150%;
+    width: 20rem;
+    padding: 10px;
 }
 @media only screen and (max-width: 350px){
     .Situation-Now{
@@ -1161,24 +1167,7 @@ ul.show{
         padding: 10px;
     }
 }
-.Situation-Now-Title{
-    font-size: 200%;
-    padding-left: 10px;
-    padding-top: 10px;
-}
-.Situation-Now-Line{
-    content: '';
-    display: block;
-    width: 20rem;
-    height: 1px;
-    background-color: black;
-    margin: 10px 10px 5px;
-}
-.Situation-Now-Text{
-    font-size: 150%;
-    width: 20rem;
-    padding: 10px;
-}
+
 /* .Situation-Now-Text::selection{
     color:greenyellow;
     background-color: red;

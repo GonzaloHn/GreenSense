@@ -100,6 +100,6 @@ function updateChart(){
   myChart.update();
 };
 window.setInterval(function() {
-  num_val++;
+  //num_val++;
   updateChart();  
 }, 1000);

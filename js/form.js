@@ -25,16 +25,25 @@ socket.on('errorincor', (userPassIncor) =>{
 
 
 function findErr(){
-    if(errUser ==null)
+    if(errData ==null)
     {
         console.log(1);
-    }else if (errUser != null){
-        console.log("El usuario ya esta en uso");
+    }else if (errData != null){
+        console.log("Faltan datos");
         checkErr = 0;
-        $("#errMessage").html("El usuario ya está en uso");
+        $("#errMessage").html("Por favor, complete todos los campos");
         $("#errMessage").show();
 
-        $("#u").css("border-color", "red");
+        if($("#u").val == ""){
+            $("#u").css("border-color", "red");
+        }
+        if($("#c").val == ""){
+            $("#c").css("border-color", "red");
+        }
+        if($("#m").val == ""){
+            $("#m").css("border-color","red");
+        }
+        
 
     }
     if(errMail == null)
@@ -49,14 +58,16 @@ function findErr(){
         $("#m").css("border-color","#FF0000");
 
     }
-    if(errData == null)
+    if(errUser == null)
     {
         console.log(3);
-    } else if(errData != null){
-        console.log("Faltan datos");
+    } else if(errUser != null){
+        console.log("El usuario ya esta en uso");
         checkErr = 0;
-        $("#errMessage").html("Por favor, complete todos los campos");
+        $("#errMessage").html("El usuario ya está en uso");
         $("#errMessage").show();
+
+        $("#u").css("border-color", "red");
 
     }
     if(errIncor == null)
@@ -67,6 +78,11 @@ function findErr(){
         checkErr = 0;
         $("#errMessage").html("El usuario y/o la contraseña son incorrectas");
         $("#errMessage").show();
+
+        $("#u").css("border-color", "red");
+        $("#c").css("border-color", "red");
+
+
 
     }
 

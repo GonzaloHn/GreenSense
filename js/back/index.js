@@ -31,7 +31,7 @@ const express = require('express');
 const app = express();
 const port = 4000;
 const server = app.listen (port, () => {
-    console.log (`> servidor en puerto ${port}, escuchando registro...`);
+    console.log (`> servidor en puerto ${port}, escuchando index...`);
 });
 
 //Variables socket

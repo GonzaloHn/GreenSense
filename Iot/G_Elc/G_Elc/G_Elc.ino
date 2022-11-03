@@ -2,15 +2,17 @@
 #include <Adafruit_MQTT_Client.h>
 #include <Adafruit_MQTT_FONA.h>
 #include <ESP8266WiFi.h>
+#include <dummy.h>
 
 
-#define WLAN_SSID       "Familia Resnik"
-#define WLAN_PASS       ""
+
+#define WLAN_SSID       "IoT"
+#define WLAN_PASS       "elultimo10"
 
 
 #define AIO_SERVER      "io.adafruit.com"
 #define AIO_SERVERPORT  1883                   // use 8883 for SSL
-#define AIO_USERNAME  "SantiR"
+#define AIO_USERNAME  "soficasares"
 #define AIO_KEY       ""
 
 WiFiClient client;
@@ -40,18 +42,43 @@ void setup() {
 void loop() {
   
   MQTT_connect();
-  int sensorValue = analogRead(A0); //Lectura analógica
-  float voltajeSensor = analogRead(A0) * (1.1 / 1023.0); //voltaje del sensor
-  float corriente=voltajeSensor*50.0; //corriente=VoltajeSensor*(50A/1V)
-  Serial.println(corriente,3);//enviamos por el puerto serie
+float Irms=get_corriente(); //Corriente eficaz (A)
+  float Irmsf=Irms-0.830;
+  float P=(Irms*220.0)-0.830; // P=IV (Watts)
+
+  Serial.print("Irms: ");
+  Serial.print(Irmsf,3);
+  Serial.print("A, Potencia: ");
+  Serial.print(P,3);  
+  Serial.println("W");
   
-  if (! G_Elc.publish(corriente)) {
+  if (! G_Elc.publish(Irmsf,3)) {
     Serial.println(F("Failed"));
   } else {
     Serial.println(F(" OK!"));
   }
  delay(2500);
 }
+float get_corriente()
+{
+  float voltajeSensor;
+  float corriente=0;
+  float Sumatoria=0;
+  long tiempo=millis();
+  int N=0;
+  while(millis()-tiempo<500)//Duración 0.5 segundos(Aprox. 30 ciclos de 60Hz)
+  { 
+    voltajeSensor = analogRead(A0) * (1.1 / 1023.0);////voltaje del sensor
+    corriente=voltajeSensor*50.0; //corriente=VoltajeSensor*(30A/1V)
+    Sumatoria=Sumatoria+sq(corriente);//Sumatoria de Cuadrados
+    N=N+1;
+    delay(1);
+  }
+  Sumatoria=Sumatoria*2;//Para compensar los cuadrados de los semiciclos negativos.
+  corriente=sqrt((Sumatoria)/N); //ecuación del RMS
+  return(corriente);
+}
+
 void MQTT_connect() {
   int8_t ret;
 

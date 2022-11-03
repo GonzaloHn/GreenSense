@@ -133,9 +133,9 @@ for (var i = 10; i >= 0; i--) {
     data_weight.push([x, ran, ran + 1]);
 } 
 
-var line_chart_energy = new Dygraph(document.getElementById("graph-energy"), data_energy, {width:600, height:400, colors:["gold", "black"]}); //crea el nuevo grafico
-var line_chart_air = new Dygraph(document.getElementById("graph-air"), data_air, {width:600, height:400, colors:["blue", "black"]}); //crea el nuevo grafico
-var line_chart_weight = new Dygraph(document.getElementById("graph-weight"), data_weight, {width:600, height:400, colors:["red", "black"]}); //crea el nuevo grafico
+var line_chart_energy = new Dygraph(document.getElementById("graph-energy"), data_energy, {width:600, height:400, colors:["gold", "black"],strokeBorderWidth: 1,strokeBorderColor:'', }); //crea el nuevo grafico
+var line_chart_air = new Dygraph(document.getElementById("graph-air"), data_air, {width:600, height:400, colors:["blue", "black"], strokeBorderWidth: 1,strokeBorderColor:''}); //crea el nuevo grafico
+var line_chart_weight = new Dygraph(document.getElementById("graph-weight"), data_weight, {width:600, height:400, colors:["red", "black"], strokeBorderWidth: 1,strokeBorderColor:''}); //crea el nuevo grafico
 
 //Variables para jquery
 var graphNum = 1;
@@ -150,7 +150,6 @@ $(document).ready(function(){
     
     $(".config-tab-wrap").hide();
 
-    $(".carga-tab-wrap").hide();
 
     //Funcion de las configuraciones
     $("#config-g").click(function(){
@@ -274,6 +273,9 @@ $(document).ready(function(){
         $("#pause-g").show();
 
     })
+
+    $(".carga-tab-wrap").hide();
+
 });
 
 //Cambiar el gráfico cada tanto

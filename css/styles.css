@@ -1,3 +1,13 @@
+@font-face {
+    font-family: 'ausion';
+    src: url('AusionPersonalUse-Extra.otf') format('truetype');
+    font-style: normal;
+    font-weight: normal;
+}
+/* *{
+    font-family: "green_cornerregular";
+    font-size: 40px;
+} */
 *{
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     box-sizing: border-box;
@@ -63,6 +73,7 @@ iframe{
 .navbar-logo-title{
     margin-top:100px;
     color:white;
+    font-family: "ausion";
 }
 .navbar-logo-icon{
     width: 30px;
@@ -772,19 +783,19 @@ ul.show{
     margin-left:10%;
     margin-top: 10px;
     padding: 10px 20px 10px 20px;
-    border: 2px solid black;
-    width: fit-content;
+    width: 200px;
+    text-align: center;
 }
 #energy-title{
-    background-color: rgb(255, 217, 0, 0.2);
+    border: 2px solid gold;
 }
 #air-title{
     display: none;
-    background-color: rgb(0, 0, 255, 0.05);
+    border: 2px solid blue;
 }
 #weight-title{
     display: none;
-    background-color: rgb(255, 0, 0, 0.07);
+    border: 2px solid red;
 }
 
 @media only screen and (max-width: 590px){
@@ -1119,7 +1130,7 @@ ul.show{
     background-position: center center;
 }
 #particular-graph-pos{
-    margin-top:80px;
+    margin-top:90px;
 }
 
 /*Pagina Valores Particulares - Tabla Situacion*/
@@ -1193,71 +1204,68 @@ td, th{
 
 /* Home */
 .home-back{
-    /* background-color: var(--bluish-green); */
-    background-color: var(--lighter-gray);
+    background-color: var(--bluish-green);
+    /* background-color: var(--lighter-gray); */
 
 }
 .home-logo img{
     
-    width: 600px;
+    width: 650px;
     position: absolute;
     z-index: -1;
-    margin-right:450px;
-    right: 0;
-    opacity: 0.4;
-    margin-top: -200px;
+    /* margin-left:450px; */
+    left: 0;
+    top:0;
+    opacity: 0.3;
+    margin-top: 0.5vh;
    
+}
+.home-block{
+    width: 98vw;
+    height: 100vh;
+
+    position: absolute;
+    z-index: -2;
+    top:0;
+
+    background-color: white;
+    border-radius: 0px 0px 1000px 0px;
+
 }
 .home-content{
     color:black;
-    margin-top: 35vh;
-    margin-left: 10vw;;
+    margin-top: 26vh;
+    margin-left: 26vw;
+
+
 }
 .home-title{
-    font-size: calc(4em + 2vw);
+    font-family: "ausion";
+    font-size: calc(4em + 4vw);
+}
+.home-slogan{
+    font-family: "ausion";
+    font-size: calc(1em + 1vw);
+    margin-bottom: 15px;
+    margin-left:10px;
 }
 .home-sign{
-    font-size: calc(1em + 1vw);
-}
-.title-text{
-    /* background-image: url(../images/fondo\ verde\ recortar.png);
-    background-size: cover;
-    background-position: center center; */
-    /* color: white;
-    font-size: calc(3em + 3vw);
-    padding-left: 60px;
-    padding-top: 100px;
-    z-index: 2;
+    font-size: calc(1em + 0.2vw);
+    background-color: rgb(250, 249, 249);
+    border: none;
+    border-radius: 10px;
+    color: black;
+    text-decoration: none;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    border: 2px solid #4CAF50;
+    padding: 8px;
+    margin-left:10px;
 
-    margin-top: -30px;
-    width: 800px;
-    height: calc(100vh - 75px);
-    -moz-border-radius: 0 50% / 0 100%;
-    -webkit-border-radius: 0 50% / 0 100%;
-    border-radius: 0px 0px 1000px 0px;
-    background: green; */
+
 }
-.background-logo{
-    /* position: absolute;
-    margin-right: 330px;
-    right: 0;
-    margin-top: -340px;
-    width:1000px;
-    z-index: -1;
-    overflow: hidden;
-    animation: rotation 20s infinite linear; */
+
+.home-sign:hover {
+    background-color: #4CAF50;
+    color: white;
 }
-/* 
-@keyframes rotation {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(359deg);
-    }
-}
-@media only screen and (max-width: 858px){
-    .cuadro{
-        height: calc(100vh - 65px);
-    }
-} */

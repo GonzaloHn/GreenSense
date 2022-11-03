@@ -4,6 +4,7 @@ var errData;
 var errIncor;
 
 var checkErr = 1;
+var nextErr = 0;
 
 var socket = io('http://localhost:3000');
 
@@ -28,20 +29,31 @@ function findErr(){
     if(errData ==null)
     {
         console.log(1);
-    }else if (errData != null){
+    }else if (errData != null && nextErr == 0){
         console.log("Faltan datos");
         checkErr = 0;
+        nextErr++;
+
         $("#errMessage").html("Por favor, complete todos los campos");
         $("#errMessage").show();
 
         if($("#u").val == ""){
             $("#u").css("border-color", "red");
+
+            $("#c").css("border-color", "black");
+            $("#m").css("border-color", "black");
         }
         if($("#c").val == ""){
             $("#c").css("border-color", "red");
+
+            $("#m").css("border-color", "black");
+            $("#u").css("border-color", "black");
         }
         if($("#m").val == ""){
             $("#m").css("border-color","red");
+
+            $("#c").css("border-color", "black");
+            $("#u").css("border-color", "black");
         }
         
 
@@ -49,95 +61,59 @@ function findErr(){
     if(errMail == null)
     {
         console.log(2);
-    } else if (errMail != null){
+    } else if (errMail != null && nextErr == 1){
         console.log("El mail ya esta en uso");
         checkErr = 0;
+        nextErr++;
+
         $("#errMessage").html("El mail ya está en uso");
         $("#errMessage").show();
 
-        $("#m").css("border-color","#FF0000");
+        $("#m").css("border-color","red");
+
+        $("#c").css("border-color", "black");
+        $("#u").css("border-color", "black");
+
 
     }
     if(errUser == null)
     {
         console.log(3);
-    } else if(errUser != null){
+    } else if(errUser != null && nextErr == 2){
         console.log("El usuario ya esta en uso");
         checkErr = 0;
+        nextErr++;
+
         $("#errMessage").html("El usuario ya está en uso");
         $("#errMessage").show();
 
         $("#u").css("border-color", "red");
 
+        $("#c").css("border-color", "black");
+        $("#m").css("border-color", "black");
+
     }
     if(errIncor == null)
     {
         console.log(4);
-    } else if(errIncor != null){
+    } else if(errIncor != null && nextErr == 3){
         console.log("Usuario y/o contraseña incorrectas");
         checkErr = 0;
+        nextErr = 0;
+
         $("#errMessage").html("El usuario y/o la contraseña son incorrectas");
         $("#errMessage").show();
 
         $("#u").css("border-color", "red");
         $("#c").css("border-color", "red");
 
-
-
+        $("#m").css("border-color", "black");
     }
 
-    
-
-        // if($("#u").val()=="" && $("#p").val()==""){
-        //     $("#divt").html("Debe ingresar Usuario y Contraseña");
-        //     $("#divt").show();
-        //     $("#1").css("color","#FF0000");
-        //     $("#2").css("color","#FF0000");
-        // }else if($("#u").val()!='' && $("#p").val()==''){
-        //     $("#divt").html("Debe ingresar Contraseña");
-        //     $("#divt").show();
-        //     $("#2").css("color","#FF0000");
-        // }else if($("#u").val()=='' && $("#p").val()!=''){
-        //     $("#divt").html("Debe ingresar Usuario");
-        //     $("#divt").show();
-        //     $("#1").css("color","#FF0000");
-        // }
-
-    // $("#u").focus(function(){
-    //     $("#divt").hide();
-    //     $("#divt").html("");
-    //     $("#1").css("color","#000000");
-    // });
-    // $("#p").focus(function(){
-    //     $("#divt").hide();
-    //     $("#divt").html("");
-    //     $("#2").css("color","#000000");
-    // });
 };
 
 window.setInterval(function() {
     if (checkErr == 1) {
         findErr();  
     }
-  }, 1000);
-
-// $(document).ready(function(){
-//     if(errUser ==null)
-//     {
-//         console.log(1);
-//     }else if (errUser != null){
-//         console.log("El usuario ya esta en uso");
-//     }
-//     if(errMail == null)
-//     {
-//         console.log(2);
-//     } else if (errMail != null){
-//         console.log("El mail ya esta en uso");
-//     }
-//     if(errData == null)
-//     {
-//         console.log(3);
-//     } else if(errData != null){
-//         console.log("Faltan datos");
-//     }
-// });
+}, 1000);

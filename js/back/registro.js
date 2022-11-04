@@ -41,7 +41,9 @@ const conexion  = mysql.createConnection({
 app.use (express.urlencoded({extended: true})); 
 
 //Accion al recibir post desde front
-app.post('/', (req,res)=>{    
+app.post('/', (req,res)=>{   
+    
+    console.log ("post");
     
     //Tomar variables de front
     user = req.body.usuario;

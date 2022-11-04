@@ -1,11 +1,15 @@
-var errUser;
-var errMail;
-var errData;
-var errIncor;
+$("#errMessage").hide();
+
+var errUser = null;
+var errMail = null;
+var errData = null;
+var errIncor = null;
 
 var checkErr = 1;
 
 var socket = io('http://localhost:3000');
+
+var missingData = null;
 
 socket.on('errorusu', (usedUser) =>{
     errUser = usedUser;
@@ -15,6 +19,7 @@ socket.on('errormail', (usedMail) =>{
 })
 socket.on('errordatos', (missingData) =>{
     errData = missingData;
+    console.log("reemplzado");
 })
 socket.on('errorincor', (userPassIncor) =>{
     errIncor = userPassIncor;
@@ -22,11 +27,16 @@ socket.on('errorincor', (userPassIncor) =>{
 
 
 // $(".login-input-definition-first").css("color","#FF0000");
-
+if(errData != null){
+    console.log("errData no es null")
+} else if(errData == null){
+    console.log("errData es null")
+}
 
 function findErr(){
     if (errData != null){
-        console.log("Faltan datos");
+        console.log("Fasltan datos");
+        console.log(errData);
         checkErr = 0;
 
         $("#errMessage").html("Por favor, complete todos los campos");
@@ -52,7 +62,7 @@ function findErr(){
         }
         return;
 
-    } else if (errMail != null){
+    } if (errMail != null){
         console.log("El mail ya esta en uso");
         checkErr = 0;
 
@@ -67,7 +77,7 @@ function findErr(){
 
         return;
 
-    } else if(errUser != null){
+    } if(errUser != null){
         console.log("El usuario ya esta en uso");
         checkErr = 0;
 
@@ -81,7 +91,7 @@ function findErr(){
         
         return;
 
-    } else if(errIncor != null){
+    } if(errIncor != null){
         console.log("Usuario y/o contraseña incorrectas");
         checkErr = 0;
 +

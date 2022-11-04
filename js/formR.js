@@ -7,22 +7,37 @@ var errIncor = null;
 
 var checkErr = 1;
 
+var errores = [0];
+
 var socket = io('http://localhost:3000');
 
-var missingData = null;
+// if(errores[errores.length - 1] == 0){
+//      $("#errMessage").html("Array");
+//      $("#errMessage").show();
+//      errores.push(10);
+//      console.log(errores[errores.length - 1]);
+
+// }
 
 socket.on('errorusu', (usedUser) =>{
     errUser = usedUser;
+    if(errUser != null){
+        errores.push(1);
+    }
+
 })
 socket.on('errormail', (usedMail) =>{
     errMail = usedMail;
+    if(errMail != null){
+        errores.push(2);
+    }
 })
 socket.on('errordatos', (missingData) =>{
     errData = missingData;
     console.log("reemplzado");
-})
-socket.on('errorincor', (userPassIncor) =>{
-    errIncor = userPassIncor;
+    if(errData != null){
+        errores.push(3);
+    }
 })
 
 
@@ -34,7 +49,7 @@ if(errData != null){
 }
 
 function findErr(){
-    if (errMail != null){
+    if (errMail != null && errores[errores.length - 1] == 2){
         console.log("El mail ya esta en uso");
         checkErr = 0;
 
@@ -54,7 +69,7 @@ function findErr(){
 
         return;
 
-    } if(errUser != null){
+    } if(errUser != null && errores[errores.length - 1] == 1){
         console.log("El usuario ya esta en uso");
         checkErr = 0;
 
@@ -74,7 +89,7 @@ function findErr(){
         return;
 
     }
-    if (errData != null){
+    if (errData != null && errores[errores.length - 1] == 3){
         console.log("Fasltan datos");
         console.log(errData);
         checkErr = 0;

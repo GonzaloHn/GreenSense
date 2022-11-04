@@ -47,6 +47,11 @@ function findErr(){
         $("#u").css("border-color", "black");
 
 
+        errUser = null;
+        errMail = null;
+        errData = null;
+        errIncor = null;
+
         return;
 
     } if(errUser != null){
@@ -61,6 +66,11 @@ function findErr(){
         $("#c").css("border-color", "black");
         $("#m").css("border-color", "black");
         
+        errUser = null;
+        errMail = null;
+        errData = null;
+        errIncor = null;
+
         return;
 
     }
@@ -90,6 +100,12 @@ function findErr(){
             $("#c").css("border-color", "black");
             $("#u").css("border-color", "black");
         }
+
+        errUser = null;
+        errMail = null;
+        errData = null;
+        errIncor = null;
+        
         return;
 
     } 

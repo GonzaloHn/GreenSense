@@ -34,35 +34,7 @@ if(errData != null){
 }
 
 function findErr(){
-    if (errData != null){
-        console.log("Fasltan datos");
-        console.log(errData);
-        checkErr = 0;
-
-        $("#errMessage").html("Por favor, complete todos los campos");
-        $("#errMessage").show();
-
-        if($("#u").val == ""){
-            $("#u").css("border-color", "red");
-
-            $("#c").css("border-color", "black");
-            $("#m").css("border-color", "black");
-        }
-        if($("#c").val == ""){
-            $("#c").css("border-color", "red");
-
-            $("#m").css("border-color", "black");
-            $("#u").css("border-color", "black");
-        }
-        if($("#m").val == ""){
-            $("#m").css("border-color","red");
-
-            $("#c").css("border-color", "black");
-            $("#u").css("border-color", "black");
-        }
-        return;
-
-    } if (errMail != null){
+    if (errMail != null){
         console.log("El mail ya esta en uso");
         checkErr = 0;
 
@@ -91,19 +63,36 @@ function findErr(){
         
         return;
 
-    } if(errIncor != null){
-        console.log("Usuario y/o contraseña incorrectas");
+    }
+    if (errData != null){
+        console.log("Fasltan datos");
+        console.log(errData);
         checkErr = 0;
-+
-        $("#errMessage").html("El usuario y/o la contraseña son incorrectas");
+
+        $("#errMessage").html("Por favor, complete todos los campos");
         $("#errMessage").show();
 
-        $("#u").css("border-color", "red");
-        $("#c").css("border-color", "red");
+        if($("#u").val == ""){
+            $("#u").css("border-color", "red");
 
-        $("#m").css("border-color", "black");
-    }
+            $("#c").css("border-color", "black");
+            $("#m").css("border-color", "black");
+        }
+        if($("#c").val == ""){
+            $("#c").css("border-color", "red");
 
+            $("#m").css("border-color", "black");
+            $("#u").css("border-color", "black");
+        }
+        if($("#m").val == ""){
+            $("#m").css("border-color","red");
+
+            $("#c").css("border-color", "black");
+            $("#u").css("border-color", "black");
+        }
+        return;
+
+    } 
 };
 
 window.setInterval(function() {

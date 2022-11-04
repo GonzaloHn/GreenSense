@@ -209,7 +209,7 @@ ul.show{
 .form-wrap{
     width: 1050px;
     height: 530px;
-    margin: 50px auto;
+    margin: 5px auto;
     display:flex;
 
     background-color: rgb(242, 243, 242);
@@ -346,7 +346,7 @@ ul.show{
     .form-wrap{
         width: 70vw;
         height: 530px;
-        margin: 50px auto;
+        margin: 5px auto;
         display:flex;
         flex-direction: column;
 
@@ -485,7 +485,7 @@ ul.show{
 .login-wrap{
     width: 440px;
     height: 530px;
-    margin: 50px auto;
+    margin: 5px auto;
     display:flex;
     flex-direction: column;
 
@@ -621,7 +621,7 @@ ul.show{
     .login-wrap{
         width: 70vw;
         height: 530px;
-        margin: 50px auto;
+        margin: 5px auto;
         display:flex;
         flex-direction: column;
     

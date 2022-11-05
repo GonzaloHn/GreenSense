@@ -29,10 +29,7 @@
 .none{
     display: none;
 }
-.center-items{
-    justify-content: center;
-    align-items: center;
-}
+
 iframe{
     width:100%;
 }
@@ -773,10 +770,13 @@ ul.show{
 .graph-background{
     background-color: var(--lighter-gray);
 }
+.home-graph-margin{
+    margin-top:45px
+}
 .width-graph{
     pointer-events: none;
-    width: 45vw!important;
-    height: fit-content;
+    width: 55vw!important;
+    height: 30vw!important;
 }
 .g-title{
     font-size: calc(1em + 0.5vw);
@@ -1264,8 +1264,74 @@ td, th{
 
 
 }
-
+.home-logo-r img{
+    display: none;
+}
 .home-sign:hover {
     background-color: #4CAF50;
     color: white;
+}
+
+@media only screen and (max-width: 750px){
+    .home-content{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin: 15vh auto;
+    
+    }
+    .home-logo img{
+        display: none;
+        
+    }
+    .home-logo-r img{
+        display: block;
+        width: 50vw;
+        position: absolute;
+        opacity: 0.1;
+        z-index: -2;
+        left:25%;
+        top:10%;
+    }
+
+    .home-block{
+        width: 100vw;
+        height: 95vh;
+    
+        position: absolute;
+        z-index: -2;
+        top:0;
+    
+        background-color: white;
+        border-radius: 0px 0px 250px 250px;
+    
+    }
+
+    .home-title{
+        font-family: "ausion";
+        font-size: calc(3em + 2vw);
+    }
+    .home-slogan{
+        font-family: "ausion";
+        font-size: calc(1em + 1vw);
+        margin-bottom: 15px;
+        margin-left:10px;
+        text-align: center;
+    }
+    .home-sign{
+        font-size: calc(1em + 0.2vw);
+        background-color: rgb(250, 249, 249);
+        border: none;
+        border-radius: 10px;
+        color: black;
+        text-decoration: none;
+        transition-duration: 0.4s;
+        cursor: pointer;
+        border: 2px solid #4CAF50;
+        padding: 8px;
+        margin-left:10px;
+    
+    
+    }
 }

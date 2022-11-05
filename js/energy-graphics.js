@@ -50,7 +50,7 @@ const centerText = {
       ctx.fillText('eléctrica', width / 2, height / 2 - 30);
       ctx.restore();
 
-      const val_actual = 'Valor actual: ' + num_val;
+      const val_actual = 'Valor actual: ' + num_val + 'a';
 
       ctx.font = 'bolder 30px Arial';
       ctx.fillStyle = 'rgba(1, 1, 1)';
@@ -86,8 +86,8 @@ const myChart = new Chart(
 );
 
 function updateChart(){
-  var empty_val = 500;
-  if (num_val > 500){
+  var empty_val = 300;
+  if (num_val > 300){
     empty_val = 0;
   }else{
     empty_val = empty_val - num_val

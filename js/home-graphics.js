@@ -127,10 +127,9 @@ var data_weight = [];
 var t = new Date();
 for (var i = 10; i >= 0; i--) {
     var x = new Date(t.getTime() - i * 1000);
-    var ran = Math.random();
-    data_energy.push([x, ran, ran + 1]);
-    data_air.push([x, ran, ran + 1]);
-    data_weight.push([x, ran, ran + 1]);
+    data_energy.push([x, 1, 2]);
+    data_air.push([x, 1, 2]);
+    data_weight.push([x, 1, 2]);
 } 
 
 var line_chart_energy = new Dygraph(document.getElementById("graph-energy"), data_energy, {width:600, height:400, colors:["gold", "black"],strokeBorderWidth: 1,strokeBorderColor:'', }); //crea el nuevo grafico

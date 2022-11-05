@@ -98,19 +98,19 @@ function findErr(){
         $("#errMessage").show();
 
         if($("#u").val == ""){
-            $("#u").css("border-color", "red");
+            $("#u").css("border-color", "#FF0000");
 
             $("#c").css("border-color", "black");
             $("#m").css("border-color", "black");
         }
         if($("#c").val == ""){
-            $("#c").css("border-color", "red");
+            $("#c").css("border-color", "#FF0000");
 
             $("#m").css("border-color", "black");
             $("#u").css("border-color", "black");
         }
         if($("#m").val == ""){
-            $("#m").css("border-color","red");
+            $("#m").css("border-color","#FF0000");
 
             $("#c").css("border-color", "black");
             $("#u").css("border-color", "black");

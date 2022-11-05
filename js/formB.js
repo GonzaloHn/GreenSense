@@ -4,14 +4,22 @@ var errIncor;
 
 var checkErr = 1;
 
+var errores = [0];
+
 var socket = io('http://localhost:3000');
 
 
 socket.on('errordatos', (missingData) =>{
     errData = missingData;
+    if(errData != null){
+        errores.push(1);
+    }
 })
 socket.on('errorincor', (userPassIncor) =>{
     errIncor = userPassIncor;
+    if(errIncor != null){
+        errores.push(2);
+    }
 })
 
 
@@ -19,7 +27,7 @@ socket.on('errorincor', (userPassIncor) =>{
 
 
 function findErr(){
-    if (errData != null){
+    if (errData != null && errores[errores.length - 1] == 1){
         console.log("Faltan datos");
         checkErr = 0;
 
@@ -27,18 +35,19 @@ function findErr(){
         $("#errMessage").show();
 
         if($("#u").val == ""){
-            $("#u").css("border-color", "red");
+            $("#u").css("border-color", "#FF0000");
 
             $("#c").css("border-color", "black");
         }
         if($("#c").val == ""){
-            $("#c").css("border-color", "red");
+            $("#c").css("border-color", "#FF0000");
 
             $("#u").css("border-color", "black");
         }
         return;
 
-    } else if(errIncor != null){
+    } 
+    if(errIncor != null && errores[errores.length - 1] == 2){
         console.log("Usuario y/o contraseña incorrectas");
         checkErr = 0;
 +
@@ -48,6 +57,7 @@ function findErr(){
         $("#u").css("border-color", "red");
         $("#c").css("border-color", "red");
 
+        return;
     }
 
 };

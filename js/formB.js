@@ -27,6 +27,18 @@ socket.on('errorincor', (userPassIncor) =>{
 
 
 function findErr(){
+    if(errIncor != null && errores[errores.length - 1] == 2){
+        console.log("Usuario y/o contraseña incorrectas");
+        checkErr = 0;
+        
+        $("#errMessage").html("El usuario y/o la contraseña son incorrectas");
+        $("#errMessage").show();
+
+        $("#u").css("border-color", "red");
+        $("#c").css("border-color", "red");
+
+        return;
+    }
     if (errData != null && errores[errores.length - 1] == 1){
         console.log("Faltan datos");
         checkErr = 0;
@@ -47,18 +59,6 @@ function findErr(){
         return;
 
     } 
-    if(errIncor != null && errores[errores.length - 1] == 2){
-        console.log("Usuario y/o contraseña incorrectas");
-        checkErr = 0;
-+
-        $("#errMessage").html("El usuario y/o la contraseña son incorrectas");
-        $("#errMessage").show();
-
-        $("#u").css("border-color", "red");
-        $("#c").css("border-color", "red");
-
-        return;
-    }
 
 };
 

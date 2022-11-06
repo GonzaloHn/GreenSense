@@ -6,7 +6,7 @@ var checkErr = 1;
 
 var errores = [0];
 
-var socket = io('http://localhost:3000');
+var socket = io('http://localhost:9000');
 
 
 socket.on('errordatos', (missingData) =>{

@@ -3,7 +3,7 @@
 
 void setup() {
   
-  Serial.begin(9600);
+  Serial.begin(112500);
   analogReference(EXTERNAL);
   //analogReference(INTERNAL1V1); //solo Arduino Mega
 }

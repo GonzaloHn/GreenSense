@@ -86,8 +86,8 @@ const myChart = new Chart(
 );
 
 function updateChart(){
-  var empty_val = 90;
-  if (num_val > 90){
+  var empty_val = 250;
+  if (num_val > 250){
     empty_val = 0;
   }else{
     empty_val = empty_val - num_val
@@ -108,13 +108,13 @@ $(document).ready(function(){
 
   setInterval(swapSitNow,1000);
   function swapSitNow(){
-      if(num_val < 40){
+      if(num_val <= 100){
         $(".Situation-Now-Title").text('Valores correctos');
         $(".Situation-Now-Text").html("La calidad de aire actual es aceptable.");
-      } else if(num_val > 40 && num_val <= 50){
+      } else if(num_val > 100 && num_val <= 180){
         $(".Situation-Now-Title").html("Valores arreiesgados");
         $(".Situation-Now-Text").html("La calidad de aire actual no es la indicada.");
-      } else if (num_val > 50){
+      } else if (num_val > 180){
         $(".Situation-Now-Title").html("Valores perjudiciales");
         $(".Situation-Now-Text").html("La caidad de aire actual es perjudicial.");
       }        

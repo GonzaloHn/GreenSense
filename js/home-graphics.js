@@ -341,9 +341,9 @@ if(dynamicUpdate == 1){
         data_air.push([x, y_air, y_opt_air]);
         data_weight.push([x, y_weight, y_opt_weight]);
     } else{
-        data_energy.push([x, 1, null]);
-        data_air.push([x, 1, null]);
-        data_weight.push([x, 1, null]);
+        data_energy.push([x, y_energy, null]);
+        data_air.push([x, y_air, null]);
+        data_weight.push([x, y_weight, null]);
     }
 
     if(deleteVal == 1){

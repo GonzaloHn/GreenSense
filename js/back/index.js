@@ -68,13 +68,33 @@ client.on('connect', function(){
     console.log("> conectado a broker de adafruit");
 
     //o /g-air -- tambien ver de que el feed se llame g/air asi me suscribo a g/# (si no anda /f poner /feeds)
-    client.subscribe('SantiR/f/G-Elc', function (err) {
+    client.subscribe('SantiR/f/g-air', function (err) {
 
         if (!err){
-            console.log ("> suscrito a topico/s, escuchando...");
+            console.log ("> suscrito a topico g-air, escuchando...");
         }
         else {
-            console.log ("> error de suscripcion");
+            console.log ("> error de suscripcion topico g-air");
+        }
+    });
+
+    client.subscribe('SantiR/f/g-elc', function (err) {
+
+        if (!err){
+            console.log ("> suscrito a topico g-elc, escuchando...");
+        }
+        else {
+            console.log ("> error de suscripcion topico g-elc");
+        }
+    });
+
+    client.subscribe('SantiR/f/g-weigh', function (err) {
+
+        if (!err){
+            console.log ("> suscrito a topico g-weigh, escuchando...");
+        }
+        else {
+            console.log ("> error de suscripcion topico g-weigh");
         }
     });
 });
@@ -86,7 +106,7 @@ client.on('message', function(topic, message){
 
       
     //REGISTRO BASURA
-    if (topic == "SantiR/f/G/Weight"){
+    if (topic == "SantiR/f/g-weigh"){
         
         //Guardar valores 
         date = new Date();
@@ -95,19 +115,16 @@ client.on('message', function(topic, message){
         hora = time.toLocaleTimeString();
         basura = parseFloat(message);
         //Mandar valores a front
-        io.on('connection', (socket) => {
-            console.log('> dato de basura enviado');
-            socket.emit('basura', basura);
-        });
+        console.log('> dato de basura enviado');
+        io.emit('basura', basura);
 
         if (basura < optimobasura)
         {
-            basura = optimobasura;
-            io.on('connection', (socket) => {
-                console.log('> dato de basura optima enviado');
-                socket.emit('optimobasura', optimobasura);
-            });
+            optimobasura = basura;
         }
+
+        console.log('> dato de basura optima enviado');
+        io.emit('optimobasura', optimobasura);
     
 
         //Esto mandaria muchos mails, tiene que mandar solo uno (ademas no se si manda mails a todos bien)
@@ -141,7 +158,6 @@ client.on('message', function(topic, message){
                 transporter.sendMail(mailOptions, (error, info) => {
                     if (error) {
                         console.log ("> error enviando mail de basura inoptima");
-                        //res.status(400).send("Error: El mail de registración no ha podido ser enviado");   
                     }
                     else {
                         console.log ("> mail de basura inoptima enviado");
@@ -161,7 +177,7 @@ client.on('message', function(topic, message){
 
      //REGISTRO AIRE
 
-    if (topic == "SantiR/f/G/Air"){
+    if (topic == "SantiR/f/g-air"){
 
         //guardar valores (para posteriormente subirlo al grafico)
         date = new Date();
@@ -169,22 +185,21 @@ client.on('message', function(topic, message){
         fecha = date.toLocaleDateString();
         hora = time.toLocaleTimeString();
         aire = parseFloat(message);
-        //Mandar valores a front
-        io.on('connection', (socket) => {
-            console.log('> dato de aire enviado');
-            socket.emit('aire', aire);
-        });
+
+        //Mandar valores a front        
+        console.log('> dato de aire enviado');
+        io.emit('aire', aire);
 
         if (aire < optimoaire)
         {
-            aire = optimoaire;
-            io.on('connection', (socket) => {
-                console.log('> dato de aire optimo enviado');
-                socket.emit('optimoaire', optimoaire);
-            });
+            optimoaire = aire;
         }
 
-        if (aire > 60) {
+        console.log('> dato de aire optimo enviado');
+        io.emit('optimoaire', optimoaire);
+
+        /*
+        if (aire > 181) {
             conexion.query('SELECT gmail FROM usuarios', function (err, result) {
                 
                 email = JSON.parse(JSON.stringify(result));
@@ -221,6 +236,7 @@ client.on('message', function(topic, message){
                 });
             })   
         }
+        */
 
         //Insertar valores a DB
         conexion.query('INSERT INTO aire (fecha, hora, valor) VALUES ("'+fecha+'" ,"'+hora+'" ,"'+aire+'")', function (error,results,fields){
@@ -231,25 +247,26 @@ client.on('message', function(topic, message){
      }
 
       //REGISTRO ENERGIA
-      if (topic == "SantiR/f/G-Elc"){
-        //Guardar valores (para posteriormente subirlo al grafico)
+      if (topic == "SantiR/f/g-elc"){
         
+        //Guardar valores (para posteriormente subirlo al grafico)
         date = new Date();
         time = new Date();
         fecha = date.toLocaleDateString();
         hora = time.toLocaleTimeString();
         energia = parseFloat(message);
+        
         //Mandar valores a front
-         
+        console.log('> dato de electricidad enviado');
+        io.emit('energia', energia);
 
         if (energia < optimoenergia)
         {
             optimoenergia = energia;
-            io.on('connection', (socket) => {
-                console.log('> dato de energia optima enviado');
-                socket.emit('optimoenergia', optimoenergia);
-            });
         }
+
+        console.log('> dato de energia optima enviado');
+        io.emit('optimoenergia', optimoenergia);
 
         if (energia > 2000) {
             conexion.query('SELECT gmail FROM usuarios', function (err, result) {
@@ -280,7 +297,6 @@ client.on('message', function(topic, message){
                 transporter.sendMail(mailOptions, (error, info) => {
                     if (error) {
                         console.log ("> error enviando mail de energia inoptima");
-                        //res.status(400).send("Error: El mail de registración no ha podido ser enviado");   
                     }
                     else {
                         console.log ("> mail de energia inoptima enviado");
@@ -296,14 +312,5 @@ client.on('message', function(topic, message){
             console.log("> registro de energia insertado");  
         });   
     }     
-
-    //conexion.end();
-    //client.end()
 });
 
-//escucha a puerto 9000
-/*
-app.listen (port, () => {
-    console.log (`Servidor en puerto ${port}, escuchando registro...`);
-});
-*/

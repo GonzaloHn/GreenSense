@@ -315,6 +315,7 @@ window.setInterval(function() {
 if(dynamicUpdate == 1){
     var x = new Date(); 
     //var y = Math.random(); //agarra un valor random para Y
+    //console.log("Prueba " + data_s_air);
 
      var y_energy = data_s_energy; //y de los sockets, prueba
      var y_air = data_s_air; //y de los sockets, prueba

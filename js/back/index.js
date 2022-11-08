@@ -49,7 +49,7 @@ const client = mqtt.connect('mqtt://io.adafruit.com', {
     //password: 'aio_MrNz95gaeOlLSkBTwzS3xyQrgBII'
     username: 'SantiR', 
     password: 'aio_YPHY89pviqnN5VscYugHsos3Kdd4'
-}); 
+});
 
 
 //conexion DB

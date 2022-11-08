@@ -86,8 +86,8 @@ const myChart = new Chart(
 );
 
 function updateChart(){
-  var empty_val = 300;
-  if (num_val > 300){
+  var empty_val = 20;
+  if (num_val > 20){
     empty_val = 0;
   }else{
     empty_val = empty_val - num_val

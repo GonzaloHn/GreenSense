@@ -123,7 +123,7 @@ static boolean newDataReady = 0;
   } else {
     Serial.println(F("OK!"));
   }
- delay(5000);
+ delay(10000);
 
 }
 

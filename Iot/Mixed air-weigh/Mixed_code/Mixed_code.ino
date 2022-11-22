@@ -16,15 +16,15 @@ unsigned long t = 0;
 
 /************************* WiFi Access Point *********************************/
 
-#define WLAN_SSID       "Familia Resnik"
-#define WLAN_PASS       "sanlorenzo"
+#define WLAN_SSID       ""
+#define WLAN_PASS       ""
 
 /************************* Adafruit.io Setup *********************************/
 
 #define AIO_SERVER      "io.adafruit.com"
 #define AIO_SERVERPORT  1883                   // use 8883 for SSL
 #define AIO_USERNAME    "SantiR"
-#define AIO_KEY         "aio_YPHY89pviqnN5VscYugHsos3Kdd4"
+#define AIO_KEY         ""
 
 /************ Global State (you don't need to change this!) ******************/
 
@@ -83,7 +83,7 @@ void loop() {
   
     // put your main code here, to run repeatedly:
 MQ135 gasSensor = MQ135(A0);
-float air_quality = gasSensor.getPPM() / 1000;
+float air_quality = gasSensor.getPPM();
 Serial.print(air_quality);
   if (! G_Air.publish(air_quality)) {
     Serial.println(F("Failed"));
@@ -122,8 +122,10 @@ static boolean newDataReady = 0;
     Serial.println(F("Failed"));
   } else {
     Serial.println(F("OK!"));
+     
   }
- delay(10000);
+  delay(15000);
+
 
 }
 

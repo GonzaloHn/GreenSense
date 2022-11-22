@@ -4,14 +4,14 @@
 #include <ESP8266WiFi.h>
 
 
-#define WLAN_SSID       "IoT"
-#define WLAN_PASS       "elultimo10"
+#define WLAN_SSID       ""
+#define WLAN_PASS       ""
 
 
 #define AIO_SERVER      "io.adafruit.com"
 #define AIO_SERVERPORT  1883                   // use 8883 for SSL
-#define AIO_USERNAME  "soficasares"
-#define AIO_KEY       "aio_TTYi41HkgrtgrIWeC2ln1z830ybE"
+#define AIO_USERNAME  "SantiR"
+#define AIO_KEY       ""
 
 WiFiClient client;
 
@@ -40,22 +40,21 @@ void setup() {
 void loop() {
   
   MQTT_connect();
-float Irms=get_corriente(); //Corriente eficaz (A)
-  float Irmsf=Irms-0.830;
-  float P=(Irms*220.0)-0.830; // P=IV (Watts)
+  float Irms=get_corriente(); //Corriente eficaz (A)
+  float P=Irms*220.0; // P=IV (Watts)
 
   Serial.print("Irms: ");
-  Serial.print(Irmsf,3);
+  Serial.print(Irms,3);
   Serial.print("A, Potencia: ");
   Serial.print(P,3);  
   Serial.println("W");
   
-  if (! G_Elc.publish(Irmsf,3)) {
+  if (! G_Elc.publish(Irms,3)) {
     Serial.println(F("Failed"));
   } else {
     Serial.println(F(" OK!"));
   }
- delay(2500);
+ delay(10000);
 }
 float get_corriente()
 {

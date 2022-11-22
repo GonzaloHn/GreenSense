@@ -5,14 +5,14 @@
 #include <ESP8266WiFi.h>
 
 
-#define WLAN_SSID       "Familia Resnik"
-#define WLAN_PASS       ""
+#define WLAN_SSID       "Santis"
+#define WLAN_PASS       "ppwz1677"
 
 
 #define AIO_SERVER      "io.adafruit.com"
 #define AIO_SERVERPORT  1883                   // use 8883 for SSL
 #define AIO_USERNAME  "SantiR"
-#define AIO_KEY       ""
+#define AIO_KEY       "aio_YPHY89pviqnN5VscYugHsos3Kdd4"
 
 WiFiClient client;
 

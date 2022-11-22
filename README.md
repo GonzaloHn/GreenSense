@@ -1,5 +1,7 @@
 # GreenSense
  
+ En las carpetas Iot se encuentran las carpetas G_ las cuales tienen los codigos individuales de cada sensor, y el Mixed contiene el Air y Weight.
+ 
 Instalar en la carpeta "js", 'jquery-3.6.0.min.js' y 'materialize.js'.
 Instalar en la carpeta "css", 'materialize.css'.
 

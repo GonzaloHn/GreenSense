@@ -20,11 +20,13 @@ let optimoaire = 1000;
 const mysql = require ('mysql');
 
 //Variables nodemailer
+/*
 const nodemailer = require ('nodemailer');
 let transporter;
 let mailOptions;
 let email = "";
 let emails = "";
+*/
 
 //Variables express
 const express = require('express');
@@ -128,7 +130,7 @@ client.on('message', function(topic, message){
     
 
         //Esto mandaria muchos mails, tiene que mandar solo uno (ademas no se si manda mails a todos bien)
-        
+        /*
         if (basura > 500) {
             conexion.query('SELECT gmail FROM usuarios', function (err, result) {
                 
@@ -165,6 +167,7 @@ client.on('message', function(topic, message){
                 });
             })   
         }
+        */
 
         //Insertar valores a DB
         conexion.query('INSERT INTO basura (fecha, hora, valor) VALUES ("'+fecha+'" ,"'+hora+'" ,"'+basura+'")', function (error,results,fields){
@@ -268,6 +271,7 @@ client.on('message', function(topic, message){
         console.log('> dato de energia optima enviado');
         io.emit('optimoenergia', optimoenergia);
 
+        /*
         if (energia > 2000) {
             conexion.query('SELECT gmail FROM usuarios', function (err, result) {
                 
@@ -304,6 +308,7 @@ client.on('message', function(topic, message){
                 });
             })   
         }
+        */
 
         //Insertar valores a DB
         conexion.query('INSERT INTO energia (fecha, hora, valor) VALUES ("'+fecha+'" ,"'+hora+'" ,"'+energia+'")', function (error,results,fields){

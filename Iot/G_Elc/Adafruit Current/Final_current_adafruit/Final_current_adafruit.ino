@@ -4,27 +4,39 @@
 #include <ESP8266WiFi.h>
 
 
-#define WLAN_SSID       "IoT"
-#define WLAN_PASS       "elultimo10"
+#define WLAN_SSID       "Familia Resnik"
+#define WLAN_PASS       "sanlorenzo"
 
 
 #define AIO_SERVER      "io.adafruit.com"
 #define AIO_SERVERPORT  1883                   // use 8883 for SSL
-#define AIO_USERNAME  "soficasares"
-#define AIO_KEY       "aio_TTYi41HkgrtgrIWeC2ln1z830ybE"
+#define AIO_USERNAME  "SantiR"
+#define AIO_KEY       ""
+
+
+
+#include <TrueRMS.h>
+#define loopPeriod 1000
+#define adcPin A0  
+#define rmsWindow 50       // rms window of 50 samples, 3 periods @60Hz
+#define sensorGain 1       // amount of gain on current transformer's op amp
+#define ampsPerVolt 5      // current transformer output: 1 volt per 5 amps rms
+#define adcMaxVoltage 3.3  // adc max input voltage is 3.3v on WeMos D1 Mini 
+#define adcResolution adcMaxVoltage/1024  // each bit represents 3.3v/1024 for 10 bit adc
+
+float voltRange = 3.3;
+Rms readRms; 
 
 WiFiClient client;
 
 Adafruit_MQTT_Client mqtt(&client, AIO_SERVER, AIO_SERVERPORT, AIO_USERNAME, AIO_KEY);
-Adafruit_MQTT_Publish G_Elc = Adafruit_MQTT_Publish(&mqtt, AIO_USERNAME "/feeds/G-Elc");
+Adafruit_MQTT_Publish G_Elc = Adafruit_MQTT_Publish(&mqtt, AIO_USERNAME "/feeds/g-elc");
 
 void MQTT_connect();
 
 void setup() {
-   Serial.begin(115200);
-   analogReference(EXTERNAL);
-  delay(10);
-    Serial.println(F("Adafruit MQTT demo"));
+   Serial.begin(112500);
+   Serial.println(F("Adafruit MQTT demo"));
 
   // put your setup code here, to run once:
   Serial.println(); Serial.println();
@@ -36,46 +48,35 @@ void setup() {
     delay(500);
     Serial.print(".");
 }
+ readRms.begin(voltRange, rmsWindow, ADC_10BIT, BLR_ON, CNT_SCAN);
+  readRms.start();                  // start measuring
 }
 void loop() {
   
   MQTT_connect();
-float Irms=get_corriente(); //Corriente eficaz (A)
-  float Irmsf=Irms-0.830;
-  float P=(Irms*220.0)-0.830; // P=IV (Watts)
 
-  Serial.print("Irms: ");
-  Serial.print(Irmsf,3);
-  Serial.print("A, Potencia: ");
-  Serial.print(P,3);  
-  Serial.println("W");
-  
-  if (! G_Elc.publish(Irmsf,3)) {
+  int adcVal = analogRead(adcPin);
+  readRms.update(adcVal); 
+
+    readRms.publish();
+    float rmsVal = readRms.rmsVal;                           // calculated rms value of adc voltage readings
+    float currentRms = (rmsVal / sensorGain) * ampsPerVolt;  // actual current (amps) in current transformer
+    Serial.print(rmsVal / sensorGain * 1000, 2);             // show raw rms voltage (mV) on adc
+    Serial.print("mV ");
+    Serial.print(currentRms * 1000, 2);                      // show actual current (mA) with 2 decimal places
+    Serial.println("mA");
+      
+   if (! G_Elc.publish(currentRms * 1000, 2)) {
     Serial.println(F("Failed"));
+    delay(100);
   } else {
     Serial.println(F(" OK!"));
+    delay(100);
   }
- delay(2500);
+
+
 }
-float get_corriente()
-{
-  float voltajeSensor;
-  float corriente=0;
-  float Sumatoria=0;
-  long tiempo=millis();
-  int N=0;
-  while(millis()-tiempo<500)//Duración 0.5 segundos(Aprox. 30 ciclos de 60Hz)
-  { 
-    voltajeSensor = analogRead(A0) * (1.1 / 1023.0);////voltaje del sensor
-    corriente=voltajeSensor*50.0; //corriente=VoltajeSensor*(30A/1V)
-    Sumatoria=Sumatoria+sq(corriente);//Sumatoria de Cuadrados
-    N=N+1;
-    delay(1);
-  }
-  Sumatoria=Sumatoria*2;//Para compensar los cuadrados de los semiciclos negativos.
-  corriente=sqrt((Sumatoria)/N); //ecuación del RMS
-  return(corriente);
-}
+
 
 void MQTT_connect() {
   int8_t ret;

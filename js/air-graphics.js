@@ -18,11 +18,11 @@ const data = {
       data: [1, 99],
       borderColor: [
           'rgb(0, 255, 255)',
-          'rgb(0, 0, 0, 0)',
+          'rgb(0, 255, 255, 0.1)',
       ],
       backgroundColor: [
         'rgb(0, 255, 255)',
-        'rgb(0, 0, 0, 0)',
+        'rgb(0, 255, 255, 0.1)',
       ],
       hoverOffset: 4,
       borderWidth: 1

@@ -771,7 +771,7 @@ ul.show{
     background-color: var(--lighter-gray);
 }
 .home-graph-margin{
-    margin-top:45px
+    margin-top:70px
 }
 .width-graph{
     pointer-events: none;
@@ -783,7 +783,7 @@ ul.show{
     margin-left:10%;
     margin-top: 10px;
     padding: 10px 20px 10px 20px;
-    width: 200px;
+    width: 250px;
     text-align: center;
 }
 #energy-title{
@@ -875,7 +875,7 @@ ul.show{
 /*Pagina Inicial - Containers de Valores*/
 .ValContainer{
     /* background-color: rgb(27, 230, 44); */
-    background-color: transparent;
+    /* background-color: transparent;
 
     border-radius: 15px;
     padding: 5px;
@@ -883,14 +883,33 @@ ul.show{
     margin-bottom: 30px;
     margin-top: 30px;
     width: 305px;
-    display:flex;
-
+    display:flex; */
+    margin-bottom: 60px;
+    margin-top: 30px;
     /* white-space:nowrap;
     overflow: hidden;
     text-overflow: ellipsis; */
-    background-image: url(../images/ContainerVal.png);
+    /* background-image: url(../images/ContainerVal.png);
     background-size: cover;
-    background-position: center center;
+    background-position: center center; */
+}
+.ValContainerI{
+    background-color: transparent;
+
+    border-radius: 15px;
+    padding: 5px;
+    height: fit-content;
+    margin-bottom: 30px;
+    margin-top: 30px;
+    padding-top: 20px;
+    padding-left: 20px;
+    display:flex;
+    
+}
+.ValContainerImg{
+    width: 370px;
+    position:absolute;
+    z-index: -2;
 }
 @media only screen and (max-width: 350px){
     .ValContainer{
@@ -956,9 +975,9 @@ ul.show{
 }
 .ValContainerIcon img{
     width: 80px;
-    margin-left:14px;
+    margin-left:12px;
     margin-right: 15px;
-    margin-top:12.5px;
+    margin-top:14px;
     
 }
 
@@ -972,7 +991,8 @@ ul.show{
     padding-bottom: 4px;
 }
 .ValInfo{
-    margin-left:7px;
+    font-size: 100%;
+    margin-left:19px;
     margin-bottom: 9px;
 }
 .ValBtn{

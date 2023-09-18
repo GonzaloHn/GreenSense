@@ -38,21 +38,21 @@ const centerText = {
       ctx.save();
       console.log(top);
   
-      ctx.font = 'bolder 25px Arial';
+      ctx.font = 'bolder 35px Arial';
       ctx.fillStyle = 'rgba(1, 1, 1)';
       ctx.textAlign = 'center';
-      ctx.fillText('Energía', width / 2, height / 2 - 60);
+      ctx.fillText('Energía', width / 2, height / 2 - 90);
       ctx.restore();
   
-      ctx.font = 'bolder 25px Arial';
+      ctx.font = 'bolder 35px Arial';
       ctx.fillStyle = 'rgba(1, 1, 1)';
       ctx.textAlign = 'center';
-      ctx.fillText('eléctrica', width / 2, height / 2 - 30);
+      ctx.fillText('eléctrica', width / 2, height / 2 - 50);
       ctx.restore();
 
       const val_actual = 'Valor actual: ' + num_val + 'a';
 
-      ctx.font = 'bolder 30px Arial';
+      ctx.font = 'bolder 40px Arial';
       ctx.fillStyle = 'rgba(1, 1, 1)';
       ctx.textAlign = 'center';
       ctx.fillText(val_actual, width / 2, height / 2 + top);

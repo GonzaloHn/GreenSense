@@ -319,6 +319,11 @@ if(dynamicUpdate == 1){
 
      var y_energy = data_s_energy; //y de los sockets, prueba
      var y_air = data_s_air; //y de los sockets, prueba
+
+     if(data_s_weight < 0){
+        data_s_weight = data_s_weight * (-1);
+      }
+
      var y_weight = data_s_weight; //y de los sockets, prueba
 
      var y_opt_energy = data_o_energy; //y de los sockets optimo, prueba

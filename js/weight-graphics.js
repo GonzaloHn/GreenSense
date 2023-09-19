@@ -87,6 +87,9 @@ const myChart = new Chart(
 
 function updateChart(){
   var empty_val = 15;
+  if(num_val < 0){
+    num_val = num_val * (-1);
+  }
   if (num_val > 15){
     empty_val = 0;
   }else{

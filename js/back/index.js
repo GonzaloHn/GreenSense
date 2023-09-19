@@ -50,7 +50,7 @@ const client = mqtt.connect('mqtt://io.adafruit.com', {
     //username: 'Soficasares', 
     //password: 'aio_MrNz95gaeOlLSkBTwzS3xyQrgBII'
     username: 'SantiR', 
-    password: 'aio_YPHY89pviqnN5VscYugHsos3Kdd4'
+    password: 'aio_AAoH36jakIMyauypvqXkNEORCfww'
 });
 
 
@@ -67,7 +67,7 @@ const conexion  = mysql.createConnection({
 //Conexion y suscripcion a broker
 client.on('connect', function(){
 
-    console.log("> conectado a broker de adafruit");
+    console.log("\n> conectado a broker de adafruit");
 
     //o /g-air -- tambien ver de que el feed se llame g/air asi me suscribo a g/# (si no anda /f poner /feeds)
     client.subscribe('SantiR/f/g-air', function (err) {

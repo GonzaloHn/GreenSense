@@ -1,6 +1,11 @@
 //poner nombre de topicos como: GreenSense/Topico, asi no se repite con topicos de otras personas 
 //en ese caso para suscribirte a todos nuestros topicos puedo poner: GreenSense/# 
 
+const dotenv = require("dotenv")
+
+dotenv.config()
+
+
 //Variables mqtt
 const mqtt = require('mqtt');
 
@@ -50,7 +55,7 @@ const client = mqtt.connect('mqtt://io.adafruit.com', {
     //username: 'Soficasares', 
     //password: 'aio_MrNz95gaeOlLSkBTwzS3xyQrgBII'
     username: 'SantiR', 
-    password: 'aio_AAoH36jakIMyauypvqXkNEORCfww'
+    password: process.env.ADAFRUITPWD,
 });
 
 

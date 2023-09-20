@@ -108,13 +108,13 @@ $(document).ready(function(){
 
   setInterval(swapSitNow,1000);
   function swapSitNow(){
-      if(num_val <= 20){
+      if(num_val <= 50){
         $(".Situation-Now-Title").text('Valores correctos');
         $(".Situation-Now-Text").html("La calidad de aire actual es aceptable.");
-      } else if(num_val > 20 && num_val <= 30){
+      } else if(num_val > 50 && num_val <= 100){
         $(".Situation-Now-Title").html("Valores arreiesgados");
         $(".Situation-Now-Text").html("La calidad de aire actual no es la indicada.");
-      } else if (num_val > 30){
+      } else if (num_val > 100){
         $(".Situation-Now-Title").html("Valores perjudiciales");
         $(".Situation-Now-Text").html("La caidad de aire actual es perjudicial.");
       }        

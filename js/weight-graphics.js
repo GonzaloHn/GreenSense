@@ -47,7 +47,7 @@ const centerText = {
       ctx.font = 'bolder 35px Arial';
       ctx.fillStyle = 'rgba(1, 1, 1)';
       ctx.textAlign = 'center';
-      ctx.fillText('de la basura', width / 2, height / 2 - 50);
+      ctx.fillText('de residuos', width / 2, height / 2 - 50);
       ctx.restore();
 
       var val_actual = 'Valor actual: ' + num_val + 'g';
